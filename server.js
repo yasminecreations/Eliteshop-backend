@@ -1,8 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+app.options("*", cors());
+
 const app = express();
-app.use(cors());
+
 app.use(express.json());
 
 const PAYPAL_CLIENT = "AW6xOGgfvw8GPKdOvuxf8u1qHmqlYNT0yITUubk5XbemmbQEPeq7-yaVuPeZmDTzg3EazO2si-qgPVO0";
