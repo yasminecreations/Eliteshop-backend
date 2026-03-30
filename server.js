@@ -49,6 +49,47 @@ app.get("/test-paypal", async function(req, res) {
   }
 });
 
-app.listen(3000, function() {
-  console.log("Server running on http://localhost:3000");
+app.post("/create-order" , async (req, res)
+=> {
+  try {
+    const token = await
+generateAccessToken();
+    const { total } = req.body;
+    const response = await fetch(
+    "https://api-m.sandbox.paypal.com/v2/checkout/orders" ,
+    {
+      method: "POST",
+      headers: {
+         "Content-Type":"application/json",
+         "Authorization": `Bearer ${token}`,
+
+      },
+    body: JSON.stringify({
+      intent: "CAPTURE",
+      purchase_units: [
+        {
+       amount: {
+         currency_code: "MAD",
+         value: total,
+       },
+       },
+      ],
+    }),
+
+    }
+
+    );
+  const data = await response.json();
+  res.status(200).json(data);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error creating Order");
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function() {
+  console.log("Server running on port"
+ + PORT );
 });
