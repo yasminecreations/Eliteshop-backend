@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 
 app.use(cors({
-  origin: "*",
+  origin: "https://mini-ecommerce-backend-production-f894.up.railway.app",
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
