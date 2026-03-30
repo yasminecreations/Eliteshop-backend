@@ -1,13 +1,14 @@
 const express = require("express");
-const fetch = require("node-fetch");
+const fetch = require("fetch");
 
 const app = express();
 
 app.use(express.json());
 
-const PAYPAL_CLIENT = "AX2YxD1XT4OtyW86oFPJyB1_kxGOqYN2NvKWnlbzE8D3kF39TdhhnIs94GJPDRrmP8oIMQZkzowcY1mx";
-const PAYPAL_SECRET = "ECYh7cPRiqyxSFU4SjufE8V6jyA4bSjaSjCqn5z1eoeTyMUlHsTk5ZUYQJEmj3wkQijzXI1zJXJNoIif";
-
+const PAYPAL_CLIENT = "AW6xOGgfvw8GPKdOvuxf8u1qHmqlYNT0yITUubk5XbemmbQEPeq7-yaVuPeZmDTzg3EazO2si-qgPVO0";
+process.env.PAYPAL_CLIENT;
+const PAYPAL_SECRET = "EM_WBihZBp31WsnHNZzACeihhq6VQp9g2-S9hHXcRJA52twCa2QC9xdUBMYQPrYE1B1Fac_7kV2pOsd3";
+process.env.PAYPAL_SECRET;
 
 app.get("/", function(req, res) {
   res.send("Server is working!");
@@ -49,36 +50,38 @@ app.get("/test-paypal", async function(req, res) {
   }
 });
 
-app.post("/create-order", async (req, res) => {
+app.post("/create-order", async (req, res) =>{
   try {
     const token = await generateAccessToken();
     const { total } = req.body;
 
-    const response = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        intent: "CAPTURE",
-        purchase_units: [
-          {
-            amount: {
-              currency_code: "MAD",
-              value: total,
+    const response = await fetch(
+      "https://api-m.sandbox.paypal.com/v2/checkout/orders",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          intent: "CAPTURE",
+          purchase_units: [
+            {
+              amount: {
+                currency_code: "MAD",
+                value: total,
+              },
             },
-          },
-        ],
-      }),
-    });
+          ],
+        }),
+      }
+    );
 
     const data = await response.json();
     res.status(200).json(data);
-
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error creating Order");
+    res.status(500).send("Error creating order");
   }
 });
 
