@@ -49,38 +49,33 @@ app.get("/test-paypal", async function(req, res) {
   }
 });
 
-app.post("/create-order" , async (req, res)
-=> {
+app.post("/create-order", async (req, res) => {
   try {
-    const token = await
-generateAccessToken();
+    const token = await generateAccessToken();
     const { total } = req.body;
-    const response = await fetch(
-    "https://api-m.sandbox.paypal.com/v2/checkout/orders" ,
-    {
+
+    const response = await fetch("https://api-m.sandbox.paypal.com/v2/checkout/orders", {
       method: "POST",
       headers: {
-         "Content-Type":"application/json",
-         "Authorization": `Bearer ${token}`,
-
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
       },
-    body: JSON.stringify({
-      intent: "CAPTURE",
-      purchase_units: [
-        {
-       amount: {
-         currency_code: "MAD",
-         value: total,
-       },
-       },
-      ],
-    }),
+      body: JSON.stringify({
+        intent: "CAPTURE",
+        purchase_units: [
+          {
+            amount: {
+              currency_code: "MAD",
+              value: total,
+            },
+          },
+        ],
+      }),
+    });
 
-    }
+    const data = await response.json();
+    res.status(200).json(data);
 
-    );
-  const data = await response.json();
-  res.status(200).json(data);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error creating Order");
