@@ -1,102 +1,114 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const fetch = require('node-fetch');
+
 const app = express();
-const cors = require("cors");
-
-app.use(cors({
-  origin: "https://mini-ecommerce-backend-production-f894.up.railway.app",
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-app.options("*", cors());
-
 
 
 app.use(express.json());
 
-const PAYPAL_CLIENT = "AW6xOGgfvw8GPKdOvuxf8u1qHmqlYNT0yITUubk5XbemmbQEPeq7-yaVuPeZmDTzg3EazO2si-qgPVO0";
-process.env.PAYPAL_CLIENT;
-const PAYPAL_SECRET = "EM_WBihZBp31WsnHNZzACeihhq6VQp9g2-S9hHXcRJA52twCa2QC9xdUBMYQPrYE1B1Fac_7kV2pOsd3";
-process.env.PAYPAL_SECRET;
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "*", 
+    methods: ["GET", "POST"]
+}));
 
-app.get("/", function(req, res) {
-  res.send("Server is working!");
+
+const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
+
+mongoose.connect(mongoURI)
+    .then(() => console.log("✅ Connected to MongoDB"))
+    .catch(err => console.error("❌ MongoDB Connection Error:", err));
+
+
+const OrderSchema = new mongoose.Schema({
+    paypalOrderId: { type: String, required: true },
+    status: String,
+    amount: String,
+    currency: String,
+    customerEmail: String,
+    createdAt: { type: Date, default: Date.now }
 });
+const Order = mongoose.model('Order', OrderSchema);
 
+const { PAYPAL_CLIENT_ID, PAYPAL_SECRET, PAYPAL_ENVIRONMENT = 'sandbox' } = process.env;
+const PAYPAL_API = PAYPAL_ENVIRONMENT === 'sandbox' 
+    ? 'https://api-m.sandbox.paypal.com' 
+    : 'https://api-m.paypal.com';
 
-app.post("/test", function(req, res) {
-  console.log("Data received:", req.body);
-  res.send("Data received successfully");
-});
-
-
-async function generateAccessToken() {
-  const auth = Buffer.from(PAYPAL_CLIENT + ":" + PAYPAL_SECRET).toString("base64");
-
-  const response = await fetch("https://api-m.sandbox.paypal.com/v1/oauth2/token", {
-    method: "POST",
-    headers: {
-      "Authorization": "Basic " + auth,
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: "grant_type=client_credentials"
-  });
-
-  const data = await response.json();
-  
-  console.log("PayPal response:", data);
-  return data.access_token;
+async function getPayPalAccessToken() {
+    const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`).toString('base64');
+    const response = await fetch(`${PAYPAL_API}/v1/oauth2/token`, {
+        method: 'POST',
+        body: 'grant_type=client_credentials',
+        headers: { Authorization: `Basic ${auth}` }
+    });
+    const data = await response.json();
+    return data.access_token;
 }
 
-
-app.get("/test-paypal", async function(req, res) {
-  try {
-    const token = await generateAccessToken();
-    res.send({ token: token });
-  } catch (err) {
-    console.error(err);
-    res.send("Error getting token");
-  }
-});
-
-app.post("/create-order", async (req, res) =>{
-  try {
-    const token = await generateAccessToken();
-    const { total } = req.body;
-
-    const response = await fetch(
-      "https://api-m.sandbox.paypal.com/v2/checkout/orders",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          intent: "CAPTURE",
-          purchase_units: [
-            {
-              amount: {
-                currency_code: "USD",
-                value: total,
-              },
+app.post('/api/orders', async (req, res) => {
+    try {
+        const accessToken = await getPayPalAccessToken();
+        const response = await fetch(`${PAYPAL_API}/v2/checkout/orders`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`
             },
-          ],
-        }),
-      }
-    );
-
-    const data = await response.json();
-    res.status(200).json(data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Error creating order");
-  }
+            body: JSON.stringify({
+                intent: 'CAPTURE',
+                purchase_units: [{
+                    amount: {
+                        currency_code: 'USD',
+                        value: '45.00' 
+                    }
+                }]
+            })
+        });
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-const PORT = process.env.PORT || 3000;
+app.post('/api/orders/:orderId/capture', async (req, res) => {
+    const { orderId } = req.params;
+    try {
+        const accessToken = await getPayPalAccessToken();
+        const response = await fetch(`${PAYPAL_API}/v2/checkout/orders/${orderId}/capture`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`
+            }
+        });
 
-app.listen(PORT, function() {
-  console.log("Server running on port"
- + PORT );
+        const data = await response.json();
+
+        if (data.status === 'COMPLETED') {
+           
+            const newOrder = new Order({
+                paypalOrderId: data.id,
+                status: data.status,
+                amount: data.purchase_units[0].payments.captures[0].amount.value,
+                currency: data.purchase_units[0].payments.captures[0].amount.currency_code,
+                customerEmail: data.payer.email_address
+            });
+            await newOrder.save();
+            return res.json({ message: "Order Saved!", order: newOrder });
+        }
+        
+        res.status(400).json(data);
+    } catch (error) {
+        console.error("Capture Error:", error);
+        res.status(500).json({ error: "Failed to capture payment" });
+    }
+});
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server running on port ${PORT}`);
 });
