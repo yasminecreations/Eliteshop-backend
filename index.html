@@ -1,67 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>EliteShop - Checkout</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD"></script>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fafafa; display: flex; justify-content: center; padding-top: 50px; }
-        .checkout-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 10px; color: #555; }
-        .total-row { display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-weight: bold; font-size: 1.2em; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Marie Shop</title>
+
+<link href="https://fonts.googleapis.com/css?family=Playfair Display|Montserrat|Parisienne" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  crossorigin="anonymous"
+/> 
+<link rel="stylesheet" href="http://www.w3.org/2000/svg">
+
+<style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+    body{
+        margin: 0px;
+    }
+  #nav{
+      background-color: #fdf1f2;
+      margin: 0px;
+      width:100%;
+     
+  }
+  #nav h3{
+     font-family: "parisienne";
+     color: #e79396;
+     font-size: 20px;
+     font-style: italic;
+     font-weight: 450;
+     margin-left: 85px;
+     padding-top: 10px;
+  }
+  #navbar{
+    background-color: #fdf1f2;
+  
+  }
+  .navbar-nav a{
+      color: #2d2d2d;
+      font-family: "parisienne";
+  }
+  .navbar-toggler-icon{
+      color: #2d2d2d;
+     
+}
+.search-container{
+    position: relative;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.search-box{
+    position: absolute;
+    top: 35px;
+    right: 0;
+    display: none;
+    background: white;
+    padding: 5px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.search-box input{
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.navbar-toggler{
+     margin: 0px;
+     padding: 0px;
+     
+}  
+svg{
+    stroke-width: 1.2;
+    width: 20px;
+}
+.swiper-pagination-bullet{
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+background: #ffffff80;
+margin: 0 6px !important;
+transition: all 0.4s ease;
+}
+.swiper-pagination-bullet-active{
+    height: 6px;
+    background: antiquewhite;
+}
+.swiper-slide {
+    height: 500px;
+    align-items: cover;
+    position: cover;
+    overflow: hidden;
+    object-fit:cover;
+   
+}
+.hero-img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    animation: zoomOut 5s linear;
+}
+
+@keyframes zoomOut{
+  0%{
+    transform: scale(1.15);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.products{
+    
+    margin-top: 5px;
+    overflow-y:auto;
+    scroll-snap-type:y mandatory;
+    display: flex;
+    background: #fdf1f2;
+    gap: 10px;
+    
+}
+.product{
+    height: 300px;
+    width: 180px;
+    font-family: "Montserrat";
+    font-weight: 1000;
+    margin-left: 5px; 
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+.product img{
+    height: 170px;
+    width: 150px;
+  
+    
+}
+
+
+.hero-text{
+    color: white;
+  
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -30%);
+   opacity: 0;
+   transform: all 1.5s ease;
+   font-size: 20px;
+   font-family: "Montserrat";
+}
+.swiper-slide-active .hero-text{
+     opacity:1;
+     transform: all 1.5s ease;
+}
+.bttn{
+color: black;
+background-color: white ;
+width: 180px;
+height: 50px;
+font-weight: bold;}
+.ttl{
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: "Montserrat";
+  font-size: 25px;
+}
+.ttl2{
+    padding-left: 15px;
+    font-family: "Monserrat";
+    font-size: 40px;
+}
+
+#cart-count{
+    background: red;
+    color: rgb(255, 162, 216);
+    border-radius: 20px;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+.products h3{
+    font-size: 20px;
+}
+.products h2{
+    font-size: 15px;
+}
+.btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: pink;
+  color: white;
+  width: 40px;  
+  height: 40px;  
+  border-radius: 50%;
+  padding: 5px;
+}
+.bn{
+    color: transparent;
+    border: transparent;
+    outline: transparent;
+}
+.swiper-button-next{
+    color: #fdf1f2;
+}
+.swiper-button-prev{
+    color: #fdf1f2;
+}
+.m{
+    height: 575px;
+    width: 100%;
+    
+    object-fit: cover;
+}
+.m1{
+    font-family: "Montserrat";
+    font-size: 30px;
+    left: 10%;
+    position: absolute;
+    margin-bottom: 100px ;
+    z-index: 2;
+    bottom: 20%;
+    color: white;
+    font-weight: bold;
+    
+    
+}
+.m1 :hover{
+    text-decoration: underline;
+}
+.bttnn{
+    font-family: "Montserrat";
+    font-size: 20px;
+    left: 10%;
+    position: absolute;
+    margin-bottom: 100px ;
+    z-index: 2;
+    bottom: 9%;
+    color: rgb(0, 0, 0);
+    color: black;
+background-color: white ;
+width: 180px;
+height: 50px;
+font-weight: bold;
+}
+.tt{
+    padding-left: 15px;
+    font-family: "Monserrat";
+    font-size: 30px;
+    
+}
+.joinourcommunity{
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+.joinourcommunity img{
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+    
+}
+.joinourcommunity h3{
+position: absolute;
+z-index: 2;
+top: 50%;
+left: 5%;
+color: white;
+font-family: "Montserrat";
+font-size: 25px;
+}
+.joinourcommunity button{
+    top: 70%;
+    color: black;
+background-color: white ;
+font-family: "Montserrat";
+height: 50px;
+width: 250px;
+font-weight: bold;
+position: absolute;
+z-index: 2;
+left: 10%;
+margin-top: 10px;
+}
+</style>
 </head>
 <body>
+    
 
-    <div class="checkout-card">
-        <h2>Order Summary</h2>
-        <div class="price-row">
-            <span>Florenza Lavender</span>
-            <span>450.00 DH</span>
-        </div>
-        <div class="price-row">
-            <span>Shipping Fee</span>
-            <span>50.00 DH</span>
-        </div>
-        <div class="total-row">
-            <span>Total</span>
-            <span>500.00 DH</span>
-        </div>
+<nav class="navbar navbar-expand-lg " id="nav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" >
+            <a  style=" color: #2d2d2d;  "> <i data-lucide="menu"></i></a>
+       
+    </button>
+      <h3> Marie Shop </h3>
+      <div class="search-container">
 
-        <div id="paypal-button-container"></div>
+        <span style="color:#2d2d2d; cursor:pointer;" onclick="toggleSearch()">
+        <i data-lucide="search"></i>
+        </span>
+        
+        <div class="search-box" id="searchBox">
+        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchItems()">
+        </div>
+        
+        </div>
+        
+              
+     <a href="cart.html"  style=" color: #2d2d2d;  "> <i data-lucide="handbag"></i><span id="cart-count">0</span></a>
+     
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" id="Home" style="color: #e79396; text-decoration: #e79396 underline;" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" id="jewelery" href="jewelery.html">jewelery</a></li>
+            <li class="nav-item"><a class="nav-link" id="KeyChains" href="keychains.html">KeyChains</a></li>
+            <li class="nav-item"><a class="nav-link" id="hellokitty" href="hellokitty.html">Hello Kitty</a></li>
+            <li class="nav-item"><a class="nav-link" id="cosmetics" href="cosmetics.html">cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" id="Clothes" href="clothes.html">Clothes</a></li>
+            <li class="nav-item"><a class="nav-link" id="bodycare" href="jewelery.html">Body Care</a></li>
+       </ul>
+    </div>
+</nav>
+<div id="message" style="
+position: fixed;
+top: 80px;
+right: 20px;
+background: #4caf50;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+display: none;
+z-index: 999;
+"> Product added to cart
+</div>
+
+<div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="hero-img" src="n.jpeg" alt="" style="width: 100%; height: 500px;">
+             <div class="hero-text">
+               <h1> Make Every Gift A FairyTale </h1>
+              
+             </div>
+         </div>
+              <div class="swiper-slide">
+             <img  class="hero-img" src="f.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
+              <div class="hero-text">  
+             <h1> New Arrival - New Collection </h1>
+              </div>
+              </div>
+              <div class="swiper-slide">
+                <img  class="hero-img" src="i (1).jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
+                 <div class="hero-text">  
+                <h1>Discover what's new </h1>
+                 <a href="prdct.html"><button class="bttn"> Shop Now</button></a>
+                 </div>
+                 </div>
+              </div> 
+
+      <div class="swiper-pagination"> </div>
+
+
+    </div> 
+    <div class="product-displayer" style="background: #fdf1f2; margin-top: 20px;">
+      <h3 class="ttl"> Discover What's New </h3> <br>
+       <h1 class="ttl2"> Our Latest Collection</h1>
+        
+           <div id="itemList" class="products">
+           
+            <div class="product">
+                
+                <img src="erg.jpg" alt="this is a product pic">
+             <h3> Hello Kitty Silver Earings</h3>
+             <h2> Prix : 45dh</h2>
+             <button class="bn" onclick="addToCart('Hello Kitty Silver Earings',45,'erg.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+            </div> 
+            <div class="product">
+                
+                <img src="brclt.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Silver Bracelet</h3>
+                <h2> Prix : 95dh</h2>
+                <button class="bn" onclick="addToCart('Hello Kitty Silver Bracelet',95,'brclt.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="product"> 
+                 
+                 <img src="hk1.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Plushie</h3>
+                <h2> Prix : 119dh</h2>
+                <button class="bn" onclick="addToCart('Hello Kitty Plushie',119,'hk1.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+            </div>
+           
+             <div class="product"> 
+               
+                <img src="kc2.jpg" alt="this is a product pic">
+                <h3> Full Hello Kitty Charm KeyChain </h3>
+                <h2> Prix : 49dh</h2> 
+                 <button class="bn" onclick="addToCart('Full Hello Kitty Charm KeyChain',49,'kc2.jpg')">
+                   <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+
+              
+             </div>
+             <div class="product"> 
+               
+               <img src="kc31.jpg" alt="this is a product pic">
+               <h3> Hello Kitty Charm Keychains </h3>
+               <h2> Prix : 39dh </h2>
+               <button class="bn" onclick="addToCart('Hello Kitty Charm Keychains',39,'kc31.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button></div>
+
+        
+        </div>
+        <a href="prdct.html"><button style="background-color: #e79396; color: white;
+            width: 100%; height: 50px; border: none;"
+            >View Full Collection</button></a>
+    </div>
+    <div> <h3 class="tt"> Shop From Our Categories </h3> </div>
+    <div class="swiper collection-slider">
+       <div class="swiper-wrapper">
+           <div class="swiper-slide" style="position: relative;">
+         <img class="m" src="c.jpg" alt="">
+         <h3 class="m1" > Our Latest Clothes Collection  </h3>
+         <a href="clothes.html"> <button class="bttnn"> Shop Now </button></a> </div>
+      <div class="swiper-slide"style="position: relative;">
+        <img class="m" src="j.jpg" alt="">
+        <h3 class="m1"> Our Latest Jwellery Collection  </h3>
+        <a href="jewelery.html"> <button class="bttnn"> Shop Now </button></a></div>
+     <div class="swiper-slide"style="position: relative;">
+        <img class="m" src="e.jpg" alt="">
+        <h3 class="m1"> Our Latest Body Care Products </h3>
+        <a href="bodycare.html"> <button class="bttnn"> Shop Now </button></a></div>
+     <div class="swiper-slide"style="position: relative;">
+        <img class="m" src="n.jpeg" alt="">
+        <h3 class="m1"> Our Latest Makeup Products </h3>
+         <a href="cosmetics.html"> <button class="bttnn"> Shop Now </button></a>
+    </div>
+     <div class="swiper-slide"style="position: relative;">
+        <img class="m" src="kck2.jpg" alt="">
+        <h3 class="m1"> Our Latest Keychains Collection </h3>
+        <a href="cosmetics.html"> <button class="bttnn"> Shop Now </button></a> </div></div>
+        
+       <div class="swiper-button-next">  </div>
+       <div class="swiper-button-prev"> 
+        
+                 </div></div>
+                 <div> <h3 class="tt"> Join Our Community! </h3> </div>
+    <div class="joinourcommunity">
+   <img src="logo.jpg" alt="">
+    <h3> Visit our instagram page : @marie.__shop  <br> Or Click : </h3>
+    <a href="http://instagram.com/marie.__shop" target="_blank" rel="noopener noreferrer"> <Button  > Visit Our Instagram Page </Button></a>
+     <h3 style="top: 10%; left: 5%;"> Visit Our TikTok Page : @marie._shop  <br> Or Click : </h3>
+     <a href="http://tiktok.com/@marie._shop" target="_blank" rel="noopener noreferrer"> <Button style="top: 30%; left: 5%;" > Visit Our TikTok Page </Button></a>
+
+
+ 
+
+
     </div>
 
-    <script>
-        const BACKEND_URL = window.location.origin;
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script> lucide.createIcons(); </script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  
+  
+  const swiper = new
+  Swiper(".hero-slider" , {
+    
+    loop:true,
 
-        // Current item for sale (In a cart.html, this would come from LocalStorage)
-        const myCart = [
-            { name: "Florenza Lavender Deodorant", quantity: 1, price: "450.00" }
-        ];
-
-        paypal.Buttons({
-            createOrder: async () => {
-                const response = await fetch(`${BACKEND_URL}/api/orders`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cart: myCart })
-                });
-                const order = await response.json();
-                return order.id;
-            },
-            onApprove: async (data) => {
-                const response = await fetch(`${BACKEND_URL}/api/orders/${data.orderID}/capture`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cart: myCart })
-                });
-                const result = await response.json();
-                if (result.order) {
-                    alert("Order Placed Successfully!");
-                    window.location.reload();
-                }
-            }
-        }).render('#paypal-button-container');
+    autoplay: {
+       delay:5000,
+       disableOnInteraction:false
+    },
+    pagination:{
+       el:".swiper-pagination",
+       clickable:true
+    }
+    
+} );
+</script>
+<script>
+    const swiper1 = new
+    Swiper(".collection-slider" , {
+      
+      loop:true,
+  
+      autoplay: {
+         delay:5000,
+         disableOnInteraction:false
+      },
+      navigation:{
+         
+        nextEl:".swiper-button-next",
+        prevEl:".swiper-button-next",
+        clickable:true
+      }
+      
+  } );
+  </script>
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    function updateCartCount(){
+        document.getElementById("cart-count").innerText = cart.length;
+    }
+    
+    function showMessage(text){
+        const msg = document.getElementById("message");
+        msg.innerText = text;
+        msg.style.display = "block";
+           setTimeout(()=>{
+          msg.style.display = "none";
+         },2000);
+    }
+      function addToCart(name, price, image){
+          const existing = cart.find(item => item.name === name);
+      
+    
+        if(existing){
+            existing.quantity += 1;
+        } else {
+            cart.push({name, price, image, quantity:1});
+        }
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        showMessage("Product added to cart!");
+    }
+    
+    updateCartCount();
     </script>
+    <script>
+function toggleSearch(){
+    const box = document.getElementById("searchBox");
+
+    if(box.style.display === "none" || box.style.display === ""){
+        box.style.display = "block";
+    }else{
+        box.style.display = "none";
+    }
+}
+
+function searchItems(){
+
+let input = document.getElementById("searchInput").value.toLowerCase();
+let items = document.querySelectorAll(".product");
+
+items.forEach(function(item){
+
+let text = item.textContent.toLowerCase();
+
+if(text.includes(input)){
+    item.style.display = "block";
+}else{
+    item.style.display = "none";
+}
+
+});
+
+}
+</script>
 </body>
-</html>
