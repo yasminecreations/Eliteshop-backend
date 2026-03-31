@@ -24,27 +24,38 @@
         // CHANGE THIS TO YOUR RAILWAY BACKEND LINK
         const BACKEND_URL = window.location.origin;
 
+        // --- NEW: Define your product here ---
+        const myCart = [
+            { 
+                name: "Florenza Lavender Fragrance", 
+                quantity: 1, 
+                price: "45.00" 
+            }
+        ];
+
         paypal.Buttons({
-            // STEP 1: Create the order by calling your backend
             createOrder: async () => {
                 const response = await fetch(`${BACKEND_URL}/api/orders`, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" }
+                    headers: { "Content-Type": "application/json" },
+                    // SENDING THE CART DATA TO THE BACKEND
+                    body: JSON.stringify({ cart: myCart }) 
                 });
                 const order = await response.json();
-                return order.id; // This is the ID PayPal needs to open the popup
+                return order.id; 
             },
 
-            // STEP 2: Capture the order after the user logs in and clicks "Pay"
             onApprove: async (data) => {
                 const response = await fetch(`${BACKEND_URL}/api/orders/${data.orderID}/capture`, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" }
+                    headers: { "Content-Type": "application/json" },
+                    // SENDING THE CART DATA AGAIN SO THE BACKEND CAN SAVE IT TO MONGODB
+                    body: JSON.stringify({ cart: myCart }) 
                 });
                 
                 const result = await response.json();
                 
-                if (result.order && result.order.status === "COMPLETED") {
+                if (result.order && (result.order.status === "COMPLETED" || result.order.status === "APPROVED")) {
                     alert("✅ Payment Successful! Order saved in MongoDB.");
                     console.log("Database Record:", result.order);
                 } else {
