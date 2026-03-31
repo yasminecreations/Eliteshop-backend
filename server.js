@@ -109,6 +109,11 @@ app.post('/api/orders/:orderId/capture', async (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
+const path = require('path');
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); });
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
