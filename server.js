@@ -8,28 +8,33 @@ const app = express();
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL || "*", methods: ["GET", "POST"] }));
 
+// 1. DATABASE SETUP
 const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Connected to MongoDB"))
     .catch(err => console.error("❌ MongoDB Connection Error:", err));
 
-// --- 1. UPDATED SCHEMA ---
 const OrderSchema = new mongoose.Schema({
     paypalOrderId: { type: String, required: true },
     status: String,
-    amount: String,
+    amountUSD: String,      // What PayPal charged
+    amountMAD: String,      // What the customer saw in Dirhams
+    shippingFeeMAD: String,
     currency: String,
     customerEmail: String,
-    // Add this line to save the products!
-    items: [{ name: String, quantity: Number, price: String }], 
+    items: [{ name: String, quantity: Number, priceMAD: String }], 
     createdAt: { type: Date, default: Date.now }
 });
 const Order = mongoose.model('Order', OrderSchema);
 
+// 2. PAYPAL CONFIG
 const { PAYPAL_CLIENT_ID, PAYPAL_SECRET, PAYPAL_ENVIRONMENT = 'sandbox' } = process.env;
 const PAYPAL_API = PAYPAL_ENVIRONMENT === 'sandbox' 
     ? 'https://api-m.sandbox.paypal.com' 
     : 'https://api-m.paypal.com';
+
+// Current exchange rate: 1 MAD = ~0.10 USD (Adjust this as needed)
+const MAD_TO_USD_RATE = 0.10;
 
 async function getPayPalAccessToken() {
     const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`).toString('base64');
@@ -42,33 +47,39 @@ async function getPayPalAccessToken() {
     return data.access_token;
 }
 
-// --- 2. UPDATED ORDER CREATION ---
+// 3. CREATE ORDER ROUTE
 app.post('/api/orders', async (req, res) => {
     try {
-        // We assume your frontend sends the 'cart' in the body
         const { cart } = req.body; 
         const accessToken = await getPayPalAccessToken();
-        
+
+        // Calculate Totals in MAD first
+        const itemTotalMAD = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+        const shippingFeeMAD = 50.00; // Fixed 50 DH shipping
+        const grandTotalMAD = itemTotalMAD + shippingFeeMAD;
+
+        // Convert to USD for PayPal
+        const itemTotalUSD = (itemTotalMAD * MAD_TO_USD_RATE).toFixed(2);
+        const shippingUSD = (shippingFeeMAD * MAD_TO_USD_RATE).toFixed(2);
+        const grandTotalUSD = (grandTotalMAD * MAD_TO_USD_RATE).toFixed(2);
+
         const response = await fetch(`${PAYPAL_API}/v2/checkout/orders`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}`
-            },
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` },
             body: JSON.stringify({
                 intent: 'CAPTURE',
                 purchase_units: [{
                     amount: {
                         currency_code: 'USD',
-                        value: '45.00', // Total Price
+                        value: grandTotalUSD,
                         breakdown: {
-                            item_total: { currency_code: 'USD', value: '45.00' }
+                            item_total: { currency_code: 'USD', value: itemTotalUSD },
+                            shipping: { currency_code: 'USD', value: shippingUSD }
                         }
                     },
-                    // THIS PART makes the names show up in your PayPal Inbox
                     items: cart.map(item => ({
                         name: item.name,
-                        unit_amount: { currency_code: 'USD', value: item.price },
+                        unit_amount: { currency_code: 'USD', value: (parseFloat(item.price) * MAD_TO_USD_RATE).toFixed(2) },
                         quantity: item.quantity
                     }))
                 }]
@@ -81,44 +92,42 @@ app.post('/api/orders', async (req, res) => {
     }
 });
 
-// --- 3. UPDATED CAPTURE ---
+// 4. CAPTURE ORDER ROUTE
 app.post('/api/orders/:orderId/capture', async (req, res) => {
     const { orderId } = req.params;
-    const { cart } = req.body; // Pass the cart here too to save to DB
+    const { cart } = req.body; 
 
     try {
         const accessToken = await getPayPalAccessToken();
         const response = await fetch(`${PAYPAL_API}/v2/checkout/orders/${orderId}/capture`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}`
-            }
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` }
         });
 
         const data = await response.json();
 
-        if (data.status === 'COMPLETED') {
+        if (data.status === 'COMPLETED' || data.status === 'APPROVED') {
+            const itemTotalMAD = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            
             const newOrder = new Order({
                 paypalOrderId: data.id,
                 status: data.status,
-                amount: data.purchase_units[0].payments.captures[0].amount.value,
-                currency: data.purchase_units[0].payments.captures[0].amount.currency_code,
+                amountUSD: data.purchase_units[0].payments.captures[0].amount.value,
+                amountMAD: (itemTotalMAD + 50).toString(), // Total in DH
+                shippingFeeMAD: "50",
+                currency: "USD",
                 customerEmail: data.payer.email_address,
-                // SAVING THE ITEMS TO MONGODB
                 items: cart.map(item => ({
                     name: item.name,
                     quantity: item.quantity,
-                    price: item.price
+                    priceMAD: item.price
                 }))
             });
             await newOrder.save();
             return res.json({ message: "Order Saved!", order: newOrder });
         }
-        
         res.status(400).json(data);
     } catch (error) {
-        console.error("Capture Error:", error);
         res.status(500).json({ error: "Failed to capture payment" });
     }
 });

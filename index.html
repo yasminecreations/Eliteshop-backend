@@ -2,35 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Shop - Checkout</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD"></script>
+    <title>Florenza Deodorant - Checkout</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
     <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; }
-        .card { background: white; padding: 2rem; border-radius: 8px;  text-align: center; width: 350px; }
-        h2 { color: #333; }
-        #paypal-button-container { margin-top: 20px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fafafa; display: flex; justify-content: center; padding-top: 50px; }
+        .checkout-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 10px; color: #555; }
+        .total-row { display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-weight: bold; font-size: 1.2em; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h2>Florenza Fragrance</h2>
-        <p>Total: $45.00</p>
-        <div id="paypal-button-container"> </div>
+    <div class="checkout-card">
+        <h2>Order Summary</h2>
+        <div class="price-row">
+            <span>Florenza Lavender</span>
+            <span>450.00 DH</span>
+        </div>
+        <div class="price-row">
+            <span>Shipping Fee</span>
+            <span>50.00 DH</span>
+        </div>
+        <div class="total-row">
+            <span>Total</span>
+            <span>500.00 DH</span>
+        </div>
+
+        <div id="paypal-button-container"></div>
     </div>
 
     <script>
-        // CHANGE THIS TO YOUR RAILWAY BACKEND LINK
         const BACKEND_URL = window.location.origin;
 
-        // --- NEW: Define your product here ---
+        // Current item for sale (In a cart.html, this would come from LocalStorage)
         const myCart = [
-            { 
-                name: "Florenza Lavender Fragrance", 
-                quantity: 1, 
-                price: "45.00" 
-            }
+            { name: "Florenza Lavender Deodorant", quantity: 1, price: "450.00" }
         ];
 
         paypal.Buttons({
@@ -38,34 +44,22 @@
                 const response = await fetch(`${BACKEND_URL}/api/orders`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    // SENDING THE CART DATA TO THE BACKEND
-                    body: JSON.stringify({ cart: myCart }) 
+                    body: JSON.stringify({ cart: myCart })
                 });
                 const order = await response.json();
-                return order.id; 
+                return order.id;
             },
-
             onApprove: async (data) => {
                 const response = await fetch(`${BACKEND_URL}/api/orders/${data.orderID}/capture`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    // SENDING THE CART DATA AGAIN SO THE BACKEND CAN SAVE IT TO MONGODB
-                    body: JSON.stringify({ cart: myCart }) 
+                    body: JSON.stringify({ cart: myCart })
                 });
-                
                 const result = await response.json();
-                
-                if (result.order && (result.order.status === "COMPLETED" || result.order.status === "APPROVED")) {
-                    alert("✅ Payment Successful! Order saved in MongoDB.");
-                    console.log("Database Record:", result.order);
-                } else {
-                    alert("❌ Payment failed or was not completed.");
+                if (result.order) {
+                    alert("Order Placed Successfully!");
+                    window.location.reload();
                 }
-            },
-
-            onError: (err) => {
-                console.error("PayPal Error:", err);
-                alert("Something went wrong with the connection.");
             }
         }).render('#paypal-button-container');
     </script>
