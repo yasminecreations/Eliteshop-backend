@@ -7,7 +7,11 @@ const path = require('path');
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL || "*", methods: ["GET", "POST"] }));
+// This tells Express to serve files from the "images" folder
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// If your images are just in the main folder (not a subfolder), use this instead:
+// app.use(express.static(__dirname));
 // 1. DATABASE SETUP
 const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 mongoose.connect(mongoURI)
