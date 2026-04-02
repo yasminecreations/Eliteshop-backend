@@ -8,10 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL || "*", methods: ["GET", "POST"] }));
 
-app.use('i/images', express.static(path.join(__dirname, 'images')));
-
-
-// 1. DATABASE SETUP
+app.use('/images', express.static(path.join(__dirname, 'images')));
 const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Connected to MongoDB"))
@@ -20,8 +17,8 @@ mongoose.connect(mongoURI)
 const OrderSchema = new mongoose.Schema({
     paypalOrderId: { type: String, required: true },
     status: String,
-    amountUSD: String,      // What PayPal charged
-    amountMAD: String,      // What the customer saw in Dirhams
+    amountUSD: String,    
+    amountMAD: String,      
     shippingFeeMAD: String,
     currency: String,
     customerEmail: String,
@@ -37,7 +34,7 @@ const PAYPAL_API = PAYPAL_ENVIRONMENT === 'sandbox'
     : 'https://api-m.paypal.com';
 
 // Current exchange rate: 1 MAD = ~0.10 USD (Adjust this as needed)
-const MAD_TO_USD_RATE = 0.10;
+const MAD_TO_USD_RATE = 8.0;
 
 async function getPayPalAccessToken() {
     const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`).toString('base64');
