@@ -5,16 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Marie Shop</title>
 
-<link href="https://fonts.googleapis.com/css?family=Playfair Display|Montserrat|Parisienne" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Montserrat|Parisienne" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
-<link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  crossorigin="anonymous"
-/> 
-<link rel="stylesheet" href="http://www.w3.org/2000/svg">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <style>
    *{
@@ -297,308 +291,122 @@ margin-top: 10px;
 </head>
 <body>
     
-
 <nav class="navbar navbar-expand-lg " id="nav">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
             aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" >
-            <a  style=" color: #2d2d2d;  "> <i data-lucide="menu"></i></a>
-       
+            <a style="color: #2d2d2d;"><i data-lucide="menu"></i></a>
     </button>
       <h3> Marie Shop </h3>
       <div class="search-container">
-
         <span style="color:#2d2d2d; cursor:pointer;" onclick="toggleSearch()">
-        <i data-lucide="search"></i>
+            <i data-lucide="search"></i>
         </span>
-        
         <div class="search-box" id="searchBox">
-        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchItems()">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchItems()">
         </div>
-        
-        </div>
-        
-              
-     <a href="cart.html"  style=" color: #2d2d2d;  "> <i data-lucide="handbag"></i><span id="cart-count">0</span></a>
+      </div>
+     <a href="cart.html" style="color: #2d2d2d;"><i data-lucide="handbag"></i><span id="cart-count">0</span></a>
      
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" id="Home" style="color: #e79396; text-decoration: #e79396 underline;" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" id="jewelery" href="jewelery.html">jewelery</a></li>
-            <li class="nav-item"><a class="nav-link" id="KeyChains" href="keychains.html">KeyChains</a></li>
-            <li class="nav-item"><a class="nav-link" id="hellokitty" href="hellokitty.html">Hello Kitty</a></li>
-            <li class="nav-item"><a class="nav-link" id="cosmetics" href="cosmetics.html">cosmetics</a></li>
-            <li class="nav-item"><a class="nav-link" id="Clothes" href="clothes.html">Clothes</a></li>
-            <li class="nav-item"><a class="nav-link" id="bodycare" href="jewelery.html">Body Care</a></li>
+            <li class="nav-item"><a class="nav-link" href="jewelery.html">jewelery</a></li>
+            <li class="nav-item"><a class="nav-link" href="keychains.html">KeyChains</a></li>
+            <li class="nav-item"><a class="nav-link" href="hellokitty.html">Hello Kitty</a></li>
+            <li class="nav-item"><a class="nav-link" href="cosmetics.html">cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" href="clothes.html">Clothes</a></li>
+            <li class="nav-item"><a class="nav-link" href="bodycare.html">Body Care</a></li>
        </ul>
     </div>
 </nav>
-<div id="message" style="
-position: fixed;
-top: 80px;
-right: 20px;
-background: #4caf50;
-color: white;
-padding: 10px 20px;
-border-radius: 8px;
-display: none;
-z-index: 999;
-"> Product added to cart
-</div>
 
 <div class="swiper hero-slider">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img class="hero-img" src="lo.jpeg" alt="" style="width: 100%; height: 500px;">
-             <div class="hero-text">
-               <h1> Make Every Gift A FairyTale </h1>
-              
-             </div>
-         </div>
-              <div class="swiper-slide">
-             <img  class="hero-img" src="second.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-              <div class="hero-text">  
-             <h1> New Arrival - New Collection </h1>
-              </div>
-              </div>
-              <div class="swiper-slide">
-                <img  class="hero-img" src="ve.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-                 <div class="hero-text">  
-                <h1> New Arrival - New Collection </h1>
-                 </div>
-                 </div>
-                 <div class="swiper-slide">
-                    <img  class="hero-img" src="you.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-                     <div class="hero-text">  
-                    <h1> New Arrival - New Collection </h1>
-                     </div>
-                     </div>
-                     <div class="swiper-slide">
-                        <img  class="hero-img" src="model.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-                         <div class="hero-text">  
-                        <h1> New Arrival - New Collection </h1>
-                         </div>
-                         </div>
-              <div class="swiper-slide">
-                <img  class="hero-img" src="last.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-                 <div class="hero-text">  
-                <h1>Discover what's new </h1>
-                 <a href="prdct.html"><button class="bttn"> Shop Now</button></a>
-                 </div>
-                 </div>
-              </div> 
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img class="hero-img" src="/images/lo.jpeg" alt=""></div>
+        <div class="swiper-slide"><img class="hero-img" src="/images/second.jpeg" alt=""></div>
+        <div class="swiper-slide"><img class="hero-img" src="/images/ve.jpeg" alt=""></div>
+        <div class="swiper-slide"><img class="hero-img" src="/images/you.jpeg" alt=""></div>
+        <div class="swiper-slide"><img class="hero-img" src="/images/model.jpeg" alt=""></div>
+        <div class="swiper-slide">
+            <img class="hero-img" src="/images/last.jpeg" alt="">
+            <div class="hero-text">
+                <h1>Discover what's new</h1>
+                <a href="prdct.html"><button class="bttn"> Shop Now</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
 
-      <div class="swiper-pagination"> </div>
-
-
-    </div> 
-    <div class="product-displayer" style="background: #fdf1f2; margin-top: 20px;">
-      <h3 class="ttl"> Discover What's New </h3> <br>
-       <h1 class="ttl2"> Our Latest Collection</h1>
-        
-           <div id="itemList" class="products">
-           
-            <div class="product">
-                
-                <img src="erg.jpg" alt="this is a product pic">
-             <h3> Hello Kitty Silver Earings</h3>
-             <h2> Prix : 45dh</h2>
-             <button class="bn" onclick="addToCart('Hello Kitty Silver Earings',45,'erg.jpg')">
+<div class="product-displayer" style="background: #fdf1f2; margin-top: 20px;">
+    <h3 class="ttl"> Discover What's New </h3>
+    <h1 class="ttl2"> Our Latest Collection</h1>
+    <div id="itemList" class="products">
+        <div class="product">
+            <img src="/images/erg.jpg" alt="">
+            <h3> Hello Kitty Silver Earings</h3>
+            <h2> Prix : 45dh</h2>
+            <button class="bn" onclick="addToCart('Hello Kitty Silver Earings', 45, '/images/erg.jpg')">
                 <span class="btn"><i data-lucide="handbag"></i></span> 
             </button>
-            </div> 
-            <div class="product">
-                
-                <img src="brclt.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Silver Bracelet</h3>
-                <h2> Prix : 95dh</h2>
-                <button class="bn" onclick="addToCart('Hello Kitty Silver Bracelet',95,'brclt.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="product"> 
-                 
-                 <img src="hk1.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Plushie</h3>
-                <h2> Prix : 119dh</h2>
-                <button class="bn" onclick="addToCart('Hello Kitty Plushie',119,'hk1.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-            </div>
-           
-             <div class="product"> 
-               
-                <img src="kc2.jpg" alt="this is a product pic">
-                <h3> Full Hello Kitty Charm KeyChain </h3>
-                <h2> Prix : 49dh</h2> 
-                 <button class="bn" onclick="addToCart('Full Hello Kitty Charm KeyChain',49,'kc2.jpg')">
-                   <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-
-              
-             </div>
-             <div class="product"> 
-               
-               <img src="kc31.jpg" alt="this is a product pic">
-               <h3> Hello Kitty Charm Keychains </h3>
-               <h2> Prix : 39dh </h2>
-               <button class="bn" onclick="addToCart('Hello Kitty Charm Keychains',39,'kc31.jpg')">
+        </div> 
+        <div class="product">
+            <img src="/images/brclt.jpg" alt="">
+            <h3> Hello Kitty Silver Bracelet</h3>
+            <h2> Prix : 95dh</h2>
+            <button class="bn" onclick="addToCart('Hello Kitty Silver Bracelet', 95, '/images/brclt.jpg')">
                 <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button></div>
-
-        
+            </button>
         </div>
-        <a href="prdct.html"><button style="background-color: #e79396; color: white;
-            width: 100%; height: 50px; border: none;"
-            >View Full Collection</button></a>
+        <div class="product"> 
+            <img src="/images/hk1.jpg" alt="">
+            <h3> Hello Kitty Plushie</h3>
+            <h2> Prix : 119dh</h2>
+            <button class="bn" onclick="addToCart('Hello Kitty Plushie', 119, '/images/hk1.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+        </div>
+        <div class="product"> 
+            <img src="/images/kc2.jpg" alt="">
+            <h3> Full Hello Kitty Charm KeyChain </h3>
+            <h2> Prix : 49dh</h2> 
+            <button class="bn" onclick="addToCart('Full Hello Kitty Charm KeyChain', 49, '/images/kc2.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+        </div>
+        <div class="product"> 
+            <img src="/images/kc31.jpg" alt="">
+            <h3> Hello Kitty Charm Keychains </h3>
+            <h2> Prix : 39dh </h2>
+            <button class="bn" onclick="addToCart('Hello Kitty Charm Keychains', 39, '/images/kc31.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+        </div>
     </div>
-    <div> <h3 class="tt"> Shop From Our Categories </h3> </div>
-    <div class="swiper collection-slider">
-       <div class="swiper-wrapper">
-           <div class="swiper-slide" style="position: relative;">
-         <img class="m" src="c.jpg" alt="">
-         <h3 class="m1" > Our Latest Clothes Collection  </h3>
-         <a href="clothes.html"> <button class="bttnn"> Shop Now </button></a> </div>
-      <div class="swiper-slide"style="position: relative;">
-        <img class="m" src="j.jpg" alt="">
-        <h3 class="m1"> Our Latest Jwellery Collection  </h3>
-        <a href="jewelery.html"> <button class="bttnn"> Shop Now </button></a></div>
-     <div class="swiper-slide"style="position: relative;">
-        <img class="m" src="e.jpg" alt="">
-        <h3 class="m1"> Our Latest Body Care Products </h3>
-        <a href="bodycare.html"> <button class="bttnn"> Shop Now </button></a></div>
-     <div class="swiper-slide"style="position: relative;">
-        <img class="m" src="n.jpeg" alt="">
-        <h3 class="m1"> Our Latest Makeup Products </h3>
-         <a href="cosmetics.html"> <button class="bttnn"> Shop Now </button></a>
+</div>
+
+<div class="swiper collection-slider">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img class="m" src="/images/c.jpg" alt=""><h3 class="m1">Clothes</h3><a href="clothes.html"><button class="bttnn">Shop Now</button></a></div>
+        <div class="swiper-slide"><img class="m" src="/images/j.jpg" alt=""><h3 class="m1">Jwellery</h3><a href="jewelery.html"><button class="bttnn">Shop Now</button></a></div>
+        <div class="swiper-slide"><img class="m" src="/images/e.jpg" alt=""><h3 class="m1">Body Care</h3><a href="bodycare.html"><button class="bttnn">Shop Now</button></a></div>
+        <div class="swiper-slide"><img class="m" src="/images/n.jpeg" alt=""><h3 class="m1">Makeup</h3><a href="cosmetics.html"><button class="bttnn">Shop Now</button></a></div>
+        <div class="swiper-slide"><img class="m" src="/images/kck2.jpg" alt=""><h3 class="m1">Keychains</h3><a href="keychains.html"><button class="bttnn">Shop Now</button></a></div>
     </div>
-     <div class="swiper-slide"style="position: relative;">
-        <img class="m" src="kck2.jpg" alt="">
-        <h3 class="m1"> Our Latest Keychains Collection </h3>
-        <a href="cosmetics.html"> <button class="bttnn"> Shop Now </button></a> </div></div>
-        
-       <div class="swiper-button-next">  </div>
-       <div class="swiper-button-prev"> 
-        
-                 </div></div>
-                 <div> <h3 class="tt"> Join Our Community! </h3> </div>
-    <div class="joinourcommunity">
-   <img src="logo.jpg" alt="">
-    <h3> Visit our instagram page : @marie.__shop  <br> Or Click : </h3>
-    <a href="http://instagram.com/marie.__shop" target="_blank" rel="noopener noreferrer"> <Button  > Visit Our Instagram Page </Button></a>
-     <h3 style="top: 10%; left: 5%;"> Visit Our TikTok Page : @marie._shop  <br> Or Click : </h3>
-     <a href="http://tiktok.com/@marie._shop" target="_blank" rel="noopener noreferrer"> <Button style="top: 30%; left: 5%;" > Visit Our TikTok Page </Button></a>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
 
-
- 
-
-
+<div class="joinourcommunity">
+    <img src="/images/logo.jpg" alt="">
     </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+<script src="/index.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <script> lucide.createIcons(); </script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  
-  
-  const swiper = new
-  Swiper(".hero-slider" , {
-    
-    loop:true,
-
-    autoplay: {
-       delay:5000,
-       disableOnInteraction:false
-    },
-    pagination:{
-       el:".swiper-pagination",
-       clickable:true
-    }
-    
-} );
-</script>
-<script>
-    const swiper1 = new
-    Swiper(".collection-slider" , {
-      
-      loop:true,
-  
-      autoplay: {
-         delay:5000,
-         disableOnInteraction:false
-      },
-      navigation:{
-         
-        nextEl:".swiper-button-next",
-        prevEl:".swiper-button-next",
-        clickable:true
-      }
-      
-  } );
-  </script>
-<script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-    function updateCartCount(){
-        document.getElementById("cart-count").innerText = cart.length;
-    }
-    
-    function showMessage(text){
-        const msg = document.getElementById("message");
-        msg.innerText = text;
-        msg.style.display = "block";
-           setTimeout(()=>{
-          msg.style.display = "none";
-         },2000);
-    }
-      function addToCart(name, price, image){
-          const existing = cart.find(item => item.name === name);
-      
-    
-        if(existing){
-            existing.quantity += 1;
-        } else {
-            cart.push({name, price, image, quantity:1});
-        }
-    
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-        showMessage("Product added to cart!");
-    }
-    
-    updateCartCount();
-    </script>
-    <script>
-function toggleSearch(){
-    const box = document.getElementById("searchBox");
-
-    if(box.style.display === "none" || box.style.display === ""){
-        box.style.display = "block";
-    }else{
-        box.style.display = "none";
-    }
-}
-
-function searchItems(){
-
-let input = document.getElementById("searchInput").value.toLowerCase();
-let items = document.querySelectorAll(".product");
-
-items.forEach(function(item){
-
-let text = item.textContent.toLowerCase();
-
-if(text.includes(input)){
-    item.style.display = "block";
-}else{
-    item.style.display = "none";
-}
-
-});
-
-}
-</script>
 </body>
+</html>

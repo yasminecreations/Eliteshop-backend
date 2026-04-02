@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL || "*", methods: ["GET", "POST"] }));
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(express.static(__dirname, 'images'))
 const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 mongoose.connect(mongoURI)
     .then(() => console.log("✅ Connected to MongoDB"))
