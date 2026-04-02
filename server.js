@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-// Note: If you are on Node 18+, you don't need 'node-fetch'
-const fetch = require('node-fetch'); 
+
 const path = require('path');
 
 const app = express();
