@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title> Marie Shop</title>
-
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Montserrat|Parisienne" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -320,7 +320,7 @@ margin-top: 10px;
     </div>
 </nav>
 
-<div class="swiper hero-slider">
+<div class="swiper hero-slider" data-aos="fade-in">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <img class="hero-img" src="/images/lo.jpeg" alt="">
@@ -339,7 +339,7 @@ margin-top: 10px;
             <div class="hero-text">
                 <h1>Add a special Touch to your look</h1></div>
         </div>
-        <div class="swiper-slide"><img class="hero-img" src="/images/model.jpeg" alt=""></div>
+        
         <div class="swiper-slide">
             <img class="hero-img" src="/images/last.jpeg" alt="">
             <div class="hero-text">
@@ -351,7 +351,7 @@ margin-top: 10px;
     <div class="swiper-pagination"></div>
 </div>
 
-<div class="product-displayer" style="background: #fdf1f2; margin-top: 20px;">
+<div class="product-displayer" data-aos="fade-in" style="background: #fdf1f2; margin-top: 20px;">
     <h3 class="ttl"> Discover What's New </h3>
     <h1 class="ttl2"> Our Latest Collection</h1>
     <div id="itemList" class="products">
@@ -398,7 +398,7 @@ margin-top: 10px;
     </div>
 </div>
 
-<div class="swiper collection-slider">
+<div class="swiper collection-slider" data-aos="fade-in">
     <div class="swiper-wrapper">
         <div class="swiper-slide"><img class="m" src="/images/c.jpg" alt=""><h3 class="m1">Clothes</h3><a href="clothes.html"><button class="bttnn">Shop Now</button></a></div>
         <div class="swiper-slide"><img class="m" src="/images/j.jpg" alt=""><h3 class="m1">Jwellery</h3><a href="jewelery.html"><button class="bttnn">Shop Now</button></a></div>
@@ -419,6 +419,8 @@ margin-top: 10px;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="/index.js"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
 <script> lucide.createIcons(); </script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
