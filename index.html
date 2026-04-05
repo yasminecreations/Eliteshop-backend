@@ -408,5 +408,24 @@ margin-top: 10px;
 <script src="https://unpkg.com/lucide@latest"></script>
 <script> lucide.createIcons(); </script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  
+  
+    const swiper = new
+    Swiper(".hero-slider" , {
+      
+      loop:true,
+  
+      autoplay: {
+         delay:5000,
+         disableOnInteraction:false
+      },
+      pagination:{
+         el:".swiper-pagination",
+         clickable:true
+      }
+      
+  } );
+  </script>
 </body>
 </html>
