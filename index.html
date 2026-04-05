@@ -18,6 +18,10 @@
 }
     body{
         margin: 0px;
+        background-color: #45362c;
+    }
+    cursor{
+        color: #e79396;
     }
   #nav{
       background-color: #fdf1f2;
@@ -35,7 +39,7 @@
      padding-top: 10px;
   }
   #navbar{
-    background-color: #fdf1f2;
+    background-color: #161711;
   
   }
   .navbar-nav a{
@@ -438,6 +442,25 @@ margin-top: 10px;
       pagination:{
          el:".swiper-pagination",
          clickable:true
+      }
+      
+  } );
+  </script>
+  <script>
+    const swiper1 = new
+    Swiper(".collection-slider" , {
+      
+      loop:true,
+  
+      autoplay: {
+         delay:5000,
+         disableOnInteraction:false
+      },
+      navigation:{
+         
+        nextEl:".swiper-button-next",
+        prevEl:".swiper-button-next",
+        clickable:true
       }
       
   } );
