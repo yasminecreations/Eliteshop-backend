@@ -319,6 +319,31 @@ margin-top: 10px;
     transform: translateX(-100%);
   }
 }
+.scroll{
+  width: 100%;
+  overflow: hidden;
+  background: #a8977a;
+  color: black; 
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.scroll img{
+  display: inline-block;
+  padding-left: 100%; 
+  animation: scroll-left 15s linear infinite; 
+  font-family: "Lobster Two";
+}
+
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 .bttny{
     margin-top: 30px;
     color: white;
@@ -476,6 +501,17 @@ margin-top: 10px;
      <img style="height:400px; width: 300px; border: #938267 2px solid; " src="/images/k.jpeg" alt="">
 
 
+   </div>
+   <h2> New Arrivals !
+ </h2>
+   <div class="scroll" >
+   <img src="/images/download.jpg" alt="">
+   <img src="/images/download (2).jpg" alt="">
+   <img src="/images/download (3).jpg" alt="">
+   <img src="/images/download (4).jpg" alt="">
+   <img src="/images/download (5).jpg" alt="">
+   <img src="/images/Like Fine.jpg" alt="">
+   <img src="/images/Les bijoux tendances 2023.jpg" alt="">
    </div>
 
 
