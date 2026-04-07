@@ -58,7 +58,9 @@ const MAD_TO_USD_RATE = 0.10;
 app.get('/', (req, res) => { 
     res.sendFile(path.join(__dirname, 'index.html')); 
 });
-
+app.get('/api/test', (req, res) => {
+    res.json({ message: "Backend is working!" });
+});
 // CREATE ORDER
 app.post('/api/orders', async (req, res) => {
     try {
