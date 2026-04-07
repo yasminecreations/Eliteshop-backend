@@ -4,7 +4,15 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
+const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 
+if (mongoURI) {
+    mongoose.connect(mongoURI)
+        .then(() => console.log("✅ Connected to MongoDB Atlas"))
+        .catch(err => console.error("❌ MongoDB Connection Error:", err));
+} else {
+    console.warn("⚠️ Warning: MONGO_URL not found in Vercel Environment Variables.");
+}
 // 1. PORT CONFIG
 const PORT = process.env.PORT || 5000;
 
@@ -18,15 +26,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.static(__dirname));
 
 // 4. DATABASE CONNECTION (Using MongoDB Atlas)
-const mongoURI = process.env.MONGO_URL || process.env.MONGODB_URL;
 
-if (mongoURI) {
-    mongoose.connect(mongoURI)
-        .then(() => console.log("✅ Connected to MongoDB Atlas"))
-        .catch(err => console.error("❌ MongoDB Connection Error:", err));
-} else {
-    console.warn("⚠️ Warning: MONGO_URL not found in Vercel Environment Variables.");
-}
 
 // 5. SCHEMAS & MODELS
 const OrderSchema = new mongoose.Schema({
