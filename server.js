@@ -58,10 +58,16 @@ const MAD_TO_USD_RATE = 0.10;
 app.get('/', (req, res) => { 
     res.sendFile(path.join(__dirname, 'index.html')); 
 });
-app.get('/api/status', (req, res) => {
+app.get('/api/status', async (req, res) => {
+    // This tells the code to wait up to 2 seconds for the DB to wake up
+    if (mongoose.connection.readyState !== 1) {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
     res.json({ 
         message: "Elite Shop API is LIVE",
-        database: mongoose.connection.readyState === 1 ? "Connected" : "Disconnected"
+        database: mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
+        connectionState: mongoose.connection.readyState // 0=disc, 1=conn, 2=conn-ing
     });
 });
 
