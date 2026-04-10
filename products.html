@@ -428,7 +428,44 @@ margin-top: 10px;
   background: #a8977a;
   color: white;
 }
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    box-shadow: -10px 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Hidden by default */
+    display: flex;
+    flex-direction: column;
+}
 
+/* Class to trigger opening */
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.cart-overlay.active {
+    display: block;
+}
+
+/* Basic styling for inner elements */
+.cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+.cart-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
 /* Main Buy Button */
 .buy-button {
   width: 100%;
@@ -542,7 +579,7 @@ z-index: 999;
        <h1 class="ttl2"> Our Latest Collection</h1>
         <div class="products">
             
-            <div class="product">
+            <div class="product1">
                 <img  style=" border: #938267 2px solid;" onclick="openPopup(1)" src="/images/d.png" alt="">
                 <h3>gold starfish Bracelet / سوار نجم البحر </h3>
                 <h2> Prix : 80dh</h2>
@@ -1045,362 +1082,20 @@ z-index: 999;
             </div>
         </div>
 
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="vv.jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="vvv.jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" > Liquid Blush - GeGe Bear</h3>
-             <h2 class="yyy"> Prix : 45dh</h2>
-             <button class="bn" onclick="addToCart('Liquid Blush - GeGe Bear',45,'vvv.jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div> 
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="jojo.jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="jojoj.jpeg" alt="this is a product pic"></div>
-                    <div class="swiper-slide">
-                        <img  src="jojojo.jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" > JoJo Diary - Ballet Day</h3>
-             <h2 class="yyy"> Prix : 129dh</h2>
-             <button class="bn" onclick="addToCart(' JoJo Diary - Ballet Day',129,'jojo.jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div> 
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="jhkk (3).jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="jhkk (4).jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" > Hello Kitty Silver 925s Bracelet</h3>
-             <h2 class="yyy"> Prix : 109dh</h2>
-             <button class="bn" onclick="addToCart(' Hello Kitty Silver 925s Bracelet',109,'jhkk (3).jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div> 
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="jhk (1).jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="jhk (4).jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" > Hello Kitty Silver 925s Bracelet</h3>
-             <h2 class="yyy"> Prix : 99dh</h2>
-             <button class="bn" onclick="addToCart(' Hello Kitty Silver 925s Bracelet',99,'jhk (1).jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div>
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="65.jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="65d.jpeg" alt="this is a product pic"></div>
-                    <div class="swiper-slide">
-                        <img  src="65dh.jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" > Butterfly Jelly Pad - KEKE MOOD</h3>
-             <h2 class="yyy"> Prix : 65dh</h2>
-             <button class="bn" onclick="addToCart('Butterfly Jelly Pad - KEKE MOOD',65,'65d.jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div>
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="29.jpeg"  alt="this is a product pic"></div>
-                
-                    
-                    <div class="swiper-slide">
-                        <img  src="29dh.jpeg" alt="this is a product pic"></div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" >Sweet Mint - lip Gloss</h3>
-             <h2 class="yyy"> Prix : 29dh</h2>
-             <button class="bn" onclick="addToCart('Sweet Mint - lip Gloss',29,'29.jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div>
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="59.jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="59dh.jpeg" alt="this is a product pic"></div>
-                   
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" >Hello Kitty Body Shimmer</h3>
-             <h2 class="yyy"> Prix : 59dh</h2>
-             <button class="bn" onclick="addToCart('Hello Kitty Body Shimmer',59,'59.jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div>
-             <div class="product">
-                
-                <img src="lg.jpeg" alt="this is a product pic">
-                <h3>Cappuvini - Lip Gloss Set</h3>
-                <h2> Prix : 65dh</h2>
-                <button class="bn" onclick="addToCart('Cappuvini - Lip Gloss Set',65,'lg.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="product">
-                
-                <img src="br.jpeg" alt="this is a product pic">
-                <h3> Hello Kitty Makeup Brushes Set</h3>
-                <h2> Prix : 85dh</h2>
-                <button class="bn" onclick="addToCart('Hello Kitty Makeup Brushes Set',85,'br.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="product">
-                
-                <img src="mra (1).jpeg" alt="this is a product pic">
-                <h3> Heroine Make - KISS ME - Curling Mascara</h3>
-                <h2> Prix : 109dh</h2>
-                <button class="bn" onclick="addToCart('Heroine Make - KISS ME - Curling Mascara',109,'mra (1).jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-            <div class="product">
-                
-                <img src="mra (2).jpeg" alt="this is a product pic">
-                <h3> Heroine Make - KISS ME - Curling Mascara</h3>
-                <h2> Prix : 109dh</h2>
-                <button class="bn" onclick="addToCart('Heroine Make - KISS ME - Curling Mascara',109,'mra (2).jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="product"> 
-                 
-                 <img src="45dh.jpeg" alt="this is a product pic">
-                <h3>Vaseline Hydrating Lotion - 30ml</h3>
-                <h2> Prix : 45dh</h2>
-                <button class="bn" onclick="addToCart('Vaseline Hydrating Lotion - 30ml',45,'45dh.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-            </div>
-            <div class="product">
-                
-                <img src="brclt.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Silver Bracelet</h3>
-                <h2> Prix : 95dh</h2>
-                <button class="bn" onclick="addToCart('Hello Kitty Silver Bracelet',95,'brclt.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="product">
-                
-                <img src="85dh.jpeg" alt="this is a product pic">
-                <h3>Flower Knows Lip Balm </h3>
-                <h2> Prix : 85dh</h2>
-                <button class="bn" onclick="addToCart('Flower Knows Lip Balm',85,'85dh.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-             </div>
-             <div class="swiper article-slider">
-                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                <img src="kk (1).jpeg"  alt="this is a product pic"></div>
-                <div class="swiper-slide">
-                    <img  src="kk (2).jpeg" alt="this is a product pic"></div>
-                   
-                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                              </div>
-             <h3 class="yy" style="margin-top: 0px;" >KEKE MOOD - Lip Gloss Set</h3>
-             <h2 class="yyy"> Prix : 55dh</h2>
-             <button class="bn" onclick="addToCart('KEKE MOOD - Lip Gloss Set',55,'kk (1).jpeg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button>
-             </div>
-             <div class="product"> 
-               
-                <img src="kc2.jpg" alt="this is a product pic">
-                <h3> Full Hello Kitty Charm KeyChain </h3>
-                <h2> Prix : 49dh</h2> 
-                 <button class="bn" onclick="addToCart('Full Hello Kitty Charm KeyChain',49,'kc2.jpg')">
-                   <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button>
-         
-              
-             </div>
-             <div class="product"> 
-               
-               <img src="kc31.jpg" alt="this is a product pic">
-               <h3> Hello Kitty Charm Keychains </h3>
-               <h2> Prix : 39dh </h2>
-               <button class="bn" onclick="addToCart('Hello Kitty Charm Keychains',39,'kc31.jpg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-               </button></div>
-               <div class="product"> 
-               
-                <img src="lc.jpeg" alt="this is a product pic">
-                <h3> Sanrio Characters lip cream set  </h3>
-                <h2> Prix : 65dh </h2>
-                <button class="bn" onclick="addToCart('Sanrio Characters lip cream set',65,'lc.jpeg')">
-                 <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button></div>
+        <div id="cart-overlay" class="cart-overlay"></div>
 
-        
-        <div class="product"> 
+        <div id="cart-sidebar" class="cart-sidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button id="close-cart" class="close-btn">&times;</button>
+            </div>
+            <div class="cart-items">
+                </div>
+            <div class="cart-footer">
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </div>
             
-            <img src="kck.jpg" alt="this is a product pic">
-            <h3> Hello Kitty Silver Charm Keychains </h3>
-            <h2> Prix : 47dh </h2>
-            <button class="bn" onclick="addToCart('Hello Kitty Silver Charm Keychains',47,'kck.jpg')">
-                <span class="btn"><i data-lucide="handbag"></i></span> 
-            </button></div>
-     <div class="product"> 
-                
-                <img src="mrr1.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Mirror </h3>
-                <h2> Prix : 69dh </h2>
-                <button class="bn" onclick="addToCart('Hello Kitty Mirror',69,'mrr1.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button></div>
-     <div class="product"> 
-                
-                <img src="nck1.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Silver Necklace </h3>
-                <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart(' Hello Kitty Silver Necklace ',79,'nkc1.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button></div>
-    <div class="product"> 
-               
-                <img src="pc2.jpg" alt="this is a product pic">
-                <h3> Hello Kitty Makeup Bag </h3>
-                <h2> Prix : 49dh </h2>
-                <button class="bn" onclick="addToCart(' Hello Kitty Makeup Bag ',49,'pc2.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                            </button></div>
-     <div class="product"> 
-    
-    <img src="ppc2.jpg" alt="this is a product pic">
-    <h3> Hello Kitty Pink Makeup Bag </h3>
-    <h2> Prix : 55dh </h2>
-    <button class="bn" onclick="addToCart(' Hello Kitty Pink Makeup Bag ',55,'ppc2.jpg')">
-        <span class="btn"><i data-lucide="handbag"></i></span> 
-    </button></div>
-    <div class="product"> 
-        
-        <img src="blsh.jpg" alt="this is a product pic">
-        <h3> Four Shades Blush Palette </h3>
-        <h2> Prix : 55dh </h2>
-        <button class="bn" onclick="addToCart('Four Shades Blush Palette ',55,'blsh.jpg')">
-            <span class="btn"><i data-lucide="handbag"></i></span> 
-        </button></div>
-    
-       
-            <div class="product"> 
-                
-                <img src="lpg.jpg" alt="this is a product pic">
-                <h3> Cappuvini Smooth Moisturizing Lip Gloss </h3>
-                <h2> Prix : 35dh </h2>
-                <button class="bn" onclick="addToCart('Cappuvini Smooth Moisturizing Lip Gloss ',35,'lpg.jpg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button></div>
-                <div class="product"> 
-                
-                    <img src="zz4.jpeg" alt="this is a product pic">
-                    <h3> 
-                      Dior Makeup Bag </h3>
-                    <h2> Prix : 400dh </h2>
-                    <button class="bn" onclick="addToCart('Dior Makeup Bag ',400,'zz4.jpeg')">
-                        <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button></div>
-                    <div class="product"> 
-                
-                        <img src="zz5.jpeg" alt="this is a product pic">
-                        <h3> 
-                          Dior Star Shaped Makeup Bag </h3>
-                        <h2> Prix : 349dh </h2>
-                        <button class="bn" onclick="addToCart('Dior Star Shaped Makeup Bag',349,'zz5.jpeg')">
-                            <span class="btn"><i data-lucide="handbag"></i></span> 
-                        </button></div>
-                <div class="product"> 
-                
-                    <img src="zz6.jpeg" alt="this is a product pic">
-                    <h3> 
-                      Dove Colloidal Oatmeal & Callendula Oil  Body Scrub </h3>
-                    <h2> Prix : 35dh </h2>
-                    <button class="bn" onclick="addToCart('Dove Colloidal Oatmeal & Callendula Oil  Body Scrub ',135,'zz6.jpeg')">
-                        <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button></div>
-                <div class="product"> 
-                
-                    <img src="zz (1).jpeg" alt="this is a product pic">
-                    <h3> Dove Rice Milk Body Scrub </h3>
-                    <h2> Prix : 135dh </h2>
-                    <button class="bn" onclick="addToCart( 'Dove Rice Milk Body Scrub',135,'zz (1).jpeg')">
-                        <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button></div>
-                    <div class="swiper article-slider">
-                        <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                            <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                        <img src="zz (2).jpeg"  alt="this is a product pic"></div>
-                        <div class="swiper-slide">
-                            <img  src="zz (5).jpg" alt="this is a product pic"></div>
-                           
-                            <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                            <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                                      </div>
-                     <h3 class="yy" style="margin-top: 0px;" > Dove Pomegranate & Shea butter Body Scrub</h3>
-                     <h2 class="yyy"> Prix : 135dh</h2>
-                     <button class="bn" onclick="addToCart(' Dove Pomegranate & Shea butter Body Scrub',135,'zz (5).jpg')">
-                        <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button>
-                     </div>
-                            <div class="swiper article-slider">
-                                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
-                                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
-                                <img src="zz (3).jpeg"  alt="this is a product pic"></div>
-                                <div class="swiper-slide">
-                                    <img  src="zz (4).jpeg" alt="this is a product pic"></div>
-                                   
-                                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
-                                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
-                                              </div>
-                             <h3 class="yy" style="margin-top: 0px;" > Dove Kiwi Body Scrub</h3>
-                             <h2 class="yyy"> Prix : 135dh</h2>
-                             <button class="bn" onclick="addToCart('Dove Kiwi Body Scrub',135,'zz (4).jpeg')">
-                                <span class="btn"><i data-lucide="handbag"></i></span> 
-                            </button>
-                             </div>
-                <div class="product"> 
-                   
-                    <img src="lpst.jpg" alt="this is a product pic">
-                    <h3> Collage Art Solid Lip Gloss Box 3pcs </h3>
-                    <h2> Prix : 70dh </h2>
-                    <button class="bn" onclick="addToCart('Collage Art Solid Lip Gloss Box 3pcs ',70,'lpst.jpg')">
-                        <span class="btn"><i data-lucide="handbag"></i></span> 
-                    </button></div>
-        </div></div></div>
-        
-    </div></div>
     
                  <div> <h3 class="tt"> Join Our Community! </h3> </div>
     <div class="joinourcommunity">
@@ -1938,5 +1633,26 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+  </script>
+  <script>
+      // 1. Find the elements on the page
+const cartSidebar = document.querySelector('.cart-sidebar');
+const cartOverlay = document.querySelector('.cart-overlay');
+const openBtn = document.querySelector('#btn-to-open-cart'); // The ID of your cart icon
+const closeBtn = document.querySelector('#btn-to-close-cart'); // The ID of the 'X' button
+
+// 2. The function that "Toggles" the cart
+function toggleCart() {
+    // This adds the "open" class if it's missing, and removes it if it's there
+    cartSidebar.classList.toggle('open');
+    cartOverlay.classList.toggle('active');
+}
+
+// 3. Tell the buttons to run that function when clicked
+openBtn.addEventListener('click', toggleCart);
+closeBtn.addEventListener('click', toggleCart);
+
+// 4. Also close the cart if the user clicks the dark background (overlay)
+cartOverlay.addEventListener('click', toggleCart);
   </script>
 </body>
