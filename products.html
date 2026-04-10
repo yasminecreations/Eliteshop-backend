@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Marie Shop</title>
+
+<link href="https://fonts.googleapis.com/css?family=Playfair Display|Montserrat|Parisienne" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  crossorigin="anonymous"
+/> 
+<link rel="stylesheet" href="http://www.w3.org/2000/svg">
+
+<style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+    body{
+        margin: 0px;
+    }
+  #nav{
+      background-color: #fdf1f2;
+      margin: 0px;
+      width:100%;
+  }
+  #nav h3{
+     font-family: "parisienne";
+     color: #e79396;
+     font-size: 20px;
+     font-style: italic;
+     font-weight: 450;
+     margin-left: 20px;
+     padding-top: 10px;
+  }
+  #navbar{
+    background-color: #fdf1f2;
+  
+  }
+  .navbar-nav a{
+      color: #2d2d2d;
+      font-family: "parisienne";
+  }
+  .navbar-toggler-icon{
+      color: #2d2d2d;
+     
+}
+.navbar-toggler{
+     margin: 0px;
+     padding: 0px;
+     
+}  
+svg{
+    stroke-width: 1.2;
+    width: 20px;
+}
+.swiper-pagination-bullet{
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+background: #ffffff80;
+margin: 0 6px !important;
+transition: all 0.4s ease;
+}
+.swiper-pagination-bullet-active{
+    height: 6px;
+    background: antiquewhite;
+}
+.swiper-slide {
+    height: 500px;
+    align-items: cover;
+    position: cover;
+    overflow: hidden;
+    object-fit:cover;
+   
+}
+.hero-img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    animation: zoomOut 5s linear;
+}
+
+@keyframes zoomOut{
+  0%{
+    transform: scale(1.15);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.products{
+    
+    margin-top: 5px;
+    grid-template-columns: repeat( 2, 1fr);
+    display: grid;
+    background: #fdf1f2;
+    gap: 10px;
+    
+}
+.product{
+    height: 300px;
+    width: 180px;
+    font-family: "Montserrat";
+    font-weight: 1000;
+    margin-left: 5px; 
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+.product img{
+    height: 170px;
+    width: 150px;
+  
+    
+}
+
+
+.hero-text{
+    color: white;
+  
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%, -30%);
+   opacity: 0;
+   transform: all 1.5s ease;
+   font-size: 20px;
+   font-family: "Montserrat";
+}
+.swiper-slide-active .hero-text{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    transition: 1.5s ease-in;
+}
+.bttn{
+color: black;
+background-color: white ;
+width: 180px;
+height: 50px;
+font-weight: bold;}
+.ttl{
+  padding-top: 20px;
+  padding-left: 20px;
+  font-family: "Montserrat";
+  font-size: 25px;
+}
+.ttl2{
+    padding-left: 15px;
+    font-family: "Monserrat";
+    font-size: 40px;
+}
+
+#cart-count{
+    background: red;
+    color: rgb(255, 162, 216);
+    border-radius: 20px;
+    padding-right: 2px;
+    padding-left: 2px;
+}
+.products h3{
+    font-size: 20px;
+}
+.products h2{
+    font-size: 15px;
+    text-decoration: #e79396 underline;
+}
+.btn{
+  position: absolute;
+  top: 110px;
+  right: 30px;
+  background: pink;
+  color: white;
+  width: 40px;  
+  height: 40px;  
+  border-radius: 50%;
+  padding: 5px;
+  z-index: 100;
+}
+.bn{
+color: transparent;
+background: transparent;
+border: none;
+    outline: none;
+}
+.swiper-button-next{
+    color: #fdf1f2;
+    z-index: 100;
+}
+.swiper-button-prev{
+    color: #fdf1f2;
+    z-index: 100;
+}
+.m{
+    height: 575px;
+    width: 100%;
+    
+    object-fit: cover;
+}
+.m1{
+    font-family: "Montserrat";
+    font-size: 30px;
+    left: 10%;
+    position: absolute;
+    margin-bottom: 100px ;
+    z-index: 2;
+    bottom: 20%;
+    color: white;
+    font-weight: bold;
+    
+    
+}
+.m1 :hover{
+    text-decoration: underline;
+}
+.bttnn{
+    font-family: "Montserrat";
+    font-size: 20px;
+    left: 10%;
+    position: absolute;
+    margin-bottom: 100px ;
+    z-index: 2;
+    bottom: 9%;
+    color: rgb(0, 0, 0);
+    color: black;
+background-color: white ;
+width: 180px;
+height: 50px;
+font-weight: bold;
+}
+.search-container{
+    position: relative;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.search-box{
+    position: absolute;
+    top: 35px;
+    right: 0;
+    display: none;
+    background: white;
+    padding: 5px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 999;
+}
+
+.search-box input{
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.tt{
+    padding-left: 15px;
+    font-family: "Monserrat";
+    font-size: 30px;
+    
+}
+.joinourcommunity{
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+.joinourcommunity img{
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+    
+}
+.joinourcommunity h3{
+position: absolute;
+z-index: 2;
+top: 50%;
+left: 5%;
+color: white;
+font-family: "Montserrat";
+font-size: 25px;
+}
+.joinourcommunity button{
+    top: 70%;
+    color: black;
+background-color: white ;
+font-family: "Montserrat";
+height: 50px;
+width: 250px;
+font-weight: bold;
+position: absolute;
+z-index: 2;
+left: 10%;
+margin-top: 10px;
+}
+#PopUp{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+#PopUp span{
+    margin-bottom: 100px;
+    color: tomato;
+    z-index: 10000;
+
+}
+.article-slider .swiper-slide{
+    height: 170px;
+    width: 150px;
+    position: relative;
+}
+.swiper-slide img{
+    object-fit: cover;
+    position: absolute;
+    height: 170px;
+    width: 150px;
+}
+.yy{
+    font-size: 20px;
+    font-family: "Montserrat";
+}
+.yyy{
+    font-size: 15px;
+    text-decoration: #e79396 underline;
+    font-family: "Montserrat";
+}
+/* The Background Dimmer */
+.modal-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(22, 23, 17, 0.85); /* Your dark hex #161711 */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+/* The Popup Box */
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  padding: 40px;
+  position: relative;
+  border-radius: 2px; /* Sharp, clean luxury edges */
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Images */
+#main-popup-img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+  background: #f9f9f9;
+}
+
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.thumbnail-row img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  transition: 0.3s;
+}
+
+/* Typography & Details */
+#popup-title {
+  font-family: 'Serif', 'Playfair Display', serif;
+  color: #45362c; /* Your dark brown hex */
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.price-tag {
+  font-size: 1.5rem;
+  color: #a8977a; /* Your gold hex */
+  font-weight: bold;
+}
+
+#stock-status {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* Size Buttons */
+.size-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.size-btn {
+  padding: 8px 15px;
+  border: 1px solid #a8977a;
+  background: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: 0.3s;
+}
+
+.size-btn:hover {
+  background: #a8977a;
+  color: white;
+}
+
+/* Main Buy Button */
+.buy-button {
+  width: 100%;
+  padding: 15px;
+  background: #161711;
+  color: white;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.buy-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #45362c;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+    
+
+<nav class="navbar navbar-expand-lg " id="nav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" >
+            <a  style=" color: #2d2d2d;  "> <i data-lucide="menu"></i></a>
+       
+    </button>
+      <h3> Marie Shop </h3>
+      <div class="search-container">
+
+        <span style="color:#2d2d2d; cursor:pointer;" onclick="toggleSearch()">
+        <i data-lucide="search"></i>
+        </span>
+        
+        <div class="search-box" id="searchBox">
+        <input type="text" id="searchInput" placeholder="Search..." onkeyup="searchItems()">
+        </div>
+     <a href="cart.html"  style=" color: #2d2d2d;  "> <i data-lucide="handbag"></i><span id="cart-count">0</span></a>
+     
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" id="Home" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" id="jewelery" href="jewelery.html">jewelery</a></li>
+            <li class="nav-item"><a class="nav-link" id="KeyChains" href="keychains.html">KeyChains</a></li>
+            <li class="nav-item"><a class="nav-link" id="hellokitty" href="hellokitty.html">Hello Kitty</a></li>
+            <li class="nav-item"><a class="nav-link" id="cosmetics" href="cosmetics.html">cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" id="Clothes" href="clothes.html">Clothes</a></li>
+            <li class="nav-item"><a class="nav-link" id="bodycare" href="bodycare.html">Body Care</a></li>
+       </ul>
+    </div>
+</nav>
+<div id="message" style="
+position: fixed;
+top: 80px;
+right: 20px;
+background: #4caf50;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+display: none;
+z-index: 999;
+"> Product added to cart
+</div>
+<div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="hero-img" src="p.jpeg" alt="" style="width: 100%; height: 500px;">
+             <div class="hero-text">
+               <h1> Give your personal time a special touch </h1>
+              
+             </div>
+         </div>
+              <div class="swiper-slide">
+             <img  class="hero-img" src="o.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
+              <div class="hero-text">  
+             <h1> Grow your feminine energy </h1>
+              </div>
+              </div>
+              <div class="swiper-slide">
+                <img  class="hero-img" src="m.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
+                 <div class="hero-text">  
+                <h1> Glow In and Out </h1>
+                
+                 </div>
+                 </div>
+              </div> 
+
+      <div class="swiper-pagination"> </div>
+
+
+    </div> 
+    <div class="product-displayer" style="background: #fdf1f2; margin-top: 20px;">
+      
+       <h1 class="ttl2"> Our Latest Collection</h1>
+        <div class="products">
+            
+            <div class="product">
+                <img  style=" border: #938267 2px solid;" onclick="openPopup(1)" src="/images/d.png" alt="">
+                <h3>gold starfish Bracelet / سوار نجم البحر </h3>
+                <h2> Prix : 80dh</h2>
+                <button class="bn" onclick="addToCart('gold starfish Bracelet / سوار نجم البحر ', 80, '/images/d.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> 
+            <div class="product">
+                <img src="/images/e.png"  alt="">
+                <h3>Hammered Coin Bracelet / سوار الدوائر المقروطة</h3>
+                <h2> Prix : 120dh</h2>
+                <button class="bn" onclick="addToCart('>Hammered Coin Bracelet' ,120, '/images/e.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/f.png" alt="">
+                <h3>Molten Metal Bracelet / سوار المنحوت العصري </h3>
+                <h2> Prix : 119dh</h2>
+                <button class="bn" onclick="addToCart('Molten Metal Cuff Bracelet', 80, '/images/f.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            
+       
+            <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/g.png" alt="">
+                <h3> Royal Emerald ring / خاتم الزمرد الملكي </h3>
+                <h2> Prix : 99dh</h2> 
+                <button class="bn" onclick="addToCart('Royal Emerald ring', 99, '/images/g.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/h.png" alt="">
+                <h3>Silver Adjustable Bracelet / سوار التراث العريق </h3>
+                <h2> Prix : 69dh </h2>
+                <button class="bn" onclick="addToCart('Silver Adjustable Bracelet ', 69, '/images/h.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/n.png" alt="">
+                <h3>laser-cut flower layered chain / عقد وردات الليزر </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('laser-cut flower layered chain ', 119, '/images/n.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/nn.png" alt="">
+                <h3>Spinelli Kilcollin Leo Diamond Ring / خاتم الحلقات المتصلة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Spinelli Kilcollin Leo Diamond Ring ', 100, '/images/nn.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/nnn.png" alt="">
+                <h3>Marquise Cut Ring / خاتم ماركيز سوليتير </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Marquise Cut Ring', 100, '/images/nnn.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct1.png" alt="">
+                <h3> 3 metals beaded necklace + Bracelet / عقد و سوار خرز الثلاث معادن </h3>
+                <h2> Prix : 170dh </h2>
+                <button class="bn" onclick="addToCart('3 metals beaded necklace + Bracelet ', 170, '/images/prdct1.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/nnnnn.png" alt="">
+                <h3>Black Gemstones Bracelet / اسوارة الحجر الأسود </h3>
+                <h2> Prix : 70dh </h2>
+                <button class="bn" onclick="addToCart('Black Gemstones Bracelet ', 70, '/images/nnnnn.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/nnnnnn.png" alt="">
+                <h3>Rectangular purple gemstones bracelet / اسوارة الأحجار البنفسجية </h3>
+                <h2> Prix : 70dh </h2>
+                <button class="bn" onclick="addToCart('Rectangular purple gemstones bracelet ', 70, '/images/nnnnnn.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>  <div class="product"> 
+                <img src="/images/prdct (1).png" alt="">
+                <h3> Gold Vintage Pink round Stone Ring / خاتم الحجر الوردي  </h3>
+                <h2> Prix : 50dh </h2>
+                <button class="bn" onclick="addToCart('Gold Vintage Pink round Stone Ring', 50, '/images/prdct (1).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (2).png" alt="">
+                <h3>Emerald Gemstones Ring / خاتم الزمرد المرصع بالأحجار البيضاء </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Emerald Gemstones Ring', 99, '/images/prdct (2).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (3).png" alt="">
+                <h3>Silver White Gemstones Ring with emerald stones / خاتم الأحجار البيضاء  المرصع بالزمرد </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring with emerald stones', 99, '/images/prdct (3).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/i.png" alt="">
+                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (4).png" alt="">
+                <h3>Emerald 2 flowers  Ring / خاتم وردتي الزمرد </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Emerald 2 flowers  Ring', 99, '/images/prdct (4).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (5).png" alt="">
+                <h3>gold twist bracelet / اسوارة الإلتواءات الذهبية </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('gold twist bracelet', 99, '/images/prdct (5).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (7).png" alt="">
+                <h3>gold knot bracelet / اسوارة العقدة الذهبية </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('gold knot bracelet', 99, '/images/prdct (7).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div> <div class="product"> 
+                <img src="/images/prdct (9).png" alt="">
+                <h3>Silver Diamond waterDrop earings / أقراط قطرة الأحجار الفضية </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Silver Diamond waterDrop earings', 119, '/images/prdct (9).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/prdct (10).png" alt="">
+                <h3>Dark Night square Gemstones earings / أقراط  الأحجار السوداء </h3>
+                <h2> Prix : 89dh </h2>
+                <button class="bn" onclick="addToCart('Silver Diamond waterDrop earings', 110, '/images/prdct (9).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/prdct (11).png" alt="">
+                <h3>Four stacked Cartier Clou Rings  / خواتم كارتيه باربعة الوان </h3>
+                <h2> Prix : 69dh </h2>
+                <button class="bn" onclick="addToCart('Four stacked Cartier Clou Rings ', 69, '/images/prdct (11).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/prdct (12).png" alt="">
+                <h3>Gold double round pink stones vintage ring / خاتم الحجرتين الورديتين المستديرتين </h3>
+                <h2> Prix : 50dh </h2>
+                <button class="bn" onclick="addToCart('Gold double round pink stones vintage ring', 50, '/images/prdct (12).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/prdct (13).png" alt="">
+                <h3>Gold double pink oval and round stone vintage ring / خاتم الحجرتين الورديتين المستديرة و البيضوية </h3>
+                <h2> Prix : 50dh </h2>
+                <button class="bn" onclick="addToCart('Gold double pink oval and round stone vintage ring', 50, '/images/prdct (13).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (2).png" alt="">
+                <h3> 5 Rings Amber Rings /  خواتم الكهرمان 5 </h3>
+                <h2> Prix : 100dh </h2>
+                <button class="bn" onclick="addToCart('5 Rings Amber Rings', 100, '/images/ol (2).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (3).png" alt="">
+                <h3>Silver Gold Cross sign round earings / اقراط علامة الزائد الذهبي الفضية </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Silver Gold Cross sign round earings', 119, '/images/ol (3).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (4).png" alt="">
+                <h3>Black charcoal pendant earings / اقراط احجار سواد الليل المتدلية </h3>
+                <h2> Prix : 120dh </h2>
+                <button class="bn" onclick="addToCart('Black charcoal pendant earings', 120, '/images/ol (4).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (6).png" alt="">
+                <h3>Van Cleef Silver Flower Bracelet / اسوارة فان كليف الفضية </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart('Van Cleef Silver Flower Bracelet', 79, '/images/ol (4).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (7).png" alt="">
+                <h3> Gold spark gemstone necklace + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
+                <h2> Prix : 129dh </h2>
+                <button class="bn" onclick="addToCart('Gold spark gemstone necklace + Bracelet', 129, '/images/ol (7).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (9).png" alt="">
+                <h3> Gold spark gemstone spirale Ring + Bracelet / سوار + خاتم اللفة المرصعة الدهبيين </h3>
+                <h2> Prix : 179dh </h2>
+                <button class="bn" onclick="addToCart('Gold spark gemstone spirale Ring + Bracelet', 179, '/images/ol (9).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (10).png" alt="">
+                <h3> Emerald beaded droplet earings / اقراط احجار الزمرد الفضية </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Emerald beaded droplet earings', 119, '/images/ol (10).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/ol (11).png" alt="">
+                <h3> silver bracelet cuff hexogone ring + Bracelet / سوار + خاتم الشهدة الفضي </h3>
+                <h2> Prix : 150dh </h2>
+                <button class="bn" onclick="addToCart('silver bracelet cuff hexogone ring + Bracelet', 150, '/images/ol (11).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (1).png" alt="">
+                <h3> Gold bracelet cuff hexogone ring + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
+                <h2> Prix : 150dh </h2>
+                <button class="bn" onclick="addToCart('Gold bracelet cuff hexogone ring + Bracelet', 150, '/images/oll (1).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (2).png" alt="">
+                <h3> Gold spark gemstone stack bracelet / براصلي الثلاث حلقات </h3>
+                <h2> Prix : 129dh </h2>
+                <button class="bn" onclick="addToCart('Gold spark gemstone stack bracelet', 129, '/images/oll (2).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (3).png" alt="">
+                <h3> Gold 3 color beads  bracelet + Ring / اونصومبل الثلاث معادن خاتم + براصلي </h3>
+                <h2> Prix : 220dh </h2>
+                <button class="bn" onclick="addToCart('Gold 3 color beads  bracelet + Ring', 220, '/images/oll (3).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (4).png" alt="">
+                <h3> Gold cuff bracelet with bow / سوار شريط الفراشة الذهبي </h3>
+                <h2> Prix : 149dh </h2>
+                <button class="bn" onclick="addToCart('Gold cuff bracelet with bow', 149, '/images/oll (4).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (5).png" alt="">
+                <h3> Emerald flower silver bracelet / غورميط ورود الزمرد النقرية </h3>
+                <h2> Prix : 130dh </h2>
+                <button class="bn" onclick="addToCart('Emerald flower silver bracelet', 130, '/images/oll (5).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (6).png" alt="">
+                <h3> Cyan Stone Gold Necklace/ قلادة الحجرة الزرقاء الذهبية </h3>
+                <h2> Prix : 59dh </h2>
+                <button class="bn" onclick="addToCart('Cyan Stone Gold Necklace', 59, '/images/oll (6).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (7).png" alt="">
+                <h3> Golden leafs Necklace / قلادة اوراق الشجر الذهبية </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Golden leafs Necklace', 99, '/images/oll (7).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (8).png" alt="">
+                <h3> Gold Snowflake Necklace / قلادة نطفة الثلج الذهبية </h3>
+                <h2> Prix : 89dh </h2>
+                <button class="bn" onclick="addToCart('Gold Snowflake Necklace', 89, '/images/oll (8).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (9).png" alt="">
+                <h3> Gold quatz sword Necklace / قلادة سيف النور الذهبية </h3>
+                <h2> Prix : 89dh </h2>
+                <button class="bn" onclick="addToCart('Gold quatz sword Necklace', 89, '/images/oll (9).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (10).png" alt="">
+                <h3> Gemstone Touch Gold Necklace / قلادة اللمسة الذهبية </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart(' Gemstone Touch Gold Necklace ', 79, '/images/oll (10).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (11).png" alt="">
+                <h3> Two layered Bracelet simple + white Gemstone / قلادة الطبقتين الذهبيتين </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart('Two layered Bracelet simple + white Gemstone', 79, '/images/oll (11).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (12).png" alt="">
+                <h3> gold purse Necklace / قلادة الحقيبة الذهبية </h3>
+                <h2> Prix : 60dh </h2>
+                <button class="bn" onclick="addToCart('gold purse Necklace', 60, '/images/oll (12).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (13).png" alt="">
+                <h3> Gold Stamp Necklace / سنسلة الطابع الذهبية </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Gold Stamp Necklace', 99, '/images/oll (13).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (14).png" alt="">
+                <h3> Golden Eye Gemstone Necklace / سنسلة العين المرصعة الذهبية </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Golden Eye Gemstone Necklace', 99, '/images/oll (14).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (15).png" alt="">
+                <h3> Gold Thick RADKO / سنسلة الرادكو </h3>
+                <h2> Prix : 99dh </h2>
+                <button class="bn" onclick="addToCart('Gold Thick RADKO', 99, '/images/oll (15).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (16).png" alt="">
+                <h3> Gold Snake Necklace / سنسلة الحنش الذهبية </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Gold Snake Necklace', 119, '/images/oll (16).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (17).png" alt="">
+                <h3> Gold Double V chain / سنسلة بلدية ذهبية </h3>
+                <h2> Prix : 139dh </h2>
+                <button class="bn" onclick="addToCart('Gold Double V chain', 139, '/images/oll (17).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (18).png" alt="">
+                <h3> Silver Diamond Sphere earings / اقراط كرة الالماس الفضية </h3>
+                <h2> Prix : 129dh </h2>
+                <button class="bn" onclick="addToCart('Silver Diamond Sphere earings', 129, '/images/oll (18).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (19).png" alt="">
+                <h3> Three Diamond hoops earings / اقراط الثلاث حلقات الفضية </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Three Diamond hoops earings', 119, '/images/oll (19).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (20).png" alt="">
+                <h3> Gold Diamond Gemstones droplet earings / اقراط قطرة الماء الذهبية المرصعة </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Gold Diamond Gemstones droplet earings', 119, '/images/oll (20).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (21).png" alt="">
+                <h3> Gold Leopard pattern earings / اقراط النمر الذهبية  </h3>
+                <h2> Prix : 119dh </h2>
+                <button class="bn" onclick="addToCart('Gold Leopard pattern earings', 119, '/images/oll (21).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>  <div class="product"> 
+                <img src="/images/oll (22).png" alt="">
+                <h3> Gold Vintage Necklace / قلادة الزخرف الذهبية </h3>
+                <h2> Prix : 69dh </h2>
+                <button class="bn" onclick="addToCart('Gold Vintage Necklace', 69, '/images/oll (22).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>  <div class="product"> 
+                <img src="/images/oll (23).png" alt="">
+                <h3> Necklace Vintage Pendant necklace / قلادة تقليدية ذهبية مزخرفة </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart('Necklace Vintage Pendant necklace', 79, '/images/oll (23).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>  <div class="product"> 
+                <img src="/images/oll (24).png" alt="">
+                <h3> 3 colors beaded earings  / اقراط الثلاث معادن </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart('3 colors beaded earings ', 79, '/images/oll (24).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>  <div class="product"> 
+                <img src="/images/oll (25).png" alt="">
+                <h3> Elastic Beaded Ring  / خاتم الجوهر </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart('Elastic Beaded Ring', 79, '/images/oll (25).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/oll (26).png" alt="">
+                <h3> Gold dazzled pin bracelet  / براصلي الفيليل الذهبي </h3>
+                <h2> Prix : 149dh </h2>
+                <button class="bn" onclick="addToCart('Gold dazzled pin bracelet', 149, '/images/oll (26).png')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+            <div class="product"> 
+                <img src="/images/WhatsApp Image 2026-04-08 at 10.00.30 PM.jpeg" alt="">
+                <h3> Jouher L'Hour Stack Ring   / خاتم الجوهر الحر </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart(' Jouher LHour Stack Ring ', 79, '/images/WhatsApp Image 2026-04-08 at 10.00.30 PM.jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button>
+            </div>
+        </div>
+
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="vv.jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="vvv.jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" > Liquid Blush - GeGe Bear</h3>
+             <h2 class="yyy"> Prix : 45dh</h2>
+             <button class="bn" onclick="addToCart('Liquid Blush - GeGe Bear',45,'vvv.jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div> 
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="jojo.jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="jojoj.jpeg" alt="this is a product pic"></div>
+                    <div class="swiper-slide">
+                        <img  src="jojojo.jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" > JoJo Diary - Ballet Day</h3>
+             <h2 class="yyy"> Prix : 129dh</h2>
+             <button class="bn" onclick="addToCart(' JoJo Diary - Ballet Day',129,'jojo.jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div> 
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="jhkk (3).jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="jhkk (4).jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" > Hello Kitty Silver 925s Bracelet</h3>
+             <h2 class="yyy"> Prix : 109dh</h2>
+             <button class="bn" onclick="addToCart(' Hello Kitty Silver 925s Bracelet',109,'jhkk (3).jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div> 
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="jhk (1).jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="jhk (4).jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" > Hello Kitty Silver 925s Bracelet</h3>
+             <h2 class="yyy"> Prix : 99dh</h2>
+             <button class="bn" onclick="addToCart(' Hello Kitty Silver 925s Bracelet',99,'jhk (1).jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div>
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="65.jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="65d.jpeg" alt="this is a product pic"></div>
+                    <div class="swiper-slide">
+                        <img  src="65dh.jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" > Butterfly Jelly Pad - KEKE MOOD</h3>
+             <h2 class="yyy"> Prix : 65dh</h2>
+             <button class="bn" onclick="addToCart('Butterfly Jelly Pad - KEKE MOOD',65,'65d.jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div>
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="29.jpeg"  alt="this is a product pic"></div>
+                
+                    
+                    <div class="swiper-slide">
+                        <img  src="29dh.jpeg" alt="this is a product pic"></div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" >Sweet Mint - lip Gloss</h3>
+             <h2 class="yyy"> Prix : 29dh</h2>
+             <button class="bn" onclick="addToCart('Sweet Mint - lip Gloss',29,'29.jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div>
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="59.jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="59dh.jpeg" alt="this is a product pic"></div>
+                   
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" >Hello Kitty Body Shimmer</h3>
+             <h2 class="yyy"> Prix : 59dh</h2>
+             <button class="bn" onclick="addToCart('Hello Kitty Body Shimmer',59,'59.jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div>
+             <div class="product">
+                
+                <img src="lg.jpeg" alt="this is a product pic">
+                <h3>Cappuvini - Lip Gloss Set</h3>
+                <h2> Prix : 65dh</h2>
+                <button class="bn" onclick="addToCart('Cappuvini - Lip Gloss Set',65,'lg.jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="product">
+                
+                <img src="br.jpeg" alt="this is a product pic">
+                <h3> Hello Kitty Makeup Brushes Set</h3>
+                <h2> Prix : 85dh</h2>
+                <button class="bn" onclick="addToCart('Hello Kitty Makeup Brushes Set',85,'br.jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="product">
+                
+                <img src="mra (1).jpeg" alt="this is a product pic">
+                <h3> Heroine Make - KISS ME - Curling Mascara</h3>
+                <h2> Prix : 109dh</h2>
+                <button class="bn" onclick="addToCart('Heroine Make - KISS ME - Curling Mascara',109,'mra (1).jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+            <div class="product">
+                
+                <img src="mra (2).jpeg" alt="this is a product pic">
+                <h3> Heroine Make - KISS ME - Curling Mascara</h3>
+                <h2> Prix : 109dh</h2>
+                <button class="bn" onclick="addToCart('Heroine Make - KISS ME - Curling Mascara',109,'mra (2).jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="product"> 
+                 
+                 <img src="45dh.jpeg" alt="this is a product pic">
+                <h3>Vaseline Hydrating Lotion - 30ml</h3>
+                <h2> Prix : 45dh</h2>
+                <button class="bn" onclick="addToCart('Vaseline Hydrating Lotion - 30ml',45,'45dh.jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+            </div>
+            <div class="product">
+                
+                <img src="brclt.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Silver Bracelet</h3>
+                <h2> Prix : 95dh</h2>
+                <button class="bn" onclick="addToCart('Hello Kitty Silver Bracelet',95,'brclt.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="product">
+                
+                <img src="85dh.jpeg" alt="this is a product pic">
+                <h3>Flower Knows Lip Balm </h3>
+                <h2> Prix : 85dh</h2>
+                <button class="bn" onclick="addToCart('Flower Knows Lip Balm',85,'85dh.jpeg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+             </div>
+             <div class="swiper article-slider">
+                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                <img src="kk (1).jpeg"  alt="this is a product pic"></div>
+                <div class="swiper-slide">
+                    <img  src="kk (2).jpeg" alt="this is a product pic"></div>
+                   
+                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                              </div>
+             <h3 class="yy" style="margin-top: 0px;" >KEKE MOOD - Lip Gloss Set</h3>
+             <h2 class="yyy"> Prix : 55dh</h2>
+             <button class="bn" onclick="addToCart('KEKE MOOD - Lip Gloss Set',55,'kk (1).jpeg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button>
+             </div>
+             <div class="product"> 
+               
+                <img src="kc2.jpg" alt="this is a product pic">
+                <h3> Full Hello Kitty Charm KeyChain </h3>
+                <h2> Prix : 49dh</h2> 
+                 <button class="bn" onclick="addToCart('Full Hello Kitty Charm KeyChain',49,'kc2.jpg')">
+                   <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button>
+         
+              
+             </div>
+             <div class="product"> 
+               
+               <img src="kc31.jpg" alt="this is a product pic">
+               <h3> Hello Kitty Charm Keychains </h3>
+               <h2> Prix : 39dh </h2>
+               <button class="bn" onclick="addToCart('Hello Kitty Charm Keychains',39,'kc31.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+               </button></div>
+               <div class="product"> 
+               
+                <img src="lc.jpeg" alt="this is a product pic">
+                <h3> Sanrio Characters lip cream set  </h3>
+                <h2> Prix : 65dh </h2>
+                <button class="bn" onclick="addToCart('Sanrio Characters lip cream set',65,'lc.jpeg')">
+                 <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button></div>
+
+        
+        <div class="product"> 
+            
+            <img src="kck.jpg" alt="this is a product pic">
+            <h3> Hello Kitty Silver Charm Keychains </h3>
+            <h2> Prix : 47dh </h2>
+            <button class="bn" onclick="addToCart('Hello Kitty Silver Charm Keychains',47,'kck.jpg')">
+                <span class="btn"><i data-lucide="handbag"></i></span> 
+            </button></div>
+     <div class="product"> 
+                
+                <img src="mrr1.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Mirror </h3>
+                <h2> Prix : 69dh </h2>
+                <button class="bn" onclick="addToCart('Hello Kitty Mirror',69,'mrr1.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button></div>
+     <div class="product"> 
+                
+                <img src="nck1.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Silver Necklace </h3>
+                <h2> Prix : 79dh </h2>
+                <button class="bn" onclick="addToCart(' Hello Kitty Silver Necklace ',79,'nkc1.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button></div>
+    <div class="product"> 
+               
+                <img src="pc2.jpg" alt="this is a product pic">
+                <h3> Hello Kitty Makeup Bag </h3>
+                <h2> Prix : 49dh </h2>
+                <button class="bn" onclick="addToCart(' Hello Kitty Makeup Bag ',49,'pc2.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                            </button></div>
+     <div class="product"> 
+    
+    <img src="ppc2.jpg" alt="this is a product pic">
+    <h3> Hello Kitty Pink Makeup Bag </h3>
+    <h2> Prix : 55dh </h2>
+    <button class="bn" onclick="addToCart(' Hello Kitty Pink Makeup Bag ',55,'ppc2.jpg')">
+        <span class="btn"><i data-lucide="handbag"></i></span> 
+    </button></div>
+    <div class="product"> 
+        
+        <img src="blsh.jpg" alt="this is a product pic">
+        <h3> Four Shades Blush Palette </h3>
+        <h2> Prix : 55dh </h2>
+        <button class="bn" onclick="addToCart('Four Shades Blush Palette ',55,'blsh.jpg')">
+            <span class="btn"><i data-lucide="handbag"></i></span> 
+        </button></div>
+    
+       
+            <div class="product"> 
+                
+                <img src="lpg.jpg" alt="this is a product pic">
+                <h3> Cappuvini Smooth Moisturizing Lip Gloss </h3>
+                <h2> Prix : 35dh </h2>
+                <button class="bn" onclick="addToCart('Cappuvini Smooth Moisturizing Lip Gloss ',35,'lpg.jpg')">
+                    <span class="btn"><i data-lucide="handbag"></i></span> 
+                </button></div>
+                <div class="product"> 
+                
+                    <img src="zz4.jpeg" alt="this is a product pic">
+                    <h3> 
+                      Dior Makeup Bag </h3>
+                    <h2> Prix : 400dh </h2>
+                    <button class="bn" onclick="addToCart('Dior Makeup Bag ',400,'zz4.jpeg')">
+                        <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button></div>
+                    <div class="product"> 
+                
+                        <img src="zz5.jpeg" alt="this is a product pic">
+                        <h3> 
+                          Dior Star Shaped Makeup Bag </h3>
+                        <h2> Prix : 349dh </h2>
+                        <button class="bn" onclick="addToCart('Dior Star Shaped Makeup Bag',349,'zz5.jpeg')">
+                            <span class="btn"><i data-lucide="handbag"></i></span> 
+                        </button></div>
+                <div class="product"> 
+                
+                    <img src="zz6.jpeg" alt="this is a product pic">
+                    <h3> 
+                      Dove Colloidal Oatmeal & Callendula Oil  Body Scrub </h3>
+                    <h2> Prix : 35dh </h2>
+                    <button class="bn" onclick="addToCart('Dove Colloidal Oatmeal & Callendula Oil  Body Scrub ',135,'zz6.jpeg')">
+                        <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button></div>
+                <div class="product"> 
+                
+                    <img src="zz (1).jpeg" alt="this is a product pic">
+                    <h3> Dove Rice Milk Body Scrub </h3>
+                    <h2> Prix : 135dh </h2>
+                    <button class="bn" onclick="addToCart( 'Dove Rice Milk Body Scrub',135,'zz (1).jpeg')">
+                        <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button></div>
+                    <div class="swiper article-slider">
+                        <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                            <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                        <img src="zz (2).jpeg"  alt="this is a product pic"></div>
+                        <div class="swiper-slide">
+                            <img  src="zz (5).jpg" alt="this is a product pic"></div>
+                           
+                            <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                            <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                                      </div>
+                     <h3 class="yy" style="margin-top: 0px;" > Dove Pomegranate & Shea butter Body Scrub</h3>
+                     <h2 class="yyy"> Prix : 135dh</h2>
+                     <button class="bn" onclick="addToCart(' Dove Pomegranate & Shea butter Body Scrub',135,'zz (5).jpg')">
+                        <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button>
+                     </div>
+                            <div class="swiper article-slider">
+                                <div class="swiper-wrapper "style="height: 170px; width: 100px; margin-top: 11px;">
+                                    <div class="swiper-slide  " style="margin-bottom: 0px;" >
+                                <img src="zz (3).jpeg"  alt="this is a product pic"></div>
+                                <div class="swiper-slide">
+                                    <img  src="zz (4).jpeg" alt="this is a product pic"></div>
+                                   
+                                    <div style="height: 20px; color: transparent;" class="swiper-button-next"> </div>
+                                    <div style="height: 20px; color: transparent;" class="swiper-button-prev"> </div>
+                                              </div>
+                             <h3 class="yy" style="margin-top: 0px;" > Dove Kiwi Body Scrub</h3>
+                             <h2 class="yyy"> Prix : 135dh</h2>
+                             <button class="bn" onclick="addToCart('Dove Kiwi Body Scrub',135,'zz (4).jpeg')">
+                                <span class="btn"><i data-lucide="handbag"></i></span> 
+                            </button>
+                             </div>
+                <div class="product"> 
+                   
+                    <img src="lpst.jpg" alt="this is a product pic">
+                    <h3> Collage Art Solid Lip Gloss Box 3pcs </h3>
+                    <h2> Prix : 70dh </h2>
+                    <button class="bn" onclick="addToCart('Collage Art Solid Lip Gloss Box 3pcs ',70,'lpst.jpg')">
+                        <span class="btn"><i data-lucide="handbag"></i></span> 
+                    </button></div>
+        </div></div></div>
+        
+    </div></div>
+    
+                 <div> <h3 class="tt"> Join Our Community! </h3> </div>
+    <div class="joinourcommunity">
+   <img src="logo.jpg" alt="">
+    <h3> Visit our instagram page : @marie.__shop  <br> Or Click : </h3>
+    <a href="http://instagram.com/marie.__shop" target="_blank" rel="noopener noreferrer"> <Button  > Visit Our Instagram Page </Button></a>
+     <h3 style="top: 10%; left: 5%;"> Visit Our TikTok Page : @marie._shop  <br> Or Click : </h3>
+     <a href="http://tiktok.com/@marie._shop" target="_blank" rel="noopener noreferrer"> <Button style="top: 30%; left: 5%;" > Visit Our TikTok Page </Button></a>
+
+
+
+
+
+    </div>
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content">
+          <button class="close-btn" onclick="closePopup()">&times;</button>
+      
+          <div class="modal-grid">
+            <div class="modal-gallery">
+              <img id="main-popup-img" src="" alt="Product">
+              <div id="thumbnail-list" class="thumbnail-row"></div>
+            </div>
+      
+            <div class="modal-details">
+              <h2 id="popup-title"></h2>
+              <p id="stock-status"></p>
+              <p id="popup-price" class="price-tag"></p>
+              
+              <div class="info-section">
+                <h4>Description</h4>
+                <p id="popup-description"></p>
+              </div>
+      
+              <div class="info-section">
+                <h4>Select Size</h4>
+                <div id="size-options" class="size-buttons"></div>
+              </div>
+      
+              <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script> lucide.createIcons(); </script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new
+  Swiper(".hero-slider" , {
+    
+    loop:true,
+
+    autoplay: {
+       delay:5000,
+       disableOnInteraction:false
+    },
+    pagination:{
+       el:".swiper-pagination",
+       clickable:true
+    }
+    
+} );
+</script>
+<script>
+    const swiper1 = new
+    Swiper(".collection-slider" , {
+      
+      loop:true,
+  
+      autoplay: {
+         delay:5000,
+         disableOnInteraction:false
+      },
+      navigation:{
+         
+         nextEl:".swiper-button-next",
+         prevEl:".swiper-button-prev",
+         clickable:true
+      }
+      
+  } );
+  </script>
+  <script>
+    const swiper2 = new
+    Swiper(".article-slider" , {
+      
+      loop:true,
+  
+      autoplay: {
+         delay:5000,
+         disableOnInteraction:false
+      },
+      navigation:{
+         
+         nextEl:".swiper-button-next",
+         prevEl:".swiper-button-prev",
+         clickable:true
+      }
+      
+  } );
+  </script>
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    function updateCartCount(){
+        document.getElementById("cart-count").innerText = cart.length;
+    }
+    
+    function showMessage(text){
+        const msg = document.getElementById("message");
+        msg.innerText = text;
+        msg.style.display = "block";
+           setTimeout(()=>{
+          msg.style.display = "none";
+         },2000);
+    }
+      function addToCart(name, price, image){
+          const existing = cart.find(item => item.name === name);
+      
+    
+        if(existing){
+            existing.quantity += 1;
+        } else {
+            cart.push({name, price, image, quantity:1});
+        }
+    
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+        showMessage("Product added to cart!");
+    }
+    
+    updateCartCount();
+    </script>
+  <script>
+    function toggleSearch(){
+        const box = document.getElementById("searchBox");
+    
+        if(box.style.display === "none" || box.style.display === ""){
+            box.style.display = "block";
+        }else{
+            box.style.display = "none";
+        }
+    }
+    
+    function searchItems(){
+    
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.querySelectorAll(".product");
+    
+    items.forEach(function(item){
+    
+    let text = item.textContent.toLowerCase();
+    
+    if(text.includes(input)){
+        item.style.display = "block";
+    }else{
+        item.style.display = "none";
+    }
+    
+    });
+    
+    }
+    </script>
+    <script>
+const myProducts = [
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 2, 
+  name: "Midnight Petal Studs", 
+  price: "$85", 
+  description: "Small, refined studs with a deep charcoal finish and low-glow amber accents.",
+  sizes: ["One Size"],
+  inStock: false,
+  images: ["earring1.jpg", "earring2.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+{ 
+  id: 1, 
+  name: "Ethereal Gold Ring", 
+  price: "$145", 
+  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
+  sizes: [6, 7, 8, 9],
+  inStock: true,
+  images: ["ring1_a.jpg", "ring1_b.jpg"] 
+},
+];
+  </script>
+  <script>
+      function openPopup(productId) {
+  const product = myProducts.find(p => p.id === productId);
+
+  document.getElementById('popup-title').innerText = product.name;
+  document.getElementById('popup-description').innerText = product.description;
+
+  
+  const statusEl = document.getElementById('stock-status');
+  const cartBtn = document.getElementById('add-to-cart-btn');
+
+  if (product.inStock) {
+    statusEl.innerText = "In Stock";
+    statusEl.style.color = "#a8977a"; 
+    cartBtn.disabled = false;
+    cartBtn.innerText = "Add to Cart";
+  } else {
+    statusEl.innerText = "Out of Stock";
+    statusEl.style.color = "#45362c"; // Use your dark earth tone
+    cartBtn.disabled = true;
+    cartBtn.innerText = "Waitlist Me";
+  }
+
+  // Create Size Buttons
+  const sizeContainer = document.getElementById('size-options');
+  sizeContainer.innerHTML = ""; 
+  
+  product.sizes.forEach(size => {
+    const btn = document.createElement('button');
+    btn.innerText = size;
+    btn.className = 'size-btn';
+    sizeContainer.appendChild(btn);
+  });
+
+  document.getElementById('popup-container').style.display = 'flex';
+}
+  </script>
+  <script>
+      function closePopup() {
+  document.getElementById('product-modal').style.display = 'none';
+}
+
+// Also close the modal if the user clicks outside the box
+window.onclick = function(event) {
+  const modal = document.getElementById('product-modal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+  </script>
+</body>
