@@ -1200,501 +1200,99 @@ z-index: 999;
   } );
   </script>
 <script>
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-    function updateCartCount(){
-        document.getElementById("cart-count").innerText = cart.length;
-    }
-    
-    function showMessage(text){
-        const msg = document.getElementById("message");
-        msg.innerText = text;
-        msg.style.display = "block";
-           setTimeout(()=>{
-          msg.style.display = "none";
-         },2000);
-    }
-      function addToCart(name, price, image){
-          const existing = cart.find(item => item.name === name);
-      
-    
-        if(existing){
-            existing.quantity += 1;
-        } else {
-            cart.push({name, price, image, quantity:1});
-        }
-    
-        localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-        showMessage("Product added to cart!");
-    }
-    
-    updateCartCount();
-    </script>
-  <script>
-    function toggleSearch(){
-        const box = document.getElementById("searchBox");
-    
-        if(box.style.display === "none" || box.style.display === ""){
-            box.style.display = "block";
-        }else{
-            box.style.display = "none";
-        }
-    }
-    
-    function searchItems(){
-    
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let items = document.querySelectorAll(".product");
-    
-    items.forEach(function(item){
-    
-    let text = item.textContent.toLowerCase();
-    
-    if(text.includes(input)){
-        item.style.display = "block";
-    }else{
-        item.style.display = "none";
-    }
-    
-    });
-    
-    }
-    </script>
-    <script>
-const myProducts = [
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 2, 
-  name: "Midnight Petal Studs", 
-  price: "$85", 
-  description: "Small, refined studs with a deep charcoal finish and low-glow amber accents.",
-  sizes: ["One Size"],
-  inStock: false,
-  images: ["earring1.jpg", "earring2.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-{ 
-  id: 1, 
-  name: "Ethereal Gold Ring", 
-  price: "$145", 
-  description: "A delicate 14k gold band featuring a minimalist garden-inspired engraving.",
-  sizes: [6, 7, 8, 9],
-  inStock: true,
-  images: ["ring1_a.jpg", "ring1_b.jpg"] 
-},
-];
-  </script>
-  <script>
-  // 1. Initialize Cart from LocalStorage
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  
-  // 2. Wait for the HTML to load fully
-  document.addEventListener('DOMContentLoaded', () => {
-      
-      // Select Sidebar Elements
-      const cartSidebar = document.querySelector('.cart-sidebar');
-      const cartOverlay = document.querySelector('.cart-overlay');
-      const openBtn = document.querySelector('#btn-to-open-cart'); 
-      const closeBtn = document.querySelector('#btn-to-close-cart');
-  
-      // --- SIDEBAR TOGGLE LOGIC ---
-      function toggleCart() {
-          if (cartSidebar && cartOverlay) {
-              cartSidebar.classList.toggle('open');
-              cartOverlay.classList.toggle('active');
-              if (cartSidebar.classList.contains('open')) {
-                  displayCartItems(); // Refresh items whenever it opens
-              }
-          }
-      }
-  
-      if (openBtn) openBtn.addEventListener('click', toggleCart);
-      if (closeBtn) closeBtn.addEventListener('click', toggleCart);
-      if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
-  
-      // Initial counts
-      updateCartCount();
-  });
-  
-  // --- CORE CART FUNCTIONS ---
-  
-  function updateCartCount() {
-      const countEl = document.getElementById("cart-count");
-      if (countEl) {
-          // Calculate total items (sum of quantities)
-          const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-          countEl.innerText = totalItems;
-      }
-  }
-  
-  function addToCart(name, price, image) {
-      const existing = cart.find(item => item.name === name);
-  
-      if (existing) {
-          existing.quantity += 1;
-      } else {
-          cart.push({ name, price, image, quantity: 1 });
-      }
-  
-      saveAndRefresh();
-      
-      // Automatically open the sidebar to show the added item
-      const sidebar = document.querySelector('.cart-sidebar');
-      const overlay = document.querySelector('.cart-overlay');
-      sidebar.classList.add('open');
-      overlay.classList.add('active');
-  }
-  
-  function updateQuantity(index, newQty) {
-      // --- QUANTITY & TOTALS LOGIC ---
+   // 1. Initialize Cart
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/**
- * Updates the quantity of an item in the cart.
- * If quantity is 1 and user decreases it, you can choose to remove it.
- */
-function updateQuantity(index, newQty) {
+// --- DATA (Crucial: Ensure this exists!) ---
+const myProducts = [
+    { id: 1, name: "Gold Oval Earrings", price: 50, image: "img1.jpg", description: "Elegant gold ovals.", inStock: true },
+    // Add your other products here...
+];
+
+// 2. Wait for HTML to load
+document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.querySelector('#btn-to-open-cart');
+    const closeBtn = document.querySelector('#btn-to-close-cart');
+    const cartOverlay = document.querySelector('.cart-overlay');
+
+    if (openBtn) openBtn.addEventListener('click', toggleCart);
+    if (closeBtn) closeBtn.addEventListener('click', toggleCart);
+    if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+
+    updateCartCount();
+});
+
+// --- EXPOSE FUNCTIONS TO GLOBAL WINDOW ---
+// This prevents "function not defined" errors when clicking buttons
+window.updateQuantity = function(index, newQty) {
     const qty = parseInt(newQty);
-    
     if (qty > 0) {
         cart[index].quantity = qty;
     } else {
-        // If they set quantity to 0, we remove the item entirely
         removeItem(index);
-        return; // Exit function so we don't save twice
+        return;
     }
-    
     saveAndRefresh();
-}
+};
 
-/**
- * Removes an item from the cart array based on its index.
- */
-function removeItem(index) {
+window.removeItem = function(index) {
     cart.splice(index, 1);
     saveAndRefresh();
+};
+
+window.addToCart = function(name, price, image) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ name, price, image, quantity: 1 });
+    }
+    saveAndRefresh();
+    openCartSidebar();
+};
+
+// --- CORE LOGIC ---
+
+function toggleCart() {
+    const sidebar = document.querySelector('.cart-sidebar');
+    const overlay = document.querySelector('.cart-overlay');
+    if (sidebar && overlay) {
+        const isOpen = sidebar.classList.toggle('open');
+        overlay.classList.toggle('active');
+        if (isOpen) displayCartItems();
+    }
 }
 
-/**
- * Saves the current cart to LocalStorage, updates the counter icon,
- * and redraws the items inside the sidebar.
- */
+function openCartSidebar() {
+    const sidebar = document.querySelector('.cart-sidebar');
+    const overlay = document.querySelector('.cart-overlay');
+    if (sidebar && overlay) {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+        displayCartItems();
+    }
+}
+
+function updateCartCount() {
+    const countEl = document.getElementById("cart-count");
+    if (countEl) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        countEl.innerText = totalItems;
+    }
+}
+
 function saveAndRefresh() {
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCartCount();
     displayCartItems();
 }
 
-// --- RENDERING THE SIDEBAR CONTENT ---
-
-/**
- * Generates the HTML to show inside the sidebar drawer.
- * Includes the quantity inputs and the subtotal calculation.
- */
 function displayCartItems() {
     const container = document.querySelector('.cart-items');
     if (!container) return;
 
-    // Show a message if the cart is empty
     if (cart.length === 0) {
         container.innerHTML = '<p style="text-align:center; margin-top:50px; color:#666;">Your cart is empty.</p>';
-        
-        // Clear the subtotal if it exists
         const subtotalEl = document.getElementById('cart-subtotal');
         if (subtotalEl) subtotalEl.innerText = "$0.00";
         return;
@@ -1704,101 +1302,84 @@ function displayCartItems() {
     let grandTotal = 0;
 
     cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        grandTotal += itemTotal;
-
+        grandTotal += item.price * item.quantity;
         totalContent += `
             <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
                 <img src="${item.image}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
                 <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 15px; font-family: 'Playfair Display', serif;">${item.name}</h4>
+                    <h4 style="margin: 0; font-size: 15px;">${item.name}</h4>
                     <p style="margin: 4px 0; color: #a8977a; font-weight: bold;">$${item.price}</p>
-                    
                     <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
-                        <span style="font-size: 12px; color: #888;">Qty:</span>
                         <input type="number" value="${item.quantity}" min="1" 
-                               style="width: 45px; padding: 2px; border: 1px solid #ddd; border-radius: 3px; text-align: center;"
+                               style="width: 45px; text-align: center;"
                                onchange="updateQuantity(${index}, this.value)">
-                        <button onclick="removeItem(${index})" 
-                                style="background: none; border: none; color: #8b0000; cursor: pointer; font-size: 12px; text-decoration: underline;">
-                                Remove
-                        </button>
+                        <button onclick="removeItem(${index})" style="color: #8b0000; cursor: pointer; background:none; border:none; text-decoration:underline;">Remove</button>
                     </div>
                 </div>
-            </div>
-        `;
+            </div>`;
     });
 
     container.innerHTML = totalContent;
-    
-    // Update the subtotal at the bottom of the sidebar
     const subtotalEl = document.getElementById('cart-subtotal');
-    if (subtotalEl) {
-        subtotalEl.innerText = `$${grandTotal.toFixed(2)}`;
-    }
+    if (subtotalEl) subtotalEl.innerText = `$${grandTotal.toFixed(2)}`;
 }
 
-// --- MODAL & POPUP LOGIC ---
-
-/**
- * Finds product info from myProducts array and fills the popup modal.
- */
-function openPopup(productId) {
+// Modal Logic
+window.openPopup = function(productId) {
     const product = myProducts.find(p => p.id === productId);
-    if (!product) return;
+    if (!product) {
+        console.error("Product not found ID:", productId);
+        return;
+    }
 
-    // Fill textual info
-    document.getElementById('popup-title').innerText = product.name;
-    document.getElementById('popup-description').innerText = product.description;
-    
+    const title = document.getElementById('popup-title');
+    const desc = document.getElementById('popup-description');
     const statusEl = document.getElementById('stock-status');
     const cartBtn = document.getElementById('add-to-cart-btn');
 
-    // Update Stock Status Styling
-    if (product.inStock) {
-        statusEl.innerText = "In Stock";
-        statusEl.style.color = "#a8977a"; 
-        cartBtn.disabled = false;
-        cartBtn.style.opacity = "1";
-        // Wire the "Add to Cart" button to this specific product
-        cartBtn.onclick = () => {
-            addToCart(product.name, product.price, product.image);
-            closePopup(); // Close modal after adding
-        };
-    } else {
-        statusEl.innerText = "Out of Stock";
-        statusEl.style.color = "#45362c";
-        cartBtn.disabled = true;
-        cartBtn.style.opacity = "0.5";
-        cartBtn.innerText = "Out of Stock";
+    if (title) title.innerText = product.name;
+    if (desc) desc.innerText = product.description;
+
+    if (statusEl && cartBtn) {
+        if (product.inStock) {
+            statusEl.innerText = "In Stock";
+            statusEl.style.color = "#a8977a";
+            cartBtn.disabled = false;
+            cartBtn.style.opacity = "1";
+            cartBtn.innerText = "Add to Cart";
+            cartBtn.onclick = () => {
+                addToCart(product.name, product.price, product.image);
+                closePopup();
+            };
+        } else {
+            statusEl.innerText = "Out of Stock";
+            statusEl.style.color = "#45362c";
+            cartBtn.disabled = true;
+            cartBtn.style.opacity = "0.5";
+            cartBtn.innerText = "Out of Stock";
+        }
     }
 
-    // Show the modal container
     const modal = document.getElementById('product-modal');
     if (modal) modal.style.display = 'flex';
-}
+};
 
-function closePopup() {
+window.closePopup = function() {
     const modal = document.getElementById('product-modal');
     if (modal) modal.style.display = 'none';
-}
+};
 
-// --- UTILITY: SEARCH & UI ---
-
-function toggleSearch() {
+window.toggleSearch = function() {
     const box = document.getElementById("searchBox");
-    if (!box) return;
-    box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
-}
+    if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+};
 
-function searchItems() {
+window.searchItems = function() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let items = document.querySelectorAll(".product");
-    
     items.forEach(item => {
-        let text = item.textContent.toLowerCase();
-        item.style.display = text.includes(input) ? "block" : "none";
+        item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
     });
-}
-  }
+};
+  
       </script>
