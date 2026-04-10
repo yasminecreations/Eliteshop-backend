@@ -58,6 +58,10 @@ const MAD_TO_USD_RATE = 0.10;
 app.get('/', (req, res) => { 
     res.sendFile(path.join(__dirname, 'index.html')); 
 });
+// Route for the products page
+app.get('/products', (req, res) => {
+    res.sendFile(path.join(__dirname, 'products.html'));
+});
 app.get('/api/status', async (req, res) => {
     // This tells the code to wait up to 2 seconds for the DB to wake up
     if (mongoose.connection.readyState !== 1) {
