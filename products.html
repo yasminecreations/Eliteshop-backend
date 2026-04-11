@@ -104,7 +104,8 @@ transition: all 0.4s ease;
     margin-top: 5px;
     grid-template-columns: repeat( 2, 1fr);
     display: grid;
-    background: #fdf1f2;
+    background: #161711;
+    color: #a8977a;
     gap: 10px;
     
 }
@@ -174,6 +175,18 @@ font-weight: bold;}
 .products h2{
     font-size: 15px;
     text-decoration: #e79396 underline;
+}
+.ghgh{
+    position: absolute;
+  top: 110px;
+  right: 10px;
+  background: rgb(255, 255, 255);
+  color: #a8977a;
+  width: 60px;  
+  height: 40px;  
+  border-radius: 20%;
+  padding: 5px;
+  z-index: 100;   
 }
 .btn{
   position: absolute;
@@ -482,11 +495,12 @@ margin-top: 10px;
 .checkout-btn{
     bottom: 0;
     width: 90%;
-    margin: left 5px right 5px;
+    margin-left: 5px; 
+    margin-right: 5px;
     color: #a8977a;
     background: #161711;
     font-family: "Lobster Two";
-    
+    height: 50px;
 }
 .buy-button {
   width: 100%;
@@ -512,7 +526,7 @@ margin-top: 10px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #45362c;
+  color: #a8977a;
 }
 
 /* Animations */
@@ -601,7 +615,8 @@ z-index: 999;
         <div class="products">
             
             <div class="product">
-                <img  style=" border: #938267 2px solid;" onclick="openPopup(1)" src="/images/d.png" alt="">
+                <img  style=" border: #938267 2px solid;"  src="/images/d.png" alt="">
+                <button class="bn"onclick="openPopup(1)" > <span class="ghgh"  > Voir -> </span></button>
                 <h3>gold starfish Bracelet / سوار نجم البحر </h3>
                 <h2> Prix : 80dh</h2>
                 <button class="bn" onclick="addToCart('gold starfish Bracelet / سوار نجم البحر ', 80, '/images/d.png')">
