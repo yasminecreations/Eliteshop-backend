@@ -179,14 +179,21 @@ font-weight: bold;}
 .ghgh{
     position: absolute;
   top: 110px;
-  right: 10px;
+  right: 90px;
   background: rgb(255, 255, 255);
   color: #a8977a;
-  width: 60px;  
+  font-family: "Lobster Two";
+  font-weight: 500;
+  width: 80px;  
   height: 40px;  
-  border-radius: 20%;
+  border-radius: 20px;
   padding: 5px;
+  padding-top: 17;
   z-index: 100;   
+}
+#product-modal{
+    width: 100%;
+    height: 1000px;
 }
 .btn{
   position: absolute;
@@ -317,13 +324,13 @@ margin-top: 10px;
 #PopUp{
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
+  
     transform: translate(-50%, -50%);
     background: white;
     padding: 20px;
     z-index: 1000;
-    width: 300px;
+    width: 100%;
+    height: 100%;
 }
 #PopUp span{
     margin-bottom: 100px;
@@ -369,8 +376,9 @@ margin-top: 10px;
 /* The Popup Box */
 .modal-content {
   background: #fff;
-  width: 90%;
-  max-width: 900px;
+  display: grid;
+  width: 100%;
+  height: 100%;
   padding: 40px;
   position: relative;
   border-radius: 2px; /* Sharp, clean luxury edges */
@@ -379,7 +387,7 @@ margin-top: 10px;
 
 .modal-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  
   gap: 40px;
 }
 
@@ -444,6 +452,10 @@ margin-top: 10px;
 .size-btn:hover {
   background: #a8977a;
   color: white;
+}
+.gallery-slider{
+    width: 90%;
+    height: 400px;
 }
 /* The Sidebar Container */
 .cart-sidebar {
@@ -517,7 +529,18 @@ margin-top: 10px;
   background: #ccc;
   cursor: not-allowed;
 }
-
+#swiperr{
+    height: 300px;
+}
+#swiperr1{
+    height: 300px;
+}
+#swiperr2{
+    height: 300px;
+}
+#swiperr3{
+    height: 300px;
+}
 .close-btn {
   position: absolute;
   right: 20px;
@@ -616,7 +639,7 @@ z-index: 999;
             
             <div class="product">
                 <img  style=" border: #938267 2px solid;"  src="/images/d.png" alt="">
-                <button class="bn"onclick="openPopup(1)" > <span class="ghgh"  > Voir -> </span></button>
+                <button class="bn"onclick="openPopup(1)" > <span class="ghgh"  > Voir  </span></button>
                 <h3>gold starfish Bracelet / سوار نجم البحر </h3>
                 <h2> Prix : 80dh</h2>
                 <button class="bn" onclick="addToCart('gold starfish Bracelet / سوار نجم البحر ', 80, '/images/d.png')">
@@ -1146,280 +1169,291 @@ z-index: 999;
 
 
     </div>
-    <div id="product-modal" class="modal-overlay">
+    <div id="product-modal" class="modal-overlay" style="height: 100%; width: 100%;">
         <div class="modal-content">
           <button class="close-btn" onclick="closePopup()">&times;</button>
       
           <div class="modal-grid">
             <div class="modal-gallery">
-              <img id="main-popup-img" src="" alt="Product">
-              <div id="thumbnail-list" class="thumbnail-row"></div>
-            </div>
-      
-            <div class="modal-details">
-              <h2 id="popup-title"></h2>
-              <p id="stock-status"></p>
-              <p id="popup-price" class="price-tag"></p>
+                <div class="swiper gallery-slider">
+                  <div class="swiper-wrapper">
+                      <div class="swiper-slide" id="swiperr3"> 
+                   <img class="main-popup-img" src="" alt="Product">
+                    </div>
+                    <div class="swiper-slide" id="swiperr">
+                   <img class="main-popup-img" src="" alt="Product"></div>
+                    <div class="swiper-slide" id="swiperr1">
+                   <img class="main-popup-img" src="" alt="Product"></div>
+                   <div class="swiper-slide" id="swiperr2">
+                   <img class="main-popup-img" src="" alt="Product"></div>
+                      </div>
+                      <div class="swiper-slide" id="swiperr4">
+                        <img class="main-popup-img" src="" alt="Product"></div>
+                           </div>
+                           <div class="swiper-slide" id="swiperr5">
+                            <img class="main-popup-img" src="" alt="Product"></div>
+                               </div>
+                               <div class="swiper-slide" id="swiperr6">
+                                <img class="main-popup-img" src="" alt="Product"></div>
+                                   </div>
+                </div>
               
-              <div class="info-section">
-                <h4>Description</h4>
-                <p id="popup-description"></p>
-              </div>
-      
-              <div class="info-section">
-                <h4>Select Size</h4>
-                <div id="size-options" class="size-buttons"></div>
-              </div>
-      
-              <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
-<script src="https://unpkg.com/lucide@latest"></script>
-<script> lucide.createIcons(); </script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const swiper = new
-  Swiper(".hero-slider" , {
-    
-    loop:true,
-
-    autoplay: {
-       delay:5000,
-       disableOnInteraction:false
-    },
-    pagination:{
-       el:".swiper-pagination",
-       clickable:true
-    }
-    
-} );
-</script>
-<script>
-    const swiper1 = new
-    Swiper(".collection-slider" , {
-      
-      loop:true,
-  
-      autoplay: {
-         delay:5000,
-         disableOnInteraction:false
-      },
-      navigation:{
-         
-         nextEl:".swiper-button-next",
-         prevEl:".swiper-button-prev",
-         clickable:true
-      }
-      
-  } );
-  </script>
-  <script>
-    const swiper2 = new
-    Swiper(".article-slider" , {
-      
-      loop:true,
-  
-      autoplay: {
-         delay:5000,
-         disableOnInteraction:false
-      },
-      navigation:{
-         
-         nextEl:".swiper-button-next",
-         prevEl:".swiper-button-prev",
-         clickable:true
-      }
-      
-  } );
-  </script>
-<script>
-   // 1. Initialize Cart
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-// --- DATA (Crucial: Ensure this exists!) ---
-const myProducts = [
-    { id: 1, name: "Gold Oval Earrings", price: 50, image: "img1.jpg", description: "Elegant gold ovals.", inStock: true },
-    // Add your other products here...
-];
-
-// 2. Wait for HTML to load
-document.addEventListener('DOMContentLoaded', () => {
-    const openBtn = document.querySelector('#btn-to-open-cart');
-    const closeBtn = document.querySelector('#btn-to-close-cart');
-    const cartOverlay = document.querySelector('.cart-overlay');
-
-    if (openBtn) openBtn.addEventListener('click', toggleCart);
-    if (closeBtn) closeBtn.addEventListener('click', toggleCart);
-    if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
-
-    updateCartCount();
-});
-
-// --- EXPOSE FUNCTIONS TO GLOBAL WINDOW ---
-// This prevents "function not defined" errors when clicking buttons
-window.updateQuantity = function(index, newQty) {
-    const qty = parseInt(newQty);
-    if (qty > 0) {
-        cart[index].quantity = qty;
-    } else {
-        removeItem(index);
-        return;
-    }
-    saveAndRefresh();
-};
-
-window.removeItem = function(index) {
-    cart.splice(index, 1);
-    saveAndRefresh();
-};
-
-window.addToCart = function(name, price, image) {
-    const existing = cart.find(item => item.name === name);
-    if (existing) {
-        existing.quantity += 1;
-    } else {
-        cart.push({ name, price, image, quantity: 1 });
-    }
-    saveAndRefresh();
-    openCartSidebar();
-};
-
-// --- CORE LOGIC ---
-
-function toggleCart() {
-    const sidebar = document.querySelector('.cart-sidebar');
-    const overlay = document.querySelector('.cart-overlay');
-    if (sidebar && overlay) {
-        const isOpen = sidebar.classList.toggle('open');
-        overlay.classList.toggle('active');
-        if (isOpen) displayCartItems();
-    }
-}
-
-function openCartSidebar() {
-    const sidebar = document.querySelector('.cart-sidebar');
-    const overlay = document.querySelector('.cart-overlay');
-    if (sidebar && overlay) {
-        sidebar.classList.add('open');
-        overlay.classList.add('active');
-        displayCartItems();
-    }
-}
-
-function updateCartCount() {
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        countEl.innerText = totalItems;
-    }
-}
-
-function saveAndRefresh() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-    displayCartItems();
-}
-
-function displayCartItems() {
-    const container = document.querySelector('.cart-items');
-    if (!container) return;
-
-    if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center; margin-top:50px; color:#666;">Your cart is empty.</p>';
-        const subtotalEl = document.getElementById('cart-subtotal');
-        if (subtotalEl) subtotalEl.innerText = "$0.00";
-        return;
-    }
-
-    let totalContent = "";
-    let grandTotal = 0;
-
-    cart.forEach((item, index) => {
-        grandTotal += item.price * item.quantity;
-        totalContent += `
-            <div class="cart-item" style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                <img src="${item.image}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 4px; margin-right: 15px;">
-                <div style="flex-grow: 1;">
-                    <h4 style="margin: 0; font-size: 15px;">${item.name}</h4>
-                    <p style="margin: 4px 0; color: #a8977a; font-weight: bold;">$${item.price}</p>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
-                        <input type="number" value="${item.quantity}" min="1" 
-                               style="width: 45px; text-align: center;"
-                               onchange="updateQuantity(${index}, this.value)">
-                        <button onclick="removeItem(${index})" style="color: #8b0000; cursor: pointer; background:none; border:none; text-decoration:underline;">Remove</button>
+                <div id="product-modal" class="modal-overlay">
+                    <div class="modal-content">
+                        <button class="close-btn" onclick="closePopup()">&times;</button>
+                
+                        <div class="modal-grid">
+                            <div class="modal-gallery">
+                                <div class="swiper gallery-slider">
+                                    <div class="swiper-wrapper">
+                                        </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div id="thumbnail-list" class="thumbnail-row"></div>
+                            </div>
+                
+                            <div class="modal-details">
+                                <h2 id="popup-title"></h2>
+                                <p id="stock-status"></p>
+                                <p id="popup-price" class="price-tag"></p>
+                
+                                <div class="info-section">
+                                    <h4>Description</h4>
+                                    <p id="popup-description"></p>
+                                </div>
+                
+                                <div class="info-section">
+                                    <h4>Select Size</h4>
+                                    <div id="size-options" class="size-buttons"></div>
+                                    
+                                    <h4>Quantity</h4>
+                                    <input type="number" min="1" value="1" id="popup-quantity" style="width: 100%; max-width: 200px; padding: 8px;">
+                                </div>
+                
+                                <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>`;
-    });
-
-    container.innerHTML = totalContent;
-    const subtotalEl = document.getElementById('cart-subtotal');
-    if (subtotalEl) subtotalEl.innerText = `$${grandTotal.toFixed(2)}`;
-}
-
-// Modal Logic
-window.openPopup = function(productId) {
-    const product = myProducts.find(p => p.id === productId);
-    if (!product) {
-        console.error("Product not found ID:", productId);
-        return;
-    }
-
-    const title = document.getElementById('popup-title');
-    const desc = document.getElementById('popup-description');
-    const statusEl = document.getElementById('stock-status');
-    const cartBtn = document.getElementById('add-to-cart-btn');
-
-    if (title) title.innerText = product.name;
-    if (desc) desc.innerText = product.description;
-
-    if (statusEl && cartBtn) {
-        if (product.inStock) {
-            statusEl.innerText = "In Stock";
-            statusEl.style.color = "#a8977a";
-            cartBtn.disabled = false;
-            cartBtn.style.opacity = "1";
-            cartBtn.innerText = "Add to Cart";
-            cartBtn.onclick = () => {
-                addToCart(product.name, product.price, product.image);
-                closePopup();
-            };
-        } else {
-            statusEl.innerText = "Out of Stock";
-            statusEl.style.color = "#45362c";
-            cartBtn.disabled = true;
-            cartBtn.style.opacity = "0.5";
-            cartBtn.innerText = "Out of Stock";
-        }
-    }
-
-    const modal = document.getElementById('product-modal');
-    if (modal) modal.style.display = 'flex';
-};
-
-window.closePopup = function() {
-    const modal = document.getElementById('product-modal');
-    if (modal) modal.style.display = 'none';
-};
-
-window.toggleSearch = function() {
-    const box = document.getElementById("searchBox");
-    if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
-};
-
-window.searchItems = function() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let items = document.querySelectorAll(".product");
-    items.forEach(item => {
-        item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
-    });
-};
   
-      </script>
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+                <script src="https://unpkg.com/lucide@latest"></script>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+                
+                <script>
+                    // 1. INITIALIZE LIBRARIES
+                    lucide.createIcons();
+                
+                    // 2. MAIN PAGE SLIDERS (Hero, Collection, Article)
+                    const heroSwiper = new Swiper(".hero-slider", {
+                        loop: true,
+                        autoplay: { delay: 5000, disableOnInteraction: false },
+                        pagination: { el: ".swiper-pagination", clickable: true }
+                    });
+                
+                    const collectionSwiper = new Swiper(".collection-slider", {
+                        loop: true,
+                        autoplay: { delay: 5000, disableOnInteraction: false },
+                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+                    });
+                
+                    const articleSwiper = new Swiper(".article-slider", {
+                        loop: true,
+                        autoplay: { delay: 5000, disableOnInteraction: false },
+                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+                    });
+                
+                    // 3. CART & MODAL DATA
+                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    let modalSwiper; // Placeholder for the popup swiper
+                
+                    const myProducts = [
+                        { 
+                            id: 1, 
+                            name: "Gold Oval Earrings", 
+                            price: 50, 
+                            image: "lo.jpeg", 
+                            images: ["lo.jpeg", "k.jpeg", "h.png", "second.jpeg", "last.jpeg", "i.png", "model.jpeg"], 
+                            description: "Handcrafted gold ovals designed for timeless elegance.", 
+                            sizes: [6, 7, 8, 9] 
+                        }
+                        // Add more products here using the same format
+                    ];
+                
+                    // 4. ON PAGE LOAD
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Init the Modal Swiper (Start with loop off to prevent errors)
+                        modalSwiper = new Swiper(".gallery-slider", {
+                            loop: false,
+                            observer: true,
+                            observeParents: true,
+                            pagination: { el: ".swiper-pagination", clickable: true }
+                        });
+                
+                        // Cart Sidebar Event Listeners
+                        const openBtn = document.querySelector('#btn-to-open-cart');
+                        const closeBtn = document.querySelector('#btn-to-close-cart');
+                        const cartOverlay = document.querySelector('.cart-overlay');
+                
+                        if (openBtn) openBtn.addEventListener('click', toggleCart);
+                        if (closeBtn) closeBtn.addEventListener('click', toggleCart);
+                        if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+                
+                        updateCartCount();
+                    });
+                
+                    // 5. MODAL LOGIC (OPEN/CLOSE)
+                    window.openPopup = function(productId) {
+                        const product = myProducts.find(p => p.id === productId);
+                        if (!product) return;
+                
+                        // Populate Text
+                        document.getElementById('popup-title').innerText = product.name;
+                        document.getElementById('popup-description').innerText = product.description;
+                        document.getElementById('popup-price').innerText = `$${product.price}`;
+                        document.getElementById('popup-quantity').value = 1;
+                
+                        // Inject Images into Swiper Wrapper
+                        const swiperWrapper = document.querySelector('.gallery-slider .swiper-wrapper');
+                        const imagesToUse = (product.images && product.images.length > 0) ? product.images : [product.image];
+                        
+                        swiperWrapper.innerHTML = imagesToUse.map(imgSrc => `
+                            <div class="swiper-slide">
+                                <img src="${imgSrc}" alt="${product.name}" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
+                            </div>
+                        `).join('');
+                
+                        // Inject Size Options
+                        const sizeContainer = document.getElementById('size-options');
+                        sizeContainer.innerHTML = (product.sizes || []).map((size, i) => `
+                            <label style="margin-right: 15px; cursor: pointer;">
+                                <input type="radio" name="product-size" value="${size}" ${i === 0 ? 'checked' : ''}>
+                                <span>${size}</span>
+                            </label>
+                        `).join('') || "<span>One Size</span>";
+                
+                        // Open Modal
+                        const modal = document.getElementById('product-modal');
+                        if (modal) modal.style.display = 'flex';
+                
+                        // Fix Swiper Display (Crucial step)
+                        setTimeout(() => {
+                            if (modalSwiper) {
+                                modalSwiper.update();
+                                modalSwiper.slideTo(0, 0);
+                            }
+                        }, 300);
+                
+                        // Handle the "Add to Cart" button click inside the modal
+                        document.getElementById('add-to-cart-btn').onclick = () => {
+                            const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
+                            const qty = parseInt(document.getElementById('popup-quantity').value) || 1;
+                            addToCart(product.name, product.price, product.image, selectedSize, qty);
+                            closePopup();
+                        };
+                    };
+                
+                    window.closePopup = function() {
+                        const modal = document.getElementById('product-modal');
+                        if (modal) modal.style.display = 'none';
+                    };
+                
+                    // 6. CART SYSTEM LOGIC
+                    window.addToCart = function(name, price, image, size, quantity) {
+                        const itemKey = `${name}-${size}`;
+                        const existing = cart.find(item => `${item.name}-${item.size}` === itemKey);
+                
+                        if (existing) {
+                            existing.quantity += quantity;
+                        } else {
+                            cart.push({ name, price, image, size, quantity });
+                        }
+                        saveAndRefresh();
+                        openCartSidebar();
+                    };
+                
+                    function toggleCart() {
+                        const sidebar = document.querySelector('.cart-sidebar');
+                        const overlay = document.querySelector('.cart-overlay');
+                        const isOpen = sidebar.classList.toggle('open');
+                        overlay.classList.toggle('active');
+                        if (isOpen) displayCartItems();
+                    }
+                
+                    function openCartSidebar() {
+                        const sidebar = document.querySelector('.cart-sidebar');
+                        const overlay = document.querySelector('.cart-overlay');
+                        sidebar.classList.add('open');
+                        overlay.classList.add('active');
+                        displayCartItems();
+                    }
+                
+                    function displayCartItems() {
+                        const container = document.querySelector('.cart-items');
+                        if (!container) return;
+                
+                        if (cart.length === 0) {
+                            container.innerHTML = '<p style="text-align:center; padding-top:50px; color:#999;">Your cart is empty.</p>';
+                            document.getElementById('cart-subtotal').innerText = "$0.00";
+                            return;
+                        }
+                
+                        let total = 0;
+                        container.innerHTML = cart.map((item, index) => {
+                            total += item.price * item.quantity;
+                            return `
+                                <div class="cart-item" style="display: flex; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                    <img src="${item.image}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 4px;">
+                                    <div style="flex: 1;">
+                                        <h4 style="margin: 0; font-size: 15px;">${item.name}</h4>
+                                        <p style="margin: 2px 0; font-size: 12px; color: #888;">Size: ${item.size}</p>
+                                        <p style="margin: 5px 0; font-weight: bold; color: #a8977a;">$${item.price} x ${item.quantity}</p>
+                                        <button onclick="removeItem(${index})" style="color: red; background: none; border: none; cursor: pointer; text-decoration: underline; font-size: 11px; padding: 0;">Remove</button>
+                                    </div>
+                                </div>`;
+                        }).join('');
+                
+                        document.getElementById('cart-subtotal').innerText = `$${total.toFixed(2)}`;
+                    }
+                
+                    window.removeItem = function(index) {
+                        cart.splice(index, 1);
+                        saveAndRefresh();
+                    };
+                
+                    window.updateQuantity = function(index, newQty) {
+                        const qty = parseInt(newQty);
+                        if (qty > 0) cart[index].quantity = qty;
+                        else cart.splice(index, 1);
+                        saveAndRefresh();
+                    };
+                
+                    function saveAndRefresh() {
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        updateCartCount();
+                        displayCartItems();
+                    }
+                
+                    function updateCartCount() {
+                        const countEl = document.getElementById("cart-count");
+                        if (countEl) {
+                            countEl.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+                        }
+                    }
+                
+                    // 7. SEARCH LOGIC
+                    window.toggleSearch = function() {
+                        const box = document.getElementById("searchBox");
+                        if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+                    };
+                
+                    window.searchItems = function() {
+                        let input = document.getElementById("searchInput").value.toLowerCase();
+                        let items = document.querySelectorAll(".product");
+                        items.forEach(item => {
+                            item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
+                        });
+                    };
+                </script>
