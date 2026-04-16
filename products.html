@@ -1141,20 +1141,7 @@ z-index: 999;
             </div>
         </div>
 
-        <div id="cart-overlay" class="cart-overlay"></div>
-
-        <div id="cart-sidebar" class="cart-sidebar">
-            <div class="cart-header">
-                <h2>Your Cart</h2>
-                <button id="btn-to-close-cart" class="close-btn">&times;</button>
-            </div>
-            <div class="cart-items">
-                </div>
-            <div class="cart-footer">
-                <button class="checkout-btn">Checkout</button>
-            </div>
-        </div>
-            
+       
     
                  <div> <h3 class="tt"> Join Our Community! </h3> </div>
     <div class="joinourcommunity">
@@ -1169,45 +1156,39 @@ z-index: 999;
 
 
     </div>
+     <div id="cart-overlay" class="cart-overlay"></div>
+
+     <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-items"></div>
+        <div class="cart-footer">
+            <p>Total: <span id="cart-subtotal">$0.00</span></p>
+        </div>
+    </div>
     
-              
-                <div id="product-modal" class="modal-overlay">
-                    <div class="modal-content">
-                        <button class="close-btn" onclick="closePopup()">&times;</button>
-                
-                        <div class="modal-grid">
-                            <div class="modal-gallery">
-                                <div class="swiper gallery-slider">
-                                    <div class="swiper-wrapper">
-                                        </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                                <div id="thumbnail-list" class="thumbnail-row"></div>
-                            </div>
-                
-                            <div class="modal-details">
-                                <h2 id="popup-title"></h2>
-                                <p id="stock-status"></p>
-                                <p id="popup-price" class="price-tag"></p>
-                
-                                <div class="info-section">
-                                    <h4>Description</h4>
-                                    <p id="popup-description"></p>
-                                </div>
-                
-                                <div class="info-section">
-                                    <h4>Select Size</h4>
-                                    <div id="size-options" class="size-buttons"></div>
-                                    
-                                    <h4>Quantity</h4>
-                                    <input type="number" min="1" value="1" id="popup-quantity" style="width: 100%; max-width: 200px; padding: 8px;">
-                                </div>
-                
-                                <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
-                            </div>
-                        </div>
+    <div id="product-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-gallery">
+                    <div class="swiper gallery-slider">
+                        <div class="swiper-wrapper"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
+                <div class="modal-details">
+                    <h2 id="popup-title"></h2>
+                    <p id="popup-price" class="price-tag"></p>
+                    <div class="info-section">
+                        <h4>Description</h4>
+                        <p id="popup-description"></p>
+                    </div>
+                    <div id="size-options" class="size-buttons"></div>
+                    <input type="number" id="popup-quantity" value="1" min="1">
+                    <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
   
                 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -1239,162 +1220,164 @@ z-index: 999;
                     });
                 
                     // 3. CART & MODAL DATA
-                    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-                    let modalSwiper; // Placeholder for the popup swiper
-                
-                    const myProducts = [
-                        { 
-                            id: 1, 
-                            name: "Gold Oval Earrings", 
-                            price: 50, 
-                            images: ["/images/pp.jpeg", "/images/a.jpeg", "/images/b.jpeg", "/images/c.jpeg" ],
-                          
-                            description: "Handcrafted gold ovals designed for timeless elegance.", 
-                            sizes: [6, 7, 8, 9] 
-                        }
-                        // Add more products here using the same format
-                    ];
-                
-                    // 4. ON PAGE LOAD
-                    document.addEventListener('DOMContentLoaded', () => {
-                        // Init the Modal Swiper (Start with loop off to prevent errors)
-                        modalSwiper = new Swiper(".gallery-slider", {
-                            loop: false,
-                            observer: true,
-                            observeParents: true,
-                            pagination: { el: ".swiper-pagination", clickable: true }
-                        });
-                
-                        // Cart Sidebar Event Listeners
-                        const openBtn = document.querySelector('#btn-to-open-cart');
-                        const closeBtn = document.querySelector('#btn-to-close-cart');
-                        const cartOverlay = document.querySelector('.cart-overlay');
-                
-                        if (openBtn) openBtn.addEventListener('click', toggleCart);
-                        if (closeBtn) closeBtn.addEventListener('click', toggleCart);
-                        if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
-                
-                        updateCartCount();
-                    });
-                
-                    // 5. MODAL LOGIC (OPEN/CLOSE)
-                    window.openPopup = function(productId) {
-                        const product = myProducts.find(p => p.id === productId);
-                        if (!product) return;
-                
-                        // Populate Text
-                        document.getElementById('popup-title').innerText = product.name;
-                        document.getElementById('popup-description').innerText = product.description;
-                        document.getElementById('popup-price').innerText = `$${product.price}`;
-                        document.getElementById('popup-quantity').value = 1;
-                
-                        // Inject Images into Swiper Wrapper
-                        const swiperWrapper = document.querySelector('.gallery-slider .swiper-wrapper');
-                        const imagesToUse = (product.images && product.images.length > 0) ? product.images : [product.image];
-                        
-                        swiperWrapper.innerHTML = imagesToUse.map(imgSrc => `
-                            <div class="swiper-slide">
-                                <img src="${imgSrc}" alt="${product.name}" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
-                            </div>
-                        `).join('');
-                
-                        // Inject Size Options
-                        const sizeContainer = document.getElementById('size-options');
-                        sizeContainer.innerHTML = (product.sizes || []).map((size, i) => `
-                            <label style="margin-right: 15px; cursor: pointer;">
-                                <input type="radio" name="product-size" value="${size}" ${i === 0 ? 'checked' : ''}>
-                                <span>${size}</span>
-                            </label>
-                        `).join('') || "<span>One Size</span>";
-                
-                        // Open Modal
-                        const modal = document.getElementById('product-modal');
-                        if (modal) modal.style.display = 'flex';
-                
-                        // Fix Swiper Display (Crucial step)
-                        setTimeout(() => {
-                            if (modalSwiper) {
-                                modalSwiper.update();
-                                modalSwiper.slideTo(0, 0);
-                            }
-                        }, 300);
-                
-                        // Handle the "Add to Cart" button click inside the modal
-                        document.getElementById('add-to-cart-btn').onclick = () => {
-                            const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
-                            const qty = parseInt(document.getElementById('popup-quantity').value) || 1;
-                            addToCart(product.name, product.price, product.image, selectedSize, qty);
-                            closePopup();
-                        };
-                    };
-                
-                    window.closePopup = function() {
-                        const modal = document.getElementById('product-modal');
-                        if (modal) modal.style.display = 'none';
-                    };
-                
-                    // 6. CART SYSTEM LOGIC
-                    window.addToCart = function(name, price, image, size, quantity) {
-                        const itemKey = `${name}-${size}`;
-                        const existing = cart.find(item => `${item.name}-${item.size}` === itemKey);
-                
-                        if (existing) {
-                            existing.quantity += quantity;
-                        } else {
-                            cart.push({ name, price, image, size, quantity });
-                        }
-                        saveAndRefresh();
-                        openCartSidebar();
-                    };
-                
-                    function toggleCart() {
-                        const sidebar = document.querySelector('.cart-sidebar');
-                        const overlay = document.querySelector('.cart-overlay');
-                        const isOpen = sidebar.classList.toggle('open');
-                        overlay.classList.toggle('active');
-                        if (isOpen) displayCartItems();
-                    }
-                
-                    function openCartSidebar() {
-                        const sidebar = document.querySelector('.cart-sidebar');
-                        const overlay = document.querySelector('.cart-overlay');
-                        sidebar.classList.add('open');
-                        overlay.classList.add('active');
-                        displayCartItems();
-                    }
-                
-                    function displayCartItems() {
-                        const container = document.querySelector('.cart-items');
-                        if (!container) return;
-                
-                        if (cart.length === 0) {
-                            container.innerHTML = '<p style="text-align:center; padding-top:50px; color:#999;">Your cart is empty.</p>';
-                            document.getElementById('cart-subtotal').innerText = "$0.00";
-                            return;
-                        }
-                
-                        let total = 0;
-                        container.innerHTML = cart.map((item, index) => {
-                            total += item.price * item.quantity;
-                            return `
-                                <div class="cart-item" style="display: flex; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                                    <img src="${item.image}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 4px;">
-                                    <div style="flex: 1;">
-                                        <h4 style="margin: 0; font-size: 15px;">${item.name}</h4>
-                                        <p style="margin: 2px 0; font-size: 12px; color: #888;">Size: ${item.size}</p>
-                                        <p style="margin: 5px 0; font-weight: bold; color: #a8977a;">$${item.price} x ${item.quantity}</p>
-                                        <button onclick="removeItem(${index})" style="color: red; background: none; border: none; cursor: pointer; text-decoration: underline; font-size: 11px; padding: 0;">Remove</button>
-                                    </div>
-                                </div>`;
-                        }).join('');
-                
-                        document.getElementById('cart-subtotal').innerText = `$${total.toFixed(2)}`;
-                    }
-                
-                    window.removeItem = function(index) {
-                        cart.splice(index, 1);
-                        saveAndRefresh();
-                    };
+             // 1. DATA & GLOBALS
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let modalSwiper = null;
+
+const myProducts = [
+    { 
+        id: 1, 
+        name: "Gold Oval Earrings", 
+        price: 50, 
+        image: "/images/pp.jpeg" ,
+        images: ["/images/pp.jpeg", "/images/a.jpeg", "/images/b.jpeg", "/images/c.jpeg" ],
+        description: "Handcrafted gold ovals designed for timeless elegance.", 
+        sizes: [6, 7, 8, 9] 
+    }
+];
+
+// 2. INITIALIZE
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Modal Swiper
+    modalSwiper = new Swiper(".gallery-slider", {
+        observer: true,
+        observeParents: true,
+        pagination: { el: ".swiper-pagination", clickable: true }
+    });
+
+    // Sidebar Listeners
+    const openBtn = document.querySelector('#btn-to-open-cart');
+    const closeBtn = document.querySelector('#btn-to-close-cart');
+    const overlay = document.querySelector('.cart-overlay');
+
+    if (openBtn) openBtn.onclick = toggleCart;
+    if (closeBtn) closeBtn.onclick = toggleCart;
+    if (overlay) overlay.onclick = toggleCart;
+
+    updateCartCount();
+});
+
+// 3. MODAL LOGIC
+window.openPopup = function(productId) {
+    const product = myProducts.find(p => p.id === productId);
+    if (!product) return;
+
+    document.getElementById('popup-title').innerText = product.name;
+    document.getElementById('popup-description').innerText = product.description;
+    document.getElementById('popup-price').innerText = `$${product.price}`;
+    document.getElementById('popup-quantity').value = 1;
+
+    // Images
+    const wrapper = document.querySelector('.gallery-slider .swiper-wrapper');
+    if (wrapper) {
+        const imgs = (product.images && product.images.length > 0) ? product.images : [product.image];
+        wrapper.innerHTML = imgs.map(src => `
+            <div class="swiper-slide">
+                <img src="${src}" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
+            </div>
+        `).join('');
+    }
+
+    // Sizes
+    const sizeBox = document.getElementById('size-options');
+    if (sizeBox) {
+        sizeBox.innerHTML = (product.sizes || []).map((s, i) => `
+            <label style="margin-right:10px;">
+                <input type="radio" name="product-size" value="${s}" ${i === 0 ? 'checked' : ''}> ${s}
+            </label>
+        `).join('');
+    }
+
+    document.getElementById('product-modal').style.display = 'flex';
+
+    // Wake up Swiper
+    setTimeout(() => {
+        if (modalSwiper && typeof modalSwiper.update === 'function') {
+            modalSwiper.update();
+            modalSwiper.slideTo(0, 0);
+        }
+    }, 300);
+
+    // Button Click
+    document.getElementById('add-to-cart-btn').onclick = () => {
+        const size = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
+        const qty = parseInt(document.getElementById('popup-quantity').value) || 1;
+        addToCart(product.name, product.price, product.image, size, qty);
+        closePopup();
+    };
+};
+
+window.closePopup = () => {
+    document.getElementById('product-modal').style.display = 'none';
+};
+
+// 4. CART LOGIC (Safe Version)
+window.addToCart = function(name, price, image, size, quantity) {
+    const itemKey = `${name}-${size}`;
+    const existing = cart.find(item => `${item.name}-${item.size}` === itemKey);
+    if (existing) {
+        existing.quantity += quantity;
+    } else {
+        cart.push({ name, price, image, size, quantity });
+    }
+    saveAndRefresh();
+    openCartSidebar();
+};
+
+function displayCartItems() {
+    const container = document.querySelector('.cart-items');
+    const subtotalEl = document.getElementById('cart-subtotal');
+    if (!container) return;
+
+    if (cart.length === 0) {
+        container.innerHTML = '<p style="text-align:center;">Empty</p>';
+        if (subtotalEl) subtotalEl.innerText = "$0.00";
+        return;
+    }
+
+    let total = 0;
+    container.innerHTML = cart.map((item, index) => {
+        total += item.price * item.quantity;
+        return `<div class="cart-item">
+                    <img src="${item.image}" width="50">
+                    <div>${item.name} (${item.size}) - $${item.price} x ${item.quantity}</div>
+                    <button onclick="removeItem(${index})">Remove</button>
+                </div>`;
+    }).join('');
+
+    // Safety check: only update if the element exists
+    if (subtotalEl) {
+        subtotalEl.innerText = `$${total.toFixed(2)}`;
+    }
+}
+
+function saveAndRefresh() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    displayCartItems();
+}
+
+function updateCartCount() {
+    const el = document.getElementById("cart-count");
+    if (el) el.innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
+}
+
+function toggleCart() {
+    document.querySelector('.cart-sidebar').classList.toggle('open');
+    document.querySelector('.cart-overlay').classList.toggle('active');
+    displayCartItems();
+}
+
+function openCartSidebar() {
+    document.querySelector('.cart-sidebar').classList.add('open');
+    document.querySelector('.cart-overlay').classList.add('active');
+    displayCartItems();
+}
+
+window.removeItem = (index) => {
+    cart.splice(index, 1);
+    saveAndRefresh();
+};
                 
                     window.updateQuantity = function(index, newQty) {
                         const qty = parseInt(newQty);
