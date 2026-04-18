@@ -2,66 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliteShop - Checkout</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD&commit=true&disable-funding=credit,paylater"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fafafa; display: flex; justify-content: center; padding-top: 50px; }
-        .checkout-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
-        .price-row { display: flex; justify-content: space-between; margin-bottom: 10px; color: #555; }
-        .total-row { display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; font-weight: bold; font-size: 1.2em; }
+        body { font-family: 'Montserrat', sans-serif; background: #fafafa; display: flex; justify-content: center; padding: 50px 20px; margin: 0; }
+        .checkout-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { border-bottom: 2px solid #a8977a; padding-bottom: 10px; color: #161711; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 15px; color: #555; font-size: 14px; }
+        .total-row { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; font-weight: bold; font-size: 1.2em; color: #161711; }
+        #paypal-button-container { margin-top: 30px; min-height: 150px; }
+        .empty-msg { text-align: center; padding: 20px; color: #666; }
     </style>
 </head>
 <body>
 
     <div class="checkout-card">
         <h2>Order Summary</h2>
-        <div class="price-row">
-            <span>Florenza Lavender</span>
-            <span>450.00 DH</span>
-        </div>
-        <div class="price-row">
-            <span>Shipping Fee</span>
-            <span>50.00 DH</span>
-        </div>
-        <div class="total-row">
-            <span>Total</span>
-            <span>500.00 DH</span>
-        </div>
-
+        <div id="order-items-container">
+            </div>
         <div id="paypal-button-container"></div>
     </div>
 
     <script>
-        const BACKEND_URL = window.location.origin;
-
-        // Current item for sale (In a cart.html, this would come from LocalStorage)
-        const myCart = [
-            { name: "Florenza Lavender Deodorant", quantity: 1, price: "450.00" }
-        ];
-
-        paypal.Buttons({
-            createOrder: async () => {
-                const response = await fetch(`${BACKEND_URL}/api/orders`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cart: myCart })
-                });
-                const order = await response.json();
-                return order.id;
-            },
-            onApprove: async (data) => {
-                const response = await fetch(`${BACKEND_URL}/api/orders/${data.orderID}/capture`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ cart: myCart })
-                });
-                const result = await response.json();
-                if (result.order) {
-                    alert("Order Placed Successfully!");
-                    window.location.reload();
-                }
+        // 1. Configuration & Constants
+        const MAD_TO_USD_RATE = 0.10; // Update this to current rate
+        const container = document.getElementById('order-items-container');
+        const paypalBox = document.getElementById('paypal-button-container');
+    
+        function initCheckout() {
+            const myCart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (myCart.length === 0) {
+                container.innerHTML = "<p>Your cart is empty.</p>";
+                return;
             }
-        }).render('#paypal-button-container');
+    
+            // Logic settings
+            const baseShipping = 35.00;
+            const freeShippingThreshold = 500.00;
+            const paypalFeePercent = 0.05;
+    
+            let subtotal = 0;
+            container.innerHTML = ""; 
+    
+            // Render Items
+            myCart.forEach(item => {
+                const itemTotal = parseFloat(item.price) * item.quantity;
+                subtotal += itemTotal;
+                const row = document.createElement('div');
+                row.className = 'price-row';
+                row.innerHTML = `<span>${item.name} (x${item.quantity})</span><span>${itemTotal.toFixed(2)} DH</span>`;
+                container.appendChild(row);
+            });
+    
+            // Calculate Extras
+            let finalShipping = subtotal >= freeShippingThreshold ? 0.00 : baseShipping;
+            let feeMAD = (subtotal + finalShipping) * paypalFeePercent;
+            let finalTotalMAD = subtotal + finalShipping + feeMAD;
+    
+            // Render Summary Rows
+            const extrasHTML = `
+                <div class="price-row"><span>Shipping Fee ${finalShipping === 0 ? '<b>(Free)</b>' : ''}</span><span>${finalShipping.toFixed(2)} DH</span></div>
+                <div class="price-row" style="color: #888;"><span>Transaction Fee (5%)</span><span>${feeMAD.toFixed(2)} DH</span></div>
+                <div class="total-row"><span>Total</span><span>${finalTotalMAD.toFixed(2)} DH</span></div>
+            `;
+            container.insertAdjacentHTML('beforeend', extrasHTML);
+    
+            // Initialize PayPal
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    style: { layout: 'vertical', color: 'black', shape: 'rect', label: 'checkout' },
+                    createOrder: (data, actions) => {
+    // 1. Calculate values in USD
+    const totalUSD = (finalTotalMAD * MAD_TO_USD_RATE).toFixed(2);
+    const shippingUSD = (finalShipping * MAD_TO_USD_RATE).toFixed(2);
+    const feeUSD = (feeMAD * MAD_TO_USD_RATE).toFixed(2);
+    
+    // 2. The item total MUST be (Grand Total - Shipping - Fees)
+    // To ensure the math is perfect for PayPal:
+    const itemTotalUSD = (parseFloat(totalUSD) - parseFloat(shippingUSD) - parseFloat(feeUSD)).toFixed(2);
+
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                currency_code: 'USD',
+                value: totalUSD, // The Grand Total
+                breakdown: {
+                    item_total: { currency_code: 'USD', value: itemTotalUSD },
+                    shipping: { currency_code: 'USD', value: shippingUSD },
+                    handling: { currency_code: 'USD', value: feeUSD } // Use 'handling' for the transaction fee
+                }
+            },
+            items: [{
+                name: "L'Écrin Doux Jewelry Order",
+                quantity: "1",
+                unit_amount: { currency_code: 'USD', value: itemTotalUSD },
+                category: "PHYSICAL_GOODS"
+            }]
+        }]
+    });
+},
+                    onApprove: (data, actions) => {
+                        return actions.order.capture().then(details => {
+                            alert('Payment successful, ' + details.payer.name.given_name + '!');
+                            localStorage.removeItem("cart"); 
+                            window.location.href = "index.html"; 
+                        });
+                    },
+                    onError: (err) => {
+                        console.error('PayPal Error:', err);
+                        alert('Payment failed. Please try again.');
+                    }
+                }).render('#paypal-button-container');
+            } else {
+                paypalBox.innerHTML = '<p style="color:red">PayPal failed to load.</p>';
+            }
+        }
+    
+        // Run when page is ready
+        window.onload = initCheckout;
     </script>
-</body>
-</html>

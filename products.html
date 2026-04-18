@@ -359,32 +359,101 @@ margin-top: 10px;
     font-family: "Montserrat";
 }
 /* The Background Dimmer */
+/* This makes the background dark and the content scrollable */
 .modal-overlay {
-  display: none; /* Hidden by default */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100%;
-  background: rgba(22, 23, 17, 0.85); /* Your dark hex #161711 */
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff; /* White background to look like a new page */
+    z-index: 2000;
+    overflow-y: auto; /* Enable scrolling for the whole overlay */
 }
 
-/* The Popup Box */
+/* This styles the internal container to look like a page */
 .modal-content {
-  background: #fff;
-  display: grid;
-  width: 100%;
-  height: 100%;
-  padding: 40px;
-  position: relative;
-  border-radius: 2px; /* Sharp, clean luxury edges */
-  animation: fadeIn 0.4s ease;
+    background: #fff;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px 20px 40px 20px; /* Space at top for the close button */
+    border-radius: 0; /* Square edges for the full-page look */
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Layout for the image and details */
+.modal-grid {
+    width: 100%;
+    max-width: 800px; /* Keeps it from getting too wide on desktop */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Ensure the button is big and visible */
+.buy-button {
+    width: 100%;
+    padding: 20px;
+    background: #161711;
+    color: #a8977a;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Keep the close button at the very top right */
+.close-btn {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-size: 35px;
+    z-index: 2001;
+    color: #161711;
+}
+/* The Popup Box */
+/* Ensure the popup box itself can grow or scroll */
+.modal-content {
+    background: #fff;
+    width: 95%; /* Better for mobile */
+    max-width: 500px;
+    max-height: 90vh; /* Don't let it go off-screen */
+    padding: 20px;
+    position: relative;
+    border-radius: 8px;
+    overflow-y: auto; /* This allows vertical scrolling if content is long */
+    display: block; /* Change from grid to block for easier flow */
+}
+
+/* Give the details section some breathing room */
+.modal-details {
+    margin-top: 20px;
+    color: #161711; /* Dark text on white background */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style the size buttons so they are visible */
+.size-btn-label {
+    border: 1px solid #a8977a;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+/* Hidden radio but styled label */
+input[type="radio"]:checked + .size-btn-label {
+    background: #a8977a;
+    color: white;
+}
 .modal-grid {
   display: grid;
   
@@ -524,7 +593,37 @@ margin-top: 10px;
   letter-spacing: 2px;
   cursor: pointer;
 }
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
 
+.cart-item img {
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.remove-item {
+    background: transparent;
+    border: none;
+    color: #e79396;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
 .buy-button:disabled {
   background: #ccc;
   cursor: not-allowed;
@@ -1156,12 +1255,22 @@ z-index: 999;
 
 
     </div>
-     <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-overlay" class="cart-overlay"></div>
 
-     <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-items"></div>
-        <div class="cart-footer">
-            <p>Total: <span id="cart-subtotal">$0.00</span></p>
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items">
+            </div>
+        <div class="cart-footer" style="padding: 20px; border-top: 1px solid #333;">
+            <div class="d-flex justify-content-between mb-3">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">dh0.00</span>
+            </div>
+            
+            <button class="buy-button" onclick="goToCheckout()">Checkout</button>
         </div>
     </div>
     
@@ -1171,10 +1280,12 @@ z-index: 999;
             <button class="close-btn" onclick="closePopup()">&times;</button>
             <div class="modal-grid">
                 <div class="modal-gallery">
-                    <div class="swiper gallery-slider">
-                        <div class="swiper-wrapper"></div>
-                        <div class="swiper-pagination"></div>
+                    <div class="main-img-container" style="text-align: center; background: #f9f9f9; border-radius: 8px;">
+                        <img id="main-popup-img" src="" style="width: 100%; height: 400px; object-fit: contain;">
                     </div>
+                    
+                    <div id="thumb-row" style="display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px;">
+                        </div>
                 </div>
                 <div class="modal-details">
                     <h2 id="popup-title"></h2>
@@ -1184,7 +1295,9 @@ z-index: 999;
                         <p id="popup-description"></p>
                     </div>
                     <div id="size-options" class="size-buttons"></div>
-                    <input type="number" id="popup-quantity" value="1" min="1">
+                   <div class="quantity" style="display: flex;">
+                    <h3> quantity : </h3>
+                    <input style="width: 20%;" type="number" id="popup-quantity" value="1" min="1"></div>
                     <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
                 </div>
             </div>
@@ -1198,214 +1311,183 @@ z-index: 999;
                 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
                 
                 <script>
-                    // 1. INITIALIZE LIBRARIES
-                    lucide.createIcons();
-                
-                    // 2. MAIN PAGE SLIDERS (Hero, Collection, Article)
-                    const heroSwiper = new Swiper(".hero-slider", {
-                        loop: true,
-                        autoplay: { delay: 5000, disableOnInteraction: false },
-                        pagination: { el: ".swiper-pagination", clickable: true }
+                    // 1. DATA & GLOBALS (Only define these once)
+                    window.cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    let modalSwiper = null;
+                    
+                    const myProducts = [
+                        { 
+                            id: 1, 
+                            name: "Gold Oval Earrings", 
+                            price: 50, 
+                            image: "images/pp.jpeg", 
+                            images: ["images/pp.jpeg", "images/a.jpeg", "images/b.jpeg", "images/c.jpeg"],
+                            description: "Handcrafted gold ovals designed for timeless elegance.", 
+                            sizes: [6, 7, 8, 9] 
+                        }
+                    ];
+                    
+                    // 2. INITIALIZATION
+                    document.addEventListener('DOMContentLoaded', () => {
+                        // Hero Slider
+                        new Swiper(".hero-slider", { loop: true, autoplay: { delay: 5000 } });
+                        
+                        // Modal Swiper (Start it once)
+                        modalSwiper = new Swiper(".gallery-slider", {
+                            observer: true,
+                            observeParents: true,
+                            pagination: { el: ".swiper-pagination", clickable: true },
+                            navigation: { 
+                                nextEl: ".swiper-button-next", 
+                                prevEl: ".swiper-button-prev" 
+                            }
+                        });
+                    
+                        updateCartCount();
+                        displayCartItems(); // Load existing cart items on startup
                     });
-                
-                    const collectionSwiper = new Swiper(".collection-slider", {
-                        loop: true,
-                        autoplay: { delay: 5000, disableOnInteraction: false },
-                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
-                    });
-                
-                    const articleSwiper = new Swiper(".article-slider", {
-                        loop: true,
-                        autoplay: { delay: 5000, disableOnInteraction: false },
-                        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
-                    });
-                
-                    // 3. CART & MODAL DATA
-             // 1. DATA & GLOBALS
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let modalSwiper = null;
-
-const myProducts = [
-    { 
-        id: 1, 
-        name: "Gold Oval Earrings", 
-        price: 50, 
-        image: "/images/pp.jpeg" ,
-        images: ["/images/pp.jpeg", "/images/a.jpeg", "/images/b.jpeg", "/images/c.jpeg" ],
-        description: "Handcrafted gold ovals designed for timeless elegance.", 
-        sizes: [6, 7, 8, 9] 
-    }
-];
-
-// 2. INITIALIZE
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Modal Swiper
-    modalSwiper = new Swiper(".gallery-slider", {
-        observer: true,
-        observeParents: true,
-        pagination: { el: ".swiper-pagination", clickable: true }
-    });
-
-    // Sidebar Listeners
-    const openBtn = document.querySelector('#btn-to-open-cart');
-    const closeBtn = document.querySelector('#btn-to-close-cart');
-    const overlay = document.querySelector('.cart-overlay');
-
-    if (openBtn) openBtn.onclick = toggleCart;
-    if (closeBtn) closeBtn.onclick = toggleCart;
-    if (overlay) overlay.onclick = toggleCart;
-
-    updateCartCount();
-});
-
-// 3. MODAL LOGIC
-window.openPopup = function(productId) {
+                    
+                    // 3. MODAL FUNCTIONS
+                    window.openPopup = function(productId) {
     const product = myProducts.find(p => p.id === productId);
     if (!product) return;
 
+    // 1. Set Text Details
     document.getElementById('popup-title').innerText = product.name;
     document.getElementById('popup-description').innerText = product.description;
-    document.getElementById('popup-price').innerText = `$${product.price}`;
+    document.getElementById('popup-price').innerText = `${product.price}Dh`;
     document.getElementById('popup-quantity').value = 1;
 
-    // Images
-    const wrapper = document.querySelector('.gallery-slider .swiper-wrapper');
-    if (wrapper) {
-        const imgs = (product.images && product.images.length > 0) ? product.images : [product.image];
-        wrapper.innerHTML = imgs.map(src => `
-            <div class="swiper-slide">
-                <img src="${src}" style="width:100%; height:400px; object-fit:cover; border-radius:8px;">
-            </div>
-        `).join('');
-    }
+    // 2. Set Main Image & Thumbnails
+    const mainImg = document.getElementById('main-popup-img');
+    mainImg.src = product.image;
 
-    // Sizes
-    const sizeBox = document.getElementById('size-options');
-    if (sizeBox) {
-        sizeBox.innerHTML = (product.sizes || []).map((s, i) => `
-            <label style="margin-right:10px;">
-                <input type="radio" name="product-size" value="${s}" ${i === 0 ? 'checked' : ''}> ${s}
+    const thumbRow = document.getElementById('thumb-row');
+    const allImages = (product.images && product.images.length > 0) ? product.images : [product.image];
+    thumbRow.innerHTML = allImages.map(src => `
+        <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" 
+             style="width: 50px; height: 50px; object-fit: cover; cursor: pointer; border: 1px solid #ddd;">
+    `).join('');
+
+    // 3. Generate Size Buttons (This fixes the "undefined" error)
+    const sizeContainer = document.getElementById('size-options');
+    if (sizeContainer && product.sizes) {
+        sizeContainer.innerHTML = product.sizes.map((s, index) => `
+            <label style="margin-right: 5px;">
+                <input type="radio" name="product-size" value="${s}" ${index === 0 ? 'checked' : ''} style="display:none;">
+                <span class="size-btn-label">${s}</span>
             </label>
         `).join('');
     }
 
+    // 4. Show Modal
     document.getElementById('product-modal').style.display = 'flex';
 
-    // Wake up Swiper
-    setTimeout(() => {
-        if (modalSwiper && typeof modalSwiper.update === 'function') {
-            modalSwiper.update();
-            modalSwiper.slideTo(0, 0);
-        }
-    }, 300);
-
-    // Button Click
+    // 5. Setup Add to Cart Button
     document.getElementById('add-to-cart-btn').onclick = () => {
-        const size = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
+        // Find the selected radio button
+        const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
         const qty = parseInt(document.getElementById('popup-quantity').value) || 1;
-        addToCart(product.name, product.price, product.image, size, qty);
-        closePopup();
+        window.goToCheckout = function() {
+        if (window.cart.length === 0) {
+            alert("Your bag is empty!");
+            return;
+        }
+        // Just redirect to the checkout file
+        window.location.href = "index1.html"; 
+    };
+        window.addToCart(product.name, product.price, product.image, selectedSize, qty);
+        window.closePopup();
     };
 };
-
-window.closePopup = () => {
-    document.getElementById('product-modal').style.display = 'none';
-};
-
-// 4. CART LOGIC (Safe Version)
-window.addToCart = function(name, price, image, size, quantity) {
-    const itemKey = `${name}-${size}`;
-    const existing = cart.find(item => `${item.name}-${item.size}` === itemKey);
-    if (existing) {
-        existing.quantity += quantity;
-    } else {
-        cart.push({ name, price, image, size, quantity });
-    }
-    saveAndRefresh();
-    openCartSidebar();
-};
-
-function displayCartItems() {
-    const container = document.querySelector('.cart-items');
-    const subtotalEl = document.getElementById('cart-subtotal');
-    if (!container) return;
-
-    if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center;">Empty</p>';
-        if (subtotalEl) subtotalEl.innerText = "$0.00";
-        return;
-    }
-
-    let total = 0;
-    container.innerHTML = cart.map((item, index) => {
-        total += item.price * item.quantity;
-        return `<div class="cart-item">
-                    <img src="${item.image}" width="50">
-                    <div>${item.name} (${item.size}) - $${item.price} x ${item.quantity}</div>
-                    <button onclick="removeItem(${index})">Remove</button>
-                </div>`;
-    }).join('');
-
-    // Safety check: only update if the element exists
-    if (subtotalEl) {
-        subtotalEl.innerText = `$${total.toFixed(2)}`;
-    }
-}
-
-function saveAndRefresh() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    updateCartCount();
-    displayCartItems();
-}
-
-function updateCartCount() {
-    const el = document.getElementById("cart-count");
-    if (el) el.innerText = cart.reduce((sum, i) => sum + i.quantity, 0);
-}
-
-function toggleCart() {
-    document.querySelector('.cart-sidebar').classList.toggle('open');
-    document.querySelector('.cart-overlay').classList.toggle('active');
-    displayCartItems();
-}
-
-function openCartSidebar() {
-    document.querySelector('.cart-sidebar').classList.add('open');
-    document.querySelector('.cart-overlay').classList.add('active');
-    displayCartItems();
-}
-
-window.removeItem = (index) => {
-    cart.splice(index, 1);
-    saveAndRefresh();
-};
-                
-                    window.updateQuantity = function(index, newQty) {
-                        const qty = parseInt(newQty);
-                        if (qty > 0) cart[index].quantity = qty;
-                        else cart.splice(index, 1);
+                    
+                    window.closePopup = function() {
+                        document.getElementById('product-modal').style.display = 'none';
+                    };
+                    
+                    // 4. CART LOGIC
+                    window.toggleCart = function() {
+                        const sidebar = document.getElementById('cart-sidebar');
+                        const overlay = document.getElementById('cart-overlay');
+                        if (sidebar && overlay) {
+                            sidebar.classList.toggle('open');
+                            overlay.classList.toggle('active');
+                            displayCartItems();
+                        }
+                    };
+                    
+                    window.addToCart = function(name, price, image, size, quantity) {
+                        const itemKey = `${name}-${size}`;
+                        const existing = window.cart.find(item => `${item.name}-${item.size}` === itemKey);
+                        
+                        if (existing) {
+                            existing.quantity += quantity;
+                        } else {
+                            window.cart.push({ name, price, image, size, quantity });
+                        }
+                        
+                        saveAndRefresh();
+                        // Automatically open the cart so the user sees it worked
+                        const sidebar = document.getElementById('cart-sidebar');
+                        if (sidebar && !sidebar.classList.contains('open')) {
+                            window.toggleCart();
+                        }
+                    };
+                    
+                    window.removeItem = function(index) {
+                        window.cart.splice(index, 1);
                         saveAndRefresh();
                     };
-                
+                    
+                    function displayCartItems() {
+                        const container = document.querySelector('.cart-items');
+                        const subtotalEl = document.getElementById('cart-subtotal');
+                        if (!container) return;
+                    
+                        if (window.cart.length === 0) {
+                            container.innerHTML = '<p style="text-align:center; padding: 20px;">Your bag is empty.</p>';
+                            if (subtotalEl) subtotalEl.innerText = "$0.00";
+                            return;
+                        }
+                    
+                        let total = 0;
+                        container.innerHTML = window.cart.map((item, index) => {
+                            total += (item.price * item.quantity);
+                            return `
+                                <div class="cart-item" style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px; color:#a8977a;">
+                                    <img src="${item.image}" width="60" height="60" style="object-fit:cover;">
+                                    <div style="flex:1">
+                                        <div style="font-weight:bold; color:white;">${item.name}</div>
+                                        <div style="font-size:12px;">Size: ${item.size}</div>
+                                        <div>${item.price}Dh x ${item.quantity}</div>
+                                        <button onclick="removeItem(${index})" style="background:none; border:none; color:#e79396; cursor:pointer; font-size:12px; padding:0; text-decoration:underline;">Remove</button>
+                                    </div>
+                                </div>`;
+                        }).join('');
+                    
+                        if (subtotalEl) subtotalEl.innerText = `${total.toFixed(2)}dh`;
+                    }
+                    
                     function saveAndRefresh() {
-                        localStorage.setItem("cart", JSON.stringify(cart));
+                        localStorage.setItem("cart", JSON.stringify(window.cart));
                         updateCartCount();
                         displayCartItems();
                     }
-                
+                    
                     function updateCartCount() {
                         const countEl = document.getElementById("cart-count");
                         if (countEl) {
-                            countEl.innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+                            const totalQty = window.cart.reduce((sum, item) => sum + item.quantity, 0);
+                            countEl.innerText = totalQty;
                         }
                     }
-                
-                    // 7. SEARCH LOGIC
+                    
+                    // 5. SEARCH LOGIC
                     window.toggleSearch = function() {
                         const box = document.getElementById("searchBox");
                         if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
                     };
-                
+                    
                     window.searchItems = function() {
                         let input = document.getElementById("searchInput").value.toLowerCase();
                         let items = document.querySelectorAll(".product");
@@ -1413,4 +1495,4 @@ window.removeItem = (index) => {
                             item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
                         });
                     };
-                </script>
+                    </script>
