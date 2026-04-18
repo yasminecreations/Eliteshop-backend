@@ -62,6 +62,9 @@ app.get('/', (req, res) => {
 app.get('/products', (req, res) => {
     res.sendFile(path.join(__dirname, 'products.html'));
 });
+app.get('/index1', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index1.html'));
+});
 app.get('/api/status', async (req, res) => {
     // This tells the code to wait up to 2 seconds for the DB to wake up
     if (mongoose.connection.readyState !== 1) {
