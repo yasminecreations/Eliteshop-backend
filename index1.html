@@ -21,31 +21,32 @@
         <h2>Order Summary</h2>
         <div id="order-items-container">
             </div>
+            <div> 
+                <h3> Please enter your phone number - الرجاء ادخال رقم الهاتف  </h3>
+               <input id="client-phone" type="tel" placeholder="+212" required> 
+            </div>
         <div id="paypal-button-container"></div>
     </div>
 
     <script>
-        // 1. Configuration & Constants
-        const MAD_TO_USD_RATE = 0.10; // Update this to current rate
-        const container = document.getElementById('order-items-container');
-        const paypalBox = document.getElementById('paypal-button-container');
+        const MAD_TO_USD_RATE = 0.10; 
     
         function initCheckout() {
+            const container = document.getElementById('order-items-container');
             const myCart = JSON.parse(localStorage.getItem("cart")) || [];
+            
             if (myCart.length === 0) {
                 container.innerHTML = "<p>Your cart is empty.</p>";
                 return;
             }
     
-            // Logic settings
+            // 1. Calculate the math first so the variables exist for the button
             const baseShipping = 35.00;
             const freeShippingThreshold = 500.00;
             const paypalFeePercent = 0.05;
-    
             let subtotal = 0;
             container.innerHTML = ""; 
     
-            // Render Items
             myCart.forEach(item => {
                 const itemTotal = parseFloat(item.price) * item.quantity;
                 subtotal += itemTotal;
@@ -55,12 +56,10 @@
                 container.appendChild(row);
             });
     
-            // Calculate Extras
             let finalShipping = subtotal >= freeShippingThreshold ? 0.00 : baseShipping;
             let feeMAD = (subtotal + finalShipping) * paypalFeePercent;
             let finalTotalMAD = subtotal + finalShipping + feeMAD;
     
-            // Render Summary Rows
             const extrasHTML = `
                 <div class="price-row"><span>Shipping Fee ${finalShipping === 0 ? '<b>(Free)</b>' : ''}</span><span>${finalShipping.toFixed(2)} DH</span></div>
                 <div class="price-row" style="color: #888;"><span>Transaction Fee (5%)</span><span>${feeMAD.toFixed(2)} DH</span></div>
@@ -68,57 +67,70 @@
             `;
             container.insertAdjacentHTML('beforeend', extrasHTML);
     
-            // Initialize PayPal
+            // 2. Now render the PayPal Buttons
             if (typeof paypal !== 'undefined') {
                 paypal.Buttons({
                     style: { layout: 'vertical', color: 'black', shape: 'rect', label: 'checkout' },
-                    createOrder: (data, actions) => {
-    // 1. Calculate values in USD
-    const totalUSD = (finalTotalMAD * MAD_TO_USD_RATE).toFixed(2);
-    const shippingUSD = (finalShipping * MAD_TO_USD_RATE).toFixed(2);
-    const feeUSD = (feeMAD * MAD_TO_USD_RATE).toFixed(2);
+                    
+                    createOrder: function(data, actions) {
+                        const phoneValue = document.getElementById('client-phone').value;
+                        if (!phoneValue) {
+                            alert("S'il vous plaît, entrez votre numéro de téléphone.");
+                            return;
+                        }
     
-    // 2. The item total MUST be (Grand Total - Shipping - Fees)
-    // To ensure the math is perfect for PayPal:
-    const itemTotalUSD = (parseFloat(totalUSD) - parseFloat(shippingUSD) - parseFloat(feeUSD)).toFixed(2);
-
-    return actions.order.create({
-        purchase_units: [{
-            amount: {
-                currency_code: 'USD',
-                value: totalUSD, // The Grand Total
-                breakdown: {
-                    item_total: { currency_code: 'USD', value: itemTotalUSD },
-                    shipping: { currency_code: 'USD', value: shippingUSD },
-                    handling: { currency_code: 'USD', value: feeUSD } // Use 'handling' for the transaction fee
-                }
-            },
-            items: [{
-                name: "L'Écrin Doux Jewelry Order",
-                quantity: "1",
-                unit_amount: { currency_code: 'USD', value: itemTotalUSD },
-                category: "PHYSICAL_GOODS"
-            }]
-        }]
-    });
-},
-                    onApprove: (data, actions) => {
-                        return actions.order.capture().then(details => {
-                            alert('Payment successful, ' + details.payer.name.given_name + '!');
+                        // Map items and add phone to the first item name
+                        const paypalItems = myCart.map((item, index) => {
+                            let displayName = `${item.name}${item.size ? ' (Size: ' + item.size + ')' : ''}`;
+                            if (index === 0) displayName += ` - [TEL: ${phoneValue}]`;
+                            return {
+                                name: displayName,
+                                quantity: item.quantity.toString(),
+                                unit_amount: {
+                                    currency_code: 'USD',
+                                    value: (parseFloat(item.price) * MAD_TO_USD_RATE).toFixed(2)
+                                }
+                            };
+                        });
+    
+                        // Recalculate totals for the payload
+                        const itemTotalUSD = paypalItems.reduce((sum, item) => sum + (parseFloat(item.unit_amount.value) * item.quantity), 0).toFixed(2);
+                        const shippingUSD = (finalShipping * MAD_TO_USD_RATE).toFixed(2);
+                        const feeUSD = (feeMAD * MAD_TO_USD_RATE).toFixed(2);
+                        const totalUSD = (parseFloat(itemTotalUSD) + parseFloat(shippingUSD) + parseFloat(feeUSD)).toFixed(2);
+    
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    currency_code: 'USD',
+                                    value: totalUSD,
+                                    breakdown: {
+                                        item_total: { currency_code: 'USD', value: itemTotalUSD },
+                                        shipping: { currency_code: 'USD', value: shippingUSD },
+                                        handling: { currency_code: 'USD', value: feeUSD }
+                                    }
+                                },
+                                items: paypalItems
+                            }]
+                        });
+                    },
+    
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            alert('Success! Order placed by ' + details.payer.name.given_name);
                             localStorage.removeItem("cart"); 
                             window.location.href = "index.html"; 
                         });
                     },
-                    onError: (err) => {
+    
+                    onError: function(err) {
                         console.error('PayPal Error:', err);
-                        alert('Payment failed. Please try again.');
                     }
                 }).render('#paypal-button-container');
             } else {
-                paypalBox.innerHTML = '<p style="color:red">PayPal failed to load.</p>';
+                console.error("PayPal SDK not loaded. Check your script tag in the <head>.");
             }
         }
     
-        // Run when page is ready
         window.onload = initCheckout;
     </script>

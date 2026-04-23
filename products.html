@@ -30,13 +30,13 @@
         font-weight: 400;
     }
   #nav{
-      background-color: #fdf1f2;
+      background-color: #161711;
       margin: 0px;
       width:100%;
   }
   #nav h3{
-     font-family: "parisienne";
-     color: #e79396;
+     font-family: "Lobster Two";
+     color: #a8977a;
      font-size: 20px;
      font-style: italic;
      font-weight: 450;
@@ -44,15 +44,15 @@
      padding-top: 10px;
   }
   #navbar{
-    background-color: #fdf1f2;
+    background-color: #161711;
   
   }
   .navbar-nav a{
-      color: #2d2d2d;
-      font-family: "parisienne";
+      color: #a8977a;
+      font-family: "Lobster Two";
   }
   .navbar-toggler-icon{
-      color: #2d2d2d;
+      color: #a8977a;
      
 }
 .navbar-toggler{
@@ -106,15 +106,17 @@ transition: all 0.4s ease;
     display: grid;
     background: #161711;
     color: #a8977a;
-    gap: 10px;
-    
+    gap: 5px;
+    padding-left: 7px;
 }
 .product{
-    height: 300px;
-    width: 180px;
+    border: #938267 solid 2px;
+    height: 350px;
+    width: 170px;
     font-family: "Montserrat";
     font-weight: 1000;
     margin-left: 5px; 
+    gap: 20px;
     border-radius: 10px;
     margin-top: 10px;
     position: relative;
@@ -122,7 +124,9 @@ transition: all 0.4s ease;
 .product img{
     height: 170px;
     width: 150px;
-  
+   padding-left: 12px;
+   padding-top: 3px;
+   
     
 }
 
@@ -171,10 +175,16 @@ font-weight: bold;}
 }
 .products h3{
     font-size: 20px;
+    margin-top: 10px;
+    margin-left: 4px;
 }
 .products h2{
-    font-size: 15px;
-    text-decoration: #e79396 underline;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: "Lobster Two";
+    
+
 }
 .ghgh{
     position: absolute;
@@ -358,8 +368,7 @@ margin-top: 10px;
     text-decoration: #e79396 underline;
     font-family: "Montserrat";
 }
-/* The Background Dimmer */
-/* This makes the background dark and the content scrollable */
+
 .modal-overlay {
     display: none; 
     position: fixed;
@@ -367,34 +376,34 @@ margin-top: 10px;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff; /* White background to look like a new page */
+    background: #fff;
     z-index: 2000;
-    overflow-y: auto; /* Enable scrolling for the whole overlay */
+    overflow-y: auto;
 }
 
-/* This styles the internal container to look like a page */
+
 .modal-content {
     background: #fff;
     width: 100%;
     min-height: 100vh;
-    padding: 60px 20px 40px 20px; /* Space at top for the close button */
-    border-radius: 0; /* Square edges for the full-page look */
+    padding: 60px 20px 40px 20px; 
+    border-radius: 0;
     border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Layout for the image and details */
+
 .modal-grid {
     width: 100%;
-    max-width: 800px; /* Keeps it from getting too wide on desktop */
-    display: flex;
-    flex-direction: column;
+    max-width: 800px;
+    display: grid;
+    
     gap: 30px;
 }
 
-/* Ensure the button is big and visible */
+
 .buy-button {
     width: 100%;
     padding: 20px;
@@ -408,7 +417,7 @@ margin-top: 10px;
     cursor: pointer;
 }
 
-/* Keep the close button at the very top right */
+
 .close-btn {
     position: fixed;
     right: 20px;
@@ -417,30 +426,29 @@ margin-top: 10px;
     z-index: 2001;
     color: #161711;
 }
-/* The Popup Box */
-/* Ensure the popup box itself can grow or scroll */
+
 .modal-content {
     background: #fff;
-    width: 95%; /* Better for mobile */
+    width: 95%; 
     max-width: 500px;
-    max-height: 90vh; /* Don't let it go off-screen */
+    max-height: 90vh; 
     padding: 20px;
     position: relative;
     border-radius: 8px;
-    overflow-y: auto; /* This allows vertical scrolling if content is long */
-    display: block; /* Change from grid to block for easier flow */
+    overflow-y: auto; 
+    display: block; 
 }
 
-/* Give the details section some breathing room */
+
 .modal-details {
     margin-top: 20px;
-    color: #161711; /* Dark text on white background */
+    color: #161711; 
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Style the size buttons so they are visible */
+
 .size-btn-label {
     border: 1px solid #a8977a;
     padding: 5px 10px;
@@ -449,7 +457,7 @@ margin-top: 10px;
     transition: 0.3s;
 }
 
-/* Hidden radio but styled label */
+
 input[type="radio"]:checked + .size-btn-label {
     background: #a8977a;
     color: white;
@@ -460,7 +468,7 @@ input[type="radio"]:checked + .size-btn-label {
   gap: 40px;
 }
 
-/* Images */
+
 #main-popup-img {
   width: 100%;
   height: 400px;
@@ -474,7 +482,7 @@ input[type="radio"]:checked + .size-btn-label {
   margin-top: 15px;
 }
 
-.thumbnail-row img {
+#thumb-row img {
   width: 60px;
   height: 60px;
   cursor: pointer;
@@ -482,17 +490,17 @@ input[type="radio"]:checked + .size-btn-label {
   transition: 0.3s;
 }
 
-/* Typography & Details */
+
 #popup-title {
   font-family: 'Serif', 'Playfair Display', serif;
-  color: #45362c; /* Your dark brown hex */
+  color: #45362c; 
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
 .price-tag {
   font-size: 1.5rem;
-  color: #a8977a; /* Your gold hex */
+  color: #a8977a; 
   font-weight: bold;
 }
 
@@ -502,7 +510,7 @@ input[type="radio"]:checked + .size-btn-label {
   margin-bottom: 20px;
 }
 
-/* Size Buttons */
+
 .size-buttons {
   display: flex;
   gap: 10px;
@@ -526,12 +534,12 @@ input[type="radio"]:checked + .size-btn-label {
     width: 90%;
     height: 400px;
 }
-/* The Sidebar Container */
+
 .cart-sidebar {
     position: fixed;
     top: 0;
-    right: -400px; /* Hidden by default */
-    width: 400px;  /* Control the width here */
+    right: -400px; 
+    width: 400px;  
     height: 100%;
     background: #161711;
     color: #a8977a;
@@ -542,28 +550,28 @@ input[type="radio"]:checked + .size-btn-label {
     flex-direction: column;
 }
 
-/* Responsive: On small phones, let it take more space but not necessarily all */
+
 @media (max-width: 480px) {
     .cart-sidebar {
-        width: 85%; /* Shows a sliver of the background so user knows they can click out */
+        width: 85%; 
         right: -85%;
     }
 }
 
-/* When the "open" class is added via JS */
+
 .cart-sidebar.open {
     right: 0;
 }
 
-/* The dark background overlay */
+
 .cart-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    display: none; /* Hidden by default */
+    background: rgba(0, 0, 0, 0.5); 
+    display: none; 
     z-index: 999;
 }
 
@@ -619,7 +627,7 @@ input[type="radio"]:checked + .size-btn-label {
 .remove-item {
     background: transparent;
     border: none;
-    color: #e79396;
+    color: #a8977a;
     font-size: 0.8rem;
     cursor: pointer;
     text-decoration: underline;
@@ -656,6 +664,11 @@ input[type="radio"]:checked + .size-btn-label {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.images2-img{
+    width: 100%;
+    border-radius: 20px;
+    height: 300px;
+}
 </style>
 </head>
 <body>
@@ -682,12 +695,12 @@ input[type="radio"]:checked + .size-btn-label {
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" id="Home" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" id="jewelery" href="jewelery.html">jewelery</a></li>
-            <li class="nav-item"><a class="nav-link" id="KeyChains" href="keychains.html">KeyChains</a></li>
-            <li class="nav-item"><a class="nav-link" id="hellokitty" href="hellokitty.html">Hello Kitty</a></li>
-            <li class="nav-item"><a class="nav-link" id="cosmetics" href="cosmetics.html">cosmetics</a></li>
-            <li class="nav-item"><a class="nav-link" id="Clothes" href="clothes.html">Clothes</a></li>
-            <li class="nav-item"><a class="nav-link" id="bodycare" href="bodycare.html">Body Care</a></li>
+            <li class="nav-item"><a class="nav-link" id="jewelery" href="products.html">jewelery</a></li>
+            <li class="nav-item"><a class="nav-link" id="KeyChains" href="Beldi.html">KeyChains</a></li>
+            <li class="nav-item"><a class="nav-link" id="hellokitty" href="Trendy.html">Hello Kitty</a></li>
+            <li class="nav-item"><a class="nav-link" id="cosmetics" href="Luxurious.html">cosmetics</a></li>
+            <li class="nav-item"><a class="nav-link" id="Clothes" href="Silver.html">Clothes</a></li>
+            
        </ul>
     </div>
 </nav>
@@ -703,31 +716,11 @@ display: none;
 z-index: 999;
 "> Product added to cart
 </div>
-<div class="swiper hero-slider">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img class="hero-img" src="p.jpeg" alt="" style="width: 100%; height: 500px;">
-             <div class="hero-text">
-               <h1> Give your personal time a special touch </h1>
-              
-             </div>
-         </div>
-              <div class="swiper-slide">
-             <img  class="hero-img" src="o.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-              <div class="hero-text">  
-             <h1> Grow your feminine energy </h1>
-              </div>
-              </div>
-              <div class="swiper-slide">
-                <img  class="hero-img" src="m.jpeg" alt="this is a hero pic"  style="width: 100%; height: 500px;">
-                 <div class="hero-text">  
-                <h1> Glow In and Out </h1>
-                
-                 </div>
-                 </div>
-              </div> 
+<div class="hero">
+        <img style="width: 300px; height: 200px; margin: 40px; position: relative;" src="images/download (3).jpg" alt="">
+              <h1 style="font-family: 'Parisienne'; color: #eee; z-index: 99; position: absolute; padding-bottom: 150px; top: 30%; left: 90px;"> Nos Bijoux </h1>
 
-      <div class="swiper-pagination"> </div>
+      
 
 
     </div> 
@@ -736,507 +729,393 @@ z-index: 999;
        <h1 class="ttl2"> Our Latest Collection</h1>
         <div class="products">
             
-            <div class="product">
-                <img  style=" border: #938267 2px solid;"  src="/images/d.png" alt="">
-                <button class="bn"onclick="openPopup(1)" > <span class="ghgh"  > Voir  </span></button>
+            <div class="product"  onclick="openPopup(1)">
+                <img    src="images/ni (72).jpeg" alt="">
+                
                 <h3>gold starfish Bracelet / سوار نجم البحر </h3>
                 <h2> Prix : 80dh</h2>
-                <button class="bn" onclick="addToCart('gold starfish Bracelet / سوار نجم البحر ', 80, '/images/d.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+  
+                    
+                
             </div> 
-            <div class="product">
-                <img src="/images/e.png"  alt="">
+            <div class="product"  onclick="openPopup(2)">
+                <img src="images/ni (75).jpeg"  alt="">
                 <h3>Hammered Coin Bracelet / سوار الدوائر المقروطة</h3>
                 <h2> Prix : 120dh</h2>
-                <button class="bn" onclick="addToCart('>Hammered Coin Bracelet' ,120, '/images/e.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/f.png" alt="">
+            <div class="product"  onclick="openPopup(3)"> 
+                <img src="images/f.png" alt="">
                 <h3>Molten Metal Bracelet / سوار المنحوت العصري </h3>
                 <h2> Prix : 119dh</h2>
-                <button class="bn" onclick="addToCart('Molten Metal Cuff Bracelet', 80, '/images/f.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
             
        
-            <div class="product"> 
-                <img src="/images/i.png" alt="">
+            <div class="product"  onclick="openPopup(4)"> 
+                <img src="images/ni (84).jpeg" alt="">
                 <h3>Silver White Gemstones Ring </h3>
                 <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/g.png" alt="">
+            <div class="product"  onclick="openPopup(5)"> 
+                <img src="images/ytyt (2).jpeg" alt="">
                 <h3> Royal Emerald ring / خاتم الزمرد الملكي </h3>
                 <h2> Prix : 99dh</h2> 
-                <button class="bn" onclick="addToCart('Royal Emerald ring', 99, '/images/g.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/h.png" alt="">
+            <div class="product" onclick="openPopup(6)"> 
+                <img src="images/lola (2).jpg" alt="">
                 <h3>Silver Adjustable Bracelet / سوار التراث العريق </h3>
                 <h2> Prix : 69dh </h2>
-                <button class="bn" onclick="addToCart('Silver Adjustable Bracelet ', 69, '/images/h.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>
-            <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/n.png" alt="">
+          
+          <div class="product"  onclick="openPopup(8)"> 
+                <img src="images/iku.jpg" alt="">
                 <h3>laser-cut flower layered chain / عقد وردات الليزر </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('laser-cut flower layered chain ', 119, '/images/n.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/nn.png" alt="">
+                
+            </div> <div class="product"  onclick="openPopup(9)"> 
+                <img src="images/per (2).jpg" alt="">
                 <h3>Spinelli Kilcollin Leo Diamond Ring / خاتم الحلقات المتصلة </h3>
                 <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Spinelli Kilcollin Leo Diamond Ring ', 100, '/images/nn.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/nnn.png" alt="">
+                
+            </div> <div class="product"  onclick="openPopup(10)"> 
+                <img src="images/lki (1).jpg" alt="">
                 <h3>Marquise Cut Ring / خاتم ماركيز سوليتير </h3>
                 <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Marquise Cut Ring', 100, '/images/nnn.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct1.png" alt="">
+                
+            </div> <div class="product"  onclick="openPopup(11)"> 
+                <img src="images/drg (2).jpg" alt="">
                 <h3> 3 metals beaded necklace + Bracelet / عقد و سوار خرز الثلاث معادن </h3>
                 <h2> Prix : 170dh </h2>
-                <button class="bn" onclick="addToCart('3 metals beaded necklace + Bracelet ', 170, '/images/prdct1.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/nnnnn.png" alt="">
+                
+            </div> <div class="product" onclick="openPopup(12)"> 
+                <img src="images/tyu.jpeg" alt="">
                 <h3>Black Gemstones Bracelet / اسوارة الحجر الأسود </h3>
                 <h2> Prix : 70dh </h2>
-                <button class="bn" onclick="addToCart('Black Gemstones Bracelet ', 70, '/images/nnnnn.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/nnnnnn.png" alt="">
+                
+            </div> <div class="product" onclick="openPopup(13)"> 
+                <img src="images/ni (28).jpeg" alt="">
                 <h3>Rectangular purple gemstones bracelet / اسوارة الأحجار البنفسجية </h3>
                 <h2> Prix : 70dh </h2>
-                <button class="bn" onclick="addToCart('Rectangular purple gemstones bracelet ', 70, '/images/nnnnnn.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>  <div class="product"> 
-                <img src="/images/prdct (1).png" alt="">
+               
+            </div>  <div class="product"  onclick="openPopup(14)"> 
+                <img src="images/rt.jpg" alt="">
                 <h3> Gold Vintage Pink round Stone Ring / خاتم الحجر الوردي  </h3>
                 <h2> Prix : 50dh </h2>
-                <button class="bn" onclick="addToCart('Gold Vintage Pink round Stone Ring', 50, '/images/prdct (1).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (2).png" alt="">
+               
+            </div> <div class="product" onclick="openPopup(15)"> 
+                <img src="images/lili.jpeg" alt="">
                 <h3>Emerald Gemstones Ring / خاتم الزمرد المرصع بالأحجار البيضاء </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Emerald Gemstones Ring', 99, '/images/prdct (2).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (3).png" alt="">
+                
+            </div> <div class="product"  onclick="openPopup(16)"> 
+                <img src="images/meg (1).jpg" alt="">
                 <h3>Silver White Gemstones Ring with emerald stones / خاتم الأحجار البيضاء  المرصع بالزمرد </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring with emerald stones', 99, '/images/prdct (3).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/i.png" alt="">
-                <h3>Silver White Gemstones Ring / خاتم الطبقات المتلألئة </h3>
-                <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('Silver White Gemstones Ring ', 100, '/images/i.png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (4).png" alt="">
+               
+            </div> 
+               
+             <div class="product"  onclick="openPopup(17)"> 
+                <img src="images/zelya.jpg" alt="">
                 <h3>Emerald 2 flowers  Ring / خاتم وردتي الزمرد </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Emerald 2 flowers  Ring', 99, '/images/prdct (4).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (5).png" alt="">
+               
+            </div> <div class="product" onclick="openPopup(18)"> 
+                <img src="images/paula.jpg" alt="">
                 <h3>gold twist bracelet / اسوارة الإلتواءات الذهبية </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('gold twist bracelet', 99, '/images/prdct (5).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (7).png" alt="">
+                
+            </div> <div class="product" onclick="openPopup(19)"> 
+                <img src="images/lizzy.jpg" alt="">
                 <h3>gold knot bracelet / اسوارة العقدة الذهبية </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('gold knot bracelet', 99, '/images/prdct (7).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div> <div class="product"> 
-                <img src="/images/prdct (9).png" alt="">
+                
+            </div> <div class="product" onclick="openPopup(20)"> 
+                <img src="images/prdct (9).png" alt="">
                 <h3>Silver Diamond waterDrop earings / أقراط قطرة الأحجار الفضية </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Silver Diamond waterDrop earings', 119, '/images/prdct (9).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/prdct (10).png" alt="">
+            <div class="product" onclick="openPopup(21)"> 
+                <img src="images/kayla.jpg" alt="">
                 <h3>Dark Night square Gemstones earings / أقراط  الأحجار السوداء </h3>
                 <h2> Prix : 89dh </h2>
-                <button class="bn" onclick="addToCart('Silver Diamond waterDrop earings', 110, '/images/prdct (9).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/prdct (11).png" alt="">
+            <div class="product"  onclick="openPopup(22)"> 
+                <img src="images/cynthia.jpg" alt="">
                 <h3>Four stacked Cartier Clou Rings  / خواتم كارتيه باربعة الوان </h3>
                 <h2> Prix : 69dh </h2>
-                <button class="bn" onclick="addToCart('Four stacked Cartier Clou Rings ', 69, '/images/prdct (11).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/prdct (12).png" alt="">
+            <div class="product"onclick="openPopup(23)"> 
+                <img src="images/leah.png" alt="">
                 <h3>Gold double round pink stones vintage ring / خاتم الحجرتين الورديتين المستديرتين </h3>
                 <h2> Prix : 50dh </h2>
-                <button class="bn" onclick="addToCart('Gold double round pink stones vintage ring', 50, '/images/prdct (12).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/prdct (13).png" alt="">
+            <div class="product" onclick="openPopup(24)"> 
+                <img src="images/barbara.png" alt="">
                 <h3>Gold double pink oval and round stone vintage ring / خاتم الحجرتين الورديتين المستديرة و البيضوية </h3>
                 <h2> Prix : 50dh </h2>
-                <button class="bn" onclick="addToCart('Gold double pink oval and round stone vintage ring', 50, '/images/prdct (13).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/ol (2).png" alt="">
-                <h3> 5 Rings Amber Rings /  خواتم الكهرمان 5 </h3>
+            <div class="product" onclick="openPopup(25)" > 
+                <img src="images/amber.jpg" alt="">
+                <h3> 5  Resin Rings /  خواتم الكهرمان 5 </h3>
                 <h2> Prix : 100dh </h2>
-                <button class="bn" onclick="addToCart('5 Rings Amber Rings', 100, '/images/ol (2).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/ol (3).png" alt="">
+            <div class="product"  onclick="openPopup(26)" > 
+                <img src="images/chloe.jpg" alt="">
                 <h3>Silver Gold Cross sign round earings / اقراط علامة الزائد الذهبي الفضية </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Silver Gold Cross sign round earings', 119, '/images/ol (3).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/ol (4).png" alt="">
+            <div class="product"  onclick="openPopup(27)" > 
+                <img src="images/eve.jpg" alt="">
                 <h3>Black charcoal pendant earings / اقراط احجار سواد الليل المتدلية </h3>
                 <h2> Prix : 120dh </h2>
-                <button class="bn" onclick="addToCart('Black charcoal pendant earings', 120, '/images/ol (4).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/ol (6).png" alt="">
+            <div class="product"  onclick="openPopup(28)" > 
+                <img src="images/ivana.jpg" alt="">
                 <h3>Van Cleef Silver Flower Bracelet / اسوارة فان كليف الفضية </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart('Van Cleef Silver Flower Bracelet', 79, '/images/ol (4).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/ol (7).png" alt="">
+            <div class="product" onclick="openPopup(29)"> 
+                <img src="images/karen.jpg" alt="">
                 <h3> Gold spark gemstone necklace + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
                 <h2> Prix : 129dh </h2>
-                <button class="bn" onclick="addToCart('Gold spark gemstone necklace + Bracelet', 129, '/images/ol (7).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/ol (9).png" alt="">
+            <div class="product" onclick="openPopup(30)" > 
+                <img src="images/patricia.jpg" alt="">
                 <h3> Gold spark gemstone spirale Ring + Bracelet / سوار + خاتم اللفة المرصعة الدهبيين </h3>
                 <h2> Prix : 179dh </h2>
-                <button class="bn" onclick="addToCart('Gold spark gemstone spirale Ring + Bracelet', 179, '/images/ol (9).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/ol (10).png" alt="">
+            <div class="product"  onclick="openPopup(31)" > 
+                <img src="images/jessica.jpg" alt="">
                 <h3> Emerald beaded droplet earings / اقراط احجار الزمرد الفضية </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Emerald beaded droplet earings', 119, '/images/ol (10).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/ol (11).png" alt="">
+            <div class="product" onclick="openPopup(32)" > 
+                <img src="images/raven.jpg" alt="">
                 <h3> silver bracelet cuff hexogone ring + Bracelet / سوار + خاتم الشهدة الفضي </h3>
                 <h2> Prix : 150dh </h2>
-                <button class="bn" onclick="addToCart('silver bracelet cuff hexogone ring + Bracelet', 150, '/images/ol (11).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (1).png" alt="">
+            <div class="product" onclick="openPopup(33)" > 
+                <img src="images/ni (71).jpeg " alt="">
                 <h3> Gold bracelet cuff hexogone ring + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
                 <h2> Prix : 150dh </h2>
-                <button class="bn" onclick="addToCart('Gold bracelet cuff hexogone ring + Bracelet', 150, '/images/oll (1).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/oll (2).png" alt="">
+            <div class="product" onclick="openPopup(34)"> 
+                <img src="images/stacey.jpg" alt="">
                 <h3> Gold spark gemstone stack bracelet / براصلي الثلاث حلقات </h3>
                 <h2> Prix : 129dh </h2>
-                <button class="bn" onclick="addToCart('Gold spark gemstone stack bracelet', 129, '/images/oll (2).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (3).png" alt="">
+            <div class="product"  onclick="openPopup(35)"> 
+                <img src="images/kimberly.jpg" alt="">
                 <h3> Gold 3 color beads  bracelet + Ring / اونصومبل الثلاث معادن خاتم + براصلي </h3>
                 <h2> Prix : 220dh </h2>
-                <button class="bn" onclick="addToCart('Gold 3 color beads  bracelet + Ring', 220, '/images/oll (3).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/oll (4).png" alt="">
+            <div class="product" onclick="openPopup(36)"> 
+                <img src="images/oll (4).png" alt="">
                 <h3> Gold cuff bracelet with bow / سوار شريط الفراشة الذهبي </h3>
                 <h2> Prix : 149dh </h2>
-                <button class="bn" onclick="addToCart('Gold cuff bracelet with bow', 149, '/images/oll (4).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/oll (5).png" alt="">
+            <div class="product" onclick="openPopup(37)"> 
+                <img src="images/emma.jpg" alt="">
                 <h3> Emerald flower silver bracelet / غورميط ورود الزمرد النقرية </h3>
                 <h2> Prix : 130dh </h2>
-                <button class="bn" onclick="addToCart('Emerald flower silver bracelet', 130, '/images/oll (5).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+             
             </div>
-            <div class="product"> 
-                <img src="/images/oll (6).png" alt="">
+            <div class="product"  onclick="openPopup(38)"> 
+                <img src="images/ni (52).jpeg" alt="">
                 <h3> Cyan Stone Gold Necklace/ قلادة الحجرة الزرقاء الذهبية </h3>
                 <h2> Prix : 59dh </h2>
-                <button class="bn" onclick="addToCart('Cyan Stone Gold Necklace', 59, '/images/oll (6).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/oll (7).png" alt="">
+            <div class="product"  onclick="openPopup(39)"> 
+                <img src="images/ni (48).jpeg" alt="">
                 <h3> Golden leafs Necklace / قلادة اوراق الشجر الذهبية </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Golden leafs Necklace', 99, '/images/oll (7).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/oll (8).png" alt="">
+            <div class="product"  onclick="openPopup(40)"> 
+                <img src="images/sydney.jpg" alt="">
                 <h3> Gold Snowflake Necklace / قلادة نطفة الثلج الذهبية </h3>
                 <h2> Prix : 89dh </h2>
-                <button class="bn" onclick="addToCart('Gold Snowflake Necklace', 89, '/images/oll (8).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/oll (9).png" alt="">
+            <div class="product"   onclick="openPopup(41)" > 
+                <img src="images/ni (45).jpeg" alt="">
                 <h3> Gold quatz sword Necklace / قلادة سيف النور الذهبية </h3>
                 <h2> Prix : 89dh </h2>
-                <button class="bn" onclick="addToCart('Gold quatz sword Necklace', 89, '/images/oll (9).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (10).png" alt="">
+            <div class="product"   onclick="openPopup(42)"> 
+                <img src="images/ni (41).jpeg" alt="">
                 <h3> Gemstone Touch Gold Necklace / قلادة اللمسة الذهبية </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart(' Gemstone Touch Gold Necklace ', 79, '/images/oll (10).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (11).png" alt="">
+            <div class="product"  onclick="openPopup(43)"> 
+                <img src="images/ni (40).jpeg" alt="">
                 <h3> Two layered Bracelet simple + white Gemstone / قلادة الطبقتين الذهبيتين </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart('Two layered Bracelet simple + white Gemstone', 79, '/images/oll (11).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/oll (12).png" alt="">
+            <div class="product"  onclick="openPopup(44)"> 
+                <img src="images/ni (39).jpeg" alt="">
                 <h3> gold purse Necklace / قلادة الحقيبة الذهبية </h3>
                 <h2> Prix : 60dh </h2>
-                <button class="bn" onclick="addToCart('gold purse Necklace', 60, '/images/oll (12).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (13).png" alt="">
+            <div class="product"  onclick="openPopup(45)"> 
+                <img src="images/ni (38).jpeg" alt="">
                 <h3> Gold Stamp Necklace / سنسلة الطابع الذهبية </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Gold Stamp Necklace', 99, '/images/oll (13).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (14).png" alt="">
+            <div class="product"  onclick="openPopup(46)"> 
+                <img src="images/ni (35).jpeg" alt="">
                 <h3> Golden Eye Gemstone Necklace / سنسلة العين المرصعة الذهبية </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Golden Eye Gemstone Necklace', 99, '/images/oll (14).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/oll (15).png" alt="">
+            <div class="product"  onclick="openPopup(47)"> 
+                <img src="images/jina.jpg" alt="">
                 <h3> Gold Thick RADKO / سنسلة الرادكو </h3>
                 <h2> Prix : 99dh </h2>
-                <button class="bn" onclick="addToCart('Gold Thick RADKO', 99, '/images/oll (15).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+            
             </div>
-            <div class="product"> 
-                <img src="/images/oll (16).png" alt="">
+            <div class="product"  onclick="openPopup(48)"> 
+                <img src="images/oll (16).png" alt="">
                 <h3> Gold Snake Necklace / سنسلة الحنش الذهبية </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Gold Snake Necklace', 119, '/images/oll (16).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+                
             </div>
-            <div class="product"> 
-                <img src="/images/oll (17).png" alt="">
+            <div class="product"  onclick="openPopup(49)"> 
+                <img src="images/oll (17).png" alt="">
                 <h3> Gold Double V chain / سنسلة بلدية ذهبية </h3>
                 <h2> Prix : 139dh </h2>
-                <button class="bn" onclick="addToCart('Gold Double V chain', 139, '/images/oll (17).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (18).png" alt="">
+            <div class="product"  onclick="openPopup(50)"> 
+                <img src="images/ni (13).jpeg" alt="">
                 <h3> Silver Diamond Sphere earings / اقراط كرة الالماس الفضية </h3>
                 <h2> Prix : 129dh </h2>
-                <button class="bn" onclick="addToCart('Silver Diamond Sphere earings', 129, '/images/oll (18).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
             </div>
-            <div class="product"> 
-                <img src="/images/oll (19).png" alt="">
+            <div class="product"  onclick="openPopup(51)"> 
+                <img src="images/ni (11).jpeg" alt="">
                 <h3> Three Diamond hoops earings / اقراط الثلاث حلقات الفضية </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Three Diamond hoops earings', 119, '/images/oll (19).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (20).png" alt="">
+            <div class="product"  onclick="openPopup(52)"> 
+                <img src="images/ni (19).jpeg" alt="">
                 <h3> Gold Diamond Gemstones droplet earings / اقراط قطرة الماء الذهبية المرصعة </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Gold Diamond Gemstones droplet earings', 119, '/images/oll (20).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/oll (21).png" alt="">
+            <div class="product"  onclick="openPopup(53)" > 
+                <img src="images/lisa.jpg" alt="">
                 <h3> Gold Leopard pattern earings / اقراط النمر الذهبية  </h3>
                 <h2> Prix : 119dh </h2>
-                <button class="bn" onclick="addToCart('Gold Leopard pattern earings', 119, '/images/oll (21).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>  <div class="product"> 
-                <img src="/images/oll (22).png" alt="">
+               
+            </div>  <div class="product"  onclick="openPopup(54)"> 
+                <img src="images/oll (22).png" alt="">
                 <h3> Gold Vintage Necklace / قلادة الزخرف الذهبية </h3>
                 <h2> Prix : 69dh </h2>
-                <button class="bn" onclick="addToCart('Gold Vintage Necklace', 69, '/images/oll (22).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>  <div class="product"> 
-                <img src="/images/oll (23).png" alt="">
+             
+            </div>  <div class="product"  onclick="openPopup(55)"> 
+                <img src="images/oll (23).png" alt="">
                 <h3> Necklace Vintage Pendant necklace / قلادة تقليدية ذهبية مزخرفة </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart('Necklace Vintage Pendant necklace', 79, '/images/oll (23).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>  <div class="product"> 
-                <img src="/images/oll (24).png" alt="">
+                
+            </div>  <div class="product"  onclick="openPopup(56)"> 
+                <img src="images/christine.jpg" alt="">
                 <h3> 3 colors beaded earings  / اقراط الثلاث معادن </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart('3 colors beaded earings ', 79, '/images/oll (24).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
-            </div>  <div class="product"> 
-                <img src="/images/oll (25).png" alt="">
+                
+            </div>  <div class="product"  onclick="openPopup(57)"> 
+                <img src="images/ni (31).jpeg" alt="">
                 <h3> Elastic Beaded Ring  / خاتم الجوهر </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart('Elastic Beaded Ring', 79, '/images/oll (25).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+             
             </div>
-            <div class="product"> 
-                <img src="/images/oll (26).png" alt="">
+            <div class="product"  onclick="openPopup(58)"> 
+                <img src="images/ella.jpg" alt="">
                 <h3> Gold dazzled pin bracelet  / براصلي الفيليل الذهبي </h3>
                 <h2> Prix : 149dh </h2>
-                <button class="bn" onclick="addToCart('Gold dazzled pin bracelet', 149, '/images/oll (26).png')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+               
             </div>
-            <div class="product"> 
-                <img src="/images/WhatsApp Image 2026-04-08 at 10.00.30 PM.jpeg" alt="">
+            <div class="product"  onclick="openPopup(59)"> 
+                <img src="images/ni (6).jpeg" alt="">
                 <h3> Jouher L'Hour Stack Ring   / خاتم الجوهر الحر </h3>
                 <h2> Prix : 79dh </h2>
-                <button class="bn" onclick="addToCart(' Jouher LHour Stack Ring ', 79, '/images/WhatsApp Image 2026-04-08 at 10.00.30 PM.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+            
             </div>
-            <div class="product"> 
-                <img src="/images/pp.jpeg" alt="">
+            <div class="product"  onclick="openPopup(60)"> 
+                <img src="images/jade.jpg" alt="">
                 <h3> Forest Green square Gemstones earings   / اقراط الاحجار الخضراء </h3>
                 <h2> Prix : 89dh </h2>
-                <button class="bn" onclick="addToCart(' Forest Green square Gemstones earings', 89, '/images/pp.jpeg')">
-                    <span class="btn"><i data-lucide="handbag"></i></span> 
-                </button>
+              
+            </div>
+            <div class="product"  onclick="openPopup(61)"> 
+                <img src="images/eline.jpg" alt="">
+                <h3> Gold Pattern Bracelet  </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(62)"> 
+                <img src="images/penny (1).jpg" alt="">
+                <h3> Gold Colored Stones Ring /   خاتم الجواهر </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(63)"> 
+                <img src="images/penny (2).jpg" alt="">
+                <h3> Gemstone Vertical Earrings   / اقراط الاحجار </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(64)"> 
+                <img src="images/penny (3).jpg" alt="">
+                <h3> Gold Colored Stones Bracelet   /   سوار  الجواهر  </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(65)"> 
+                <img src="images/penny (5).jpg" alt="">
+                <h3> Snowflake Gold Ring    / خاتم نطفة الثلج الذهبي </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(66)"> 
+                <img src="images/penny (6).jpg" alt="">
+                <h3> Gold Hoops Necklace + Earrings    /  اقراط + قلادة الثلاث حلقات  </h3>
+                <h2> Prix : 89dh </h2>
+              
+            </div>
+            <div class="product"  onclick="openPopup(67)"> 
+                <img src="images/penny (7).jpg" alt="">
+                <h3> Gold Lock Bracelet     / اسوارة القفل الذهبية</h3>
+                <h2> Prix : 89dh </h2>
+              
             </div>
         </div>
 
@@ -1279,9 +1158,9 @@ z-index: 999;
     scroll-snap-type:y mandatory;">
             <button class="close-btn" onclick="closePopup()">&times;</button>
             <div class="modal-grid">
-                <div class="modal-gallery">
+                <div class="modal-gallery" >
                     <div class="main-img-container" style="text-align: center; background: #f9f9f9; border-radius: 8px;">
-                        <img id="main-popup-img" src="" style="width: 100%; height: 400px; object-fit: contain;">
+                        <img id="main-popup-img" src="" style="width: 300px; height: 300px; object-fit: contain;">
                     </div>
                     
                     <div id="thumb-row" style="display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px;">
@@ -1289,16 +1168,21 @@ z-index: 999;
                 </div>
                 <div class="modal-details">
                     <h2 id="popup-title"></h2>
-                    <p id="popup-price" class="price-tag"></p>
+                    <h3 class="lo" style="color: #938267; font-family: 'Montserrat'; display: flex; gap: 5px;"> Prix : </h3>
+                    <p  id="popup-price" class="price-tag"></p>
                     <div class="info-section">
-                        <h4>Description</h4>
+                        <h3 style="color: #938267; font-family: 'Montserrat';">Description</h3>
                         <p id="popup-description"></p>
                     </div>
-                    <div id="size-options" class="size-buttons"></div>
-                   <div class="quantity" style="display: flex;">
-                    <h3> quantity : </h3>
-                    <input style="width: 20%;" type="number" id="popup-quantity" value="1" min="1"></div>
-                    <button id="add-to-cart-btn" class="buy-button">Add to Cart</button>
+                     <h2 style="color: #938267; font-family: 'Montserrat';" >  Les Tailles:  </h2>
+                    <div id="size-options" class="size-buttons" style="display: grid;"></div>
+                   <div class="quantity" style="display: flex; gap: 10px;">
+                    <h3 style="color: #938267; font-family: 'Montserrat';"> Quantité : </h3>
+                    <input style="width: 20%; padding: 10px; margin-right: 10px;" type="number" id="popup-quantity" value="1" min="1"></div>
+<div id="images2">  </div>
+<h3 style="color: #938267; font-family: 'Montserrat';"> Sur cet article : </h3>
+<h5 id="popup-description2" style="font-family: 'Montserrat';"> </h5>
+                    <button id="add-to-cart-btn" style="position: fixed; top: 87%; left: 0%;" class="buy-button">Add to Cart</button>
                 </div>
             </div>
         </div>
@@ -1311,98 +1195,931 @@ z-index: 999;
                 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
                 
                 <script>
-                    // 1. DATA & GLOBALS (Only define these once)
+                    // 1. DATA & GLOBALS
                     window.cart = JSON.parse(localStorage.getItem("cart")) || [];
                     let modalSwiper = null;
                     
                     const myProducts = [
                         { 
                             id: 1, 
-                            name: "Gold Oval Earrings", 
+                            name: "gold starfish Bracelet / سوار نجم البحر", 
+                            price: 80, 
+                            image: "images/ni (72).jpeg", 
+                            images: ["images/ni (72).jpeg", "images/ni (73).jpeg", "images/ni (74).jpeg", "images/d.png"],
+                            description: "This striking, gold-toned starfish cuff bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار 'كاف' ذهبي لافت للأنظار، يتميز بتصميم مستوحى من البحر يتكون من عدة نجوم بحر متصلة ببعضها البعض مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (72).jpeg",  "images/d.png",  "images/lovee.jpeg"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 2, 
+                            name: " Hammered Coin Bracelet / سوار الدوائر المقروطة" , 
+                            price: 120, 
+                            image: "images/ni (75).jpeg" ,
+               
+                            images: ["images/ni (75).jpeg", "images/ni (76).jpeg", "images/ni (77).jpeg", "images/ni (78).jpeg"],
+                            description: "This striking, gold-toned Hammered Coin bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم مستوحى من البحر يتكون من عدة نجوم بحر متصلة ببعضها البعض مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/nie (75).jpeg",  "images/nie (76).jpeg", "images/ni (78).jpeg"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 3, 
+                            name: "Molten Metal Bracelet / سوار المنحوت العصري " , 
+                            price: 120, 
+                            image:"images/f.png" ,
+                
+               
+                            images: ["images/f.png", "images/ni (80).jpeg", "images/ni (81).jpeg", "images/ni (82).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم مستوحى من البحر يتكون من عدة نجوم بحر متصلة ببعضها البعض مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (80).jpeg",  "images/f.png", "images/ni (82).jpeg"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 4, 
+                            name: "Silver White Gemstones Ring " , 
+                            price: 119, 
+                            image:"images/ni (84).jpeg" ,
+                
+               
+                            images: ["images/ni (84).jpeg", "images/ni (83).jpeg", "images/juyi.jpg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (84).jpeg", "images/ni (83).jpeg", "images/juyi.jpg"],
+                            description2: " Cette bague est fabriquée en acier inoxydable de haute qualité,elle aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 5, 
+                            name: "Royal Emerald Ring " , 
+                            price: 99, 
+                            image:"images/ytyt (2).jpeg" ,
+                
+               
+                            images: ["images/ytyt (2).jpeg", "images/ytyt.jpg", "images/ytyt (1).jpeg","images/ytyt.png" ],
+                            description: "This striking, Emerald Ring features a series of textured Emerald Stones linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا  لافت للأنظار، يتميز بتصميم مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ytyt (2).jpeg", "images/ytyt.png", "images/ytyt (1).jpeg"],
+                            description2: " Bague D'Emerald Royal "
+                        },
+                        { 
+                            id: 6, 
+                            name: "Silver Adjustable Bracelet" , 
+                            price: 69, 
+                            image:"images/lola (2).jpg" ,
+                
+               
+                            images: ["images/lola (2).jpg", "images/lola (1).jpg", "images/h.png"],
+                            description: "This striking, Silver-toned  bracelet  wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/lola (1).jpg", "images/h.png", "images/lola (2).jpg"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition Argentée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 8, 
+                            name: " Layser-cut Flower Layered Chain" , 
+                            price: 119, 
+                            image:"images/iku.jpg" ,
+                
+               
+                            images: ["images/iku.jpg", "images/n.png"],
+                            description: "This striking, gold-toned Necklace features a series of textured flowers linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا  لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ne.png"],
+                            description2: " Ce Collier est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 9, 
+                            name: "Spinelli Kilcollin Leo Diamond Ring " , 
+                            price: 100, 
+                            image:"images/per (1).jpg" ,
+                
+               
+                            images: ["images/per (1).jpg", "images/per (2).jpg", "images/nn.png"],
+                            description: "This striking, gold-toned Ring features a series of textured Hoops linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا  لافت للأنظار، يتميز بتصميم مستوحى مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/per (2).jpg", "images/nne.png", "images/per (1).jpg"],
+                            description2: " Cette bague est fabriquée en acier inoxydable de haute qualité,elle aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 10, 
+                            name: "Marquise Cut Ring" , 
+                            price: 100, 
+                            image:"images/lki (1).jpg" ,
+                
+               
+                            images: ["images/lki (1).jpg", "images/nnn.png", "images/lki (2).jpg"],
+                            description: "This striking, gold-toned Ring , wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/lkii (2).jpg", "images/nnn.png", "images/lkii (1).jpg"],
+                            description2: " Cette bague est fabriquée en acier inoxydable de haute qualité,elle aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 11, 
+                            name: "3 Metal Beaded Necklace + Bracelet" , 
+                            price: 170, 
+                            image:"images/drg (2).jpg" ,
+                
+               
+                            images: ["images/drg (2).jpg", "images/prdct1.png", "images/drg.jpg"],
+                            description: "This striking, item features a series of beads, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/drg (2).jpg", "images/prdct1.png", "images/drg.jpg"],
+                            description2: " Cet ensemble est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 12, 
+                            name: " Black Gemstones Bracelet " , 
+                            price: 70, 
+                            image:"images/tyu.jpeg" ,
+                
+               
+                            images: ["images/tyu.jpeg", "images/tyu.jpg", "images/nnnnn.png"],
+                            description: "This striking,  bracelet features a series of textured gemstones linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Taille Unique, gourmette"],
+                            images2: ["images/tyu.jpeg", "images/tyu.jpg", "images/nnnnn.png"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 13, 
+                            name: " Rectangular Purple Gemstones Bracelet " , 
+                            price: 70, 
+                            image:"images/ni (28).jpeg" ,
+                
+               
+                            images: ["images/ni (28).jpeg", "images/tyu.jpg", "images/nnnnnn.png"],
+                            description: "This striking,  bracelet features a series of textured gemstones linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Taille unique, gourmette"],
+                            images2: ["images/ni (28).jpeg", "images/tyu.jpg", "images/nnnnnn.png"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 14, 
+                            name: "Gold Vintage Pink Round Stone  " , 
                             price: 50, 
-                            image: "images/pp.jpeg", 
-                            images: ["images/pp.jpeg", "images/a.jpeg", "images/b.jpeg", "images/c.jpeg"],
-                            description: "Handcrafted gold ovals designed for timeless elegance.", 
-                            sizes: [6, 7, 8, 9] 
+                            image:"images/rt.jpg" ,
+                
+               
+                            images: ["images/rt.jpg", "images/prdct (1).png"],
+                            description: "This striking, gold-toned Molten Metal ring , wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/prdct (1).png", "images/rt.jpg"],
+                            description2: " Ce bijou est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 15, 
+                            name: "Emerald Gemstones Ring" , 
+                            price: 99, 
+                            image:"images/lili.jpeg" ,
+                
+               
+                            images: ["images/lili.jpeg", "images/prdct (3).png", "images/lili.jpg"],
+                            description: "This striking, Silver-toned Molten Metal ring , wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/lili.jpg", "images/prdct (3).png", "images/lili.jpg"],
+                            description2: " Cette bague est fabriqué en acier inoxydable de haute qualité,Il aborde une finition ARGENTéE éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 16, 
+                            name: "sILVER WHITE Gemstones Ring with emerald stones" , 
+                            price: 99, 
+                            image:"images/meg (1).jpeg" ,
+                
+               
+                            images: ["images/meg (1).jpg", "images/prdct (2).png", "images/meg (2).jpg","images/meg (3).jpg"],
+                            description: "This striking, Silver-toned Molten Metal ring , wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/meg (1).jpg", "images/prdct (2).png", "images/meg (3).jpg"],
+                            description2: " Cette bague est fabriqué en acier inoxydable de haute qualité,Il aborde une finition ARGENTéE éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 17, 
+                            name: " Two Emerald Flowers Ring" , 
+                            price: 99, 
+                            image:"images/zelya.jpg" ,
+                
+               
+                            images: ["images/zelya.jpg", "images/prdct (4).png"],
+                            description: "This striking, Silver-toned Molten Metal ring , wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/zelya.jpg", "images/prdct (4).png"],
+                            description2: " Cette bague est fabriqué en acier inoxydable de haute qualité,Il aborde une finition ARGENTéE éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 18, 
+                            name: " Gold Twist Bracelet " , 
+                            price: 99, 
+                            image:"images/paula.jpg" ,
+                
+               
+                            images: ["images/paula.jpg", "images/prdct (6).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured Twist linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks. هذا سوار  ذهبي لافت للأنظار، يتميز بتصميم  مع تفاصيل بارزة وملمس واقعي، مما يجعله قطعة إكسسوار مثالية لإطلالة صيفية عصرية وجذابة.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/prdct (6).png", "images/paula.jpg"],
+                            description2: " Ce Bracelet est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 19, 
+                            name: "Gold Knot Bracelet " , 
+                            price: 99, 
+                            image:"images/lizzy.jpg" ,
+                
+               
+                            images: ["images/lizzy.jpg", "images/prdct (7).png"],
+                            description: "This striking, toned Molten Metal item is bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/lizzy.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition  éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 20, 
+                            name: "Silver Diamond Drop Earrings " , 
+                            price: 119, 
+                            image:"images/prdct (9).jpg" ,
+                
+               
+                            images: ["images/prdct (9).jpg"],
+                            description: "This striking, toned Molten Metal item is bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/prdct (9).jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition  éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 21, 
+                            name: "Dark Night Square Gemstones Earrings " , 
+                            price: 89, 
+                            image:"images/ni (85).jpeg" ,
+                
+               
+                            images: ["images/ni (85).jpeg" ,"images/prdct (10).png", "images/kayla.jpg"],
+                            description: "This striking, toned Molten Metal item is bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (85).jpeg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition  éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 22, 
+                            name: "Four Stacked Cartier Clou Rings " , 
+                            price: 89, 
+                            image:"images/prdct (11).png" ,
+                
+               
+                            images: ["images/cynthia.jpg" ,"images/prdct (11).png"],
+                            description: "This striking, toned Molten Metal item is bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks.", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/prdct (11).png" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition  éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 23, 
+                            name: " Gold Double Round Pink Stones Vintage Ring " , 
+                            price: 50, 
+                            image:"images/leah.png" ,
+                
+               
+                            images: ["images/leah.png", "images/prdct (12).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/prdct (12).png"],
+                        
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 24, 
+                            name: " Gold double pink oval and round stone vintage ring" , 
+                            price: 50, 
+                            image:"images/barbara.png" ,
+                
+               
+                            images: ["images/barbara.png", "images/prdct (13).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/prdct (13).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 25, 
+                            name: "  5  Resin Rings" , 
+                            price: 100, 
+                            image:"images/amber.jpg" ,
+                
+               
+                            images: ["images/amber.jpg", "images/ol (2).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/amber.jpg","images/ol (2).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 26, 
+                            name: "Silver Gold Cross sign round earings" , 
+                            price: 100, 
+                            image:"images/chloe.jpg" ,
+                
+               
+                            images: ["images/chloe.jpg", "images/ol (3).png","images/ni (61).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/chloe.jpg","images/ol (3).png","images/ni (61).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 27, 
+                            name: "Black charcoal pendant earings" , 
+                            price: 120, 
+                            image:"images/eve.jpg" ,
+                
+               
+                            images: ["images/eve.jpg", "images/ol (5).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ol (5).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 28, 
+                            name: "Van Cleef Silver Flower Bracelet" , 
+                            price: 79, 
+                            image:"images/ivana.jpg" ,
+                
+               
+                            images: ["images/ivana.jpg", "images/ni (57).jpeg", "images/ni (58).jpeg", "images/ni (59).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ivana.jpg", "images/ni (59).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 29, 
+                            name: "Gold spark gemstone necklace + Bracelet" , 
+                            price: 129, 
+                            image:"images/karen.jpg" ,
+                
+               
+                            images: ["images/karen.jpg", "images/ni (53).jpeg", "images/ni (54).jpeg", "images/ni (55).jpeg" , "images/ni (56).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/karen.jpg", "images/ni (53).jpeg", "images/ni (54).jpeg", "images/ni (55).jpeg" , "images/ni (56).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },   { 
+                            id: 30, 
+                            name: " Gold spark gemstone spirale Ring + Bracelet" , 
+                            price: 179, 
+                            image:"images/patricia.jpg" ,
+                
+               
+                            images: ["images/patricia.jpg", "images/ol (9).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ol (9).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        }, 
+                        { 
+                            id: 31, 
+                            name: " Emerald beaded droplet earings" , 
+                            price: 119, 
+                            image:"images/jessica.jpg" ,
+                
+               
+                            images: ["images/jessica.jpg", "images/ol (10).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ol (10).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 32, 
+                            name: "silver bracelet cuff hexogone ring + Bracelet" , 
+                            price: 150, 
+                            image:"images/raven.jpg" ,
+                
+               
+                            images: ["images/raven.jpg", "images/ol (11).png", "images/ni (64).jpeg", "images/ni (65).jpeg", "images/ni (68).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ol (11).png", "images/ni (64).jpeg", "images/ni (65).jpeg", "images/ni (68).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 33, 
+                            name: "Gold bracelet cuff hexogone ring + Bracelet" , 
+                            price: 150, 
+                            image:"images/ni (71).jpeg " ,
+                
+               
+                            images: ["images/ni (71).jpeg ", "images/ni (69).jpeg ", "images/ni (70).jpeg ", "images/ni (67).jpeg ", "images/ni (66).jpeg "],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ni (71).jpeg ", "images/ni (69).jpeg ", "images/ni (70).jpeg ", "images/ni (67).jpeg ", "images/ni (66).jpeg "],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 34, 
+                            name: "Gold spark gemstone stack bracelet" , 
+                            price: 129, 
+                            image:"images/stacey.jpg " ,
+                
+               
+                            images: ["images/stacey.jpg ", "images/oll (2).png "],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/stacey.jpg ", "images/oll (2).png "],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+   
+                        { 
+                            id: 36, 
+                            name: "Gold cuff bracelet with bow" , 
+                            price: 149, 
+                            image:"images/oll (4).png" ,
+                
+               
+                            images: ["images/oll (4).png", "images/images.jpeg "],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/oll (4).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 37, 
+                            name: " Emerald flower silver bracelet" , 
+                            price: 130, 
+                            image:"images/emma.jpg" ,
+                
+               
+                            images: ["images/emma.jpg","images/oll (5).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/oll (5).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 38, 
+                            name: " Cyan Stone Gold Necklace" , 
+                            price: 59, 
+                            image:"images/ni (52).jpeg" ,
+                
+               
+                            images: ["images/ni (52).jpeg","images/oll (6).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/oll (6).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 39, 
+                            name: "  Golden leafs Necklace" , 
+                            price: 99, 
+                            image:"images/ni (48).jpeg" ,
+                
+               
+                            images: ["images/ni (48).jpeg","images/ni (49).jpeg","images/ni (50).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: [ "images/ni (49).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 40, 
+                            name: "Gold Snowflake Necklace" , 
+                            price: 89, 
+                            image:"images/sydney.jpg" ,
+                
+               
+                            images: ["images/sydney.jpg","images/oll (8).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/sydne.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 41, 
+                            name: "Gold quatz sword Necklace" , 
+                            price: 89, 
+                            image:"images/ni (45).jpeg" ,
+                
+               
+                            images: ["images/ni (45).jpeg","images/ni (46).jpeg","images/ni (47).jpeg","images/oll (9).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (9).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 42, 
+                            name: "Gemstone Touch Gold Necklace" , 
+                            price: 79, 
+                            image:"images/ni (45).jpeg" ,
+                
+               
+                            images: ["images/ni (45).jpeg","images/oll (10).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (10).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 43, 
+                            name: "Two layered Bracelet simple + white Gemstone" , 
+                            price: 79, 
+                            image:"images/ni (40).jpeg" ,
+                
+               
+                            images: ["images/ni (40).jpeg","images/oll (11).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (40).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 44, 
+                            name: "gold purse Necklace" , 
+                            price: 60, 
+                            image:"images/ni (39).jpeg" ,
+                
+               
+                            images: ["images/ni (39).jpeg","images/oll (12).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (12).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 45, 
+                            name: "Gold Stamp Necklace" , 
+                            price: 99, 
+                            image:"images/ni (38).jpeg" ,
+                
+               
+                            images: ["images/ni (38).jpeg","images/oll (13).png","images/ni (36).jpeg","images/ni (37).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (37).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 46, 
+                            name: "Golden Eye Gemstone Necklace" , 
+                            price: 99, 
+                            image: "images/ni (35).jpeg" ,
+                
+               
+                            images: ["images/ni (35).jpeg","images/ni (32).jpeg","images/ni (33).jpeg","images/ni (34).jpeg","images/oll (14).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (35).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 47, 
+                            name: " Gold Thick RADKO " , 
+                            price: 99, 
+                            image: "images/jina.jpg" ,
+                
+               
+                            images: ["images/jina.jpg","images/oll (15).png"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/jina.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 48, 
+                            name: "Gold Snake Necklace" , 
+                            price: 119, 
+                            image: "images/oll (16).png"  ,
+                
+               
+                            images: ["images/oll (16).png" ,"images/oll (16) - copie.png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (16).png" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 49, 
+                            name: "Gold Double V chain" , 
+                            price: 139, 
+                            image: "images/oll (17).png"  ,
+                
+               
+                            images: ["images/oll (17).png" ,"images/oll (17)-.png","images/oll (17)+.png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (17).png" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 50, 
+                            name: "Silver Diamond Sphere earings" , 
+                            price: 129, 
+                            image:"images/ni (13).jpeg"  ,
+                
+               
+                            images: ["images/ni (13).jpeg"  ,"images/ni (12).jpeg" ,"images/ni (15).jpeg","images/ni (16).jpeg"   ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (15).jpeg"  ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 51, 
+                            name: "Three Diamond hoops earings" , 
+                            price: 119, 
+                            image:"images/ni (11).jpeg",
+                
+               
+                            images: ["images/ni (11).jpeg"  ,"images/ni (8).jpeg" ,"images/ni (9).jpeg","images/ni (10).jpeg"   ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (10).jpeg"  ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 52, 
+                            name: "Gold Diamond Gemstones droplet earings" , 
+                            price: 119, 
+                            image:"images/ni (19).jpeg",
+                
+               
+                            images: ["images/ni (19).jpeg" ,"images/ni (17).jpeg" ,"images/ni (18).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (17).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 53, 
+                            name: "Gold Leopard pattern earings" , 
+                            price: 119, 
+                            image:"images/lisa.jpg",
+                
+               
+                            images: ["images/lisa.jpg" ,"images/oll (21).png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/lisa.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 54, 
+                            name: " Gold Vintage Necklace" , 
+                            price: 69, 
+                            image:"images/oll (22).png",
+                
+               
+                            images: ["images/oll (22).png" ,"images/oll (22)-.png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (22)-.png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 55, 
+                            name: "Necklace Vintage Pendant necklace" , 
+                            price: 79, 
+                            image:"images/oll (23).png",
+                
+               
+                            images: ["images/oll (23).png" ,"images/oll (23)-.png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (23)-.png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 56, 
+                            name: "3 colors beaded earings" , 
+                            price: 79, 
+                            image:"images/christine.jpg",
+                
+               
+                            images: [ "images/christine.jpg","images/oll (24).png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/oll (24).png"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 57, 
+                            name: "Elastic Beaded Ring" , 
+                            price: 79, 
+                            image:"images/ni (31).jpeg",
+                
+               
+                            images: ["images/ni (31).jpeg","images/oll (25).png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (31).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 58, 
+                            name: "Gold dazzled pin bracelet" , 
+                            price: 149, 
+                            image:"images/ella.jpg",
+                
+               
+                            images: ["images/ella.jpg","images/oll (26).png" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ella.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 59, 
+                            name: "Jouher L'Hour Stack Ring" , 
+                            price: 79, 
+                            image:"images/ni (6).jpeg",
+                
+               
+                            images: ["images/ni (6).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (6).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 60, 
+                            name: "Forest Green square Gemstones earings" , 
+                            price: 89, 
+                            image:"images/jade.jpg",
+                
+               
+                            images: ["images/jade.jpg","images/ni (2).jpeg","images/ni (3).jpeg","images/ni (4).jpeg","images/ni (5).jpeg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/ni (2).jpeg","images/ni (5).jpeg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 61, 
+                            name: "Gold Pattern Bracelet" , 
+                            price: 89, 
+                            image:"images/eline.jpg",
+                
+               
+                            images: ["images/eline.jpg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/eline.jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 62, 
+                            name: "Gold Colored Stones Ring" , 
+                            price: 89, 
+                            image:"images/penny (1).jpg",
+                
+               
+                            images: ["images/penny (1).jpg"],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (1).jpg"],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 63, 
+                            name: "Gemstone Vertical Earrings " , 
+                            price: 89, 
+                            image:"images/penny (2).jpg" ,
+                
+               
+                            images: ["images/penny (2).jpg" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (2).jpg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 64, 
+                            name:"Gold Colored Stones Bracelet", 
+                            price: 89, 
+                            image:"images/penny (3).jpg" ,
+                
+               
+                            images: ["images/penny (3).jpg" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (3).jpg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 65, 
+                            name:" Snowflake Gold Ring", 
+                            price: 89, 
+                            image:"images/penny (5).jpg" ,
+                
+               
+                            images: ["images/penny (5).jpg" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (5).jpg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 66, 
+                            name:"Gold Hoops Necklace + Earrings ", 
+                            price: 89, 
+                            image:"images/penny (6).jpg" ,
+                
+               
+                            images: ["images/penny (6).jpg" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (6).jpg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
+                        },
+                        { 
+                            id: 67, 
+                            name:"Gold Lock Bracelet  ", 
+                            price: 89, 
+                            image:"images/penny (7).jpg" ,
+                
+               
+                            images: ["images/penny (7).jpg" ],
+                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
+                            sizes: ["Adjustable"],
+                            images2: ["images/penny (7).jpg" ],
+                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
                         }
+                        
                     ];
                     
                     // 2. INITIALIZATION
                     document.addEventListener('DOMContentLoaded', () => {
-                        // Hero Slider
-                        new Swiper(".hero-slider", { loop: true, autoplay: { delay: 5000 } });
-                        
-                        // Modal Swiper (Start it once)
-                        modalSwiper = new Swiper(".gallery-slider", {
-                            observer: true,
-                            observeParents: true,
-                            pagination: { el: ".swiper-pagination", clickable: true },
-                            navigation: { 
-                                nextEl: ".swiper-button-next", 
-                                prevEl: ".swiper-button-prev" 
-                            }
-                        });
-                    
+                        if (document.querySelector(".gallery-slider")) {
+                            modalSwiper = new Swiper(".gallery-slider", {
+                                observer: true,
+                                observeParents: true,
+                                pagination: { el: ".swiper-pagination", clickable: true },
+                                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+                            });
+                        }
                         updateCartCount();
-                        displayCartItems(); // Load existing cart items on startup
                     });
                     
                     // 3. MODAL FUNCTIONS
                     window.openPopup = function(productId) {
-    const product = myProducts.find(p => p.id === productId);
-    if (!product) return;
-
-    // 1. Set Text Details
-    document.getElementById('popup-title').innerText = product.name;
-    document.getElementById('popup-description').innerText = product.description;
-    document.getElementById('popup-price').innerText = `${product.price}Dh`;
-    document.getElementById('popup-quantity').value = 1;
-
-    // 2. Set Main Image & Thumbnails
-    const mainImg = document.getElementById('main-popup-img');
-    mainImg.src = product.image;
-
-    const thumbRow = document.getElementById('thumb-row');
-    const allImages = (product.images && product.images.length > 0) ? product.images : [product.image];
-    thumbRow.innerHTML = allImages.map(src => `
-        <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" 
-             style="width: 50px; height: 50px; object-fit: cover; cursor: pointer; border: 1px solid #ddd;">
-    `).join('');
-
-    // 3. Generate Size Buttons (This fixes the "undefined" error)
-    const sizeContainer = document.getElementById('size-options');
-    if (sizeContainer && product.sizes) {
-        sizeContainer.innerHTML = product.sizes.map((s, index) => `
-            <label style="margin-right: 5px;">
-                <input type="radio" name="product-size" value="${s}" ${index === 0 ? 'checked' : ''} style="display:none;">
-                <span class="size-btn-label">${s}</span>
-            </label>
-        `).join('');
-    }
-
-    // 4. Show Modal
-    document.getElementById('product-modal').style.display = 'flex';
-
-    // 5. Setup Add to Cart Button
-    document.getElementById('add-to-cart-btn').onclick = () => {
-        // Find the selected radio button
-        const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
-        const qty = parseInt(document.getElementById('popup-quantity').value) || 1;
-        window.goToCheckout = function() {
-        if (window.cart.length === 0) {
-            alert("Your bag is empty!");
-            return;
-        }
-        // Just redirect to the checkout file
-        window.location.href = "index1.html"; 
-    };
-        window.addToCart(product.name, product.price, product.image, selectedSize, qty);
-        window.closePopup();
-    };
-};
+                        const product = myProducts.find(p => p.id === productId);
+                        if (!product) return;
+                    
+                        // Set Text & Main Image
+                        document.getElementById('popup-title').innerText = product.name;
+                        document.getElementById('popup-description').innerText = product.description;
+                        document.getElementById('popup-price').innerText = `${product.price}Dh`;
+                        document.getElementById('main-popup-img').src = product.image;
+                        document.getElementById('popup-description2').innerText = product.description2;
+                        // Thumbnails
+                        const thumbRow = document.getElementById('thumb-row');
+                        if (thumbRow) {
+                            thumbRow.innerHTML = product.images.map(src => `
+                                <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class="thumb-img">
+                            `).join('');
+                        }
+                        const Images2 = document.getElementById('images2');
+                        if (Images2) {
+                            Images2.innerHTML = product.images2.map(src => `
+                                <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class=" images2-img">
+                            `).join('');
+                        }
+                        // Sizes
+                        const sizeContainer = document.getElementById('size-options');
+                        if (sizeContainer) {
+                            sizeContainer.innerHTML = product.sizes.map((s, i) => `
+                                <label>
+                                    <input type="radio" name="product-size" value="${s}" ${i === 0 ? 'checked' : ''}>
+                                    <span class="size-label">${s}</span>
+                                </label>
+                            `).join('');
+                        }
+                    
+                        // Set Up Add to Cart Button for this specific product
+                        const addToCartBtn = document.getElementById('add-to-cart-btn');
+                        if (addToCartBtn) {
+                            addToCartBtn.onclick = () => {
+                                const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
+                                const qtyInput = document.getElementById('popup-quantity');
+                                const qty = qtyInput ? parseInt(qtyInput.value) : 1;
+                                
+                                window.addToCart(product.name, product.price, product.image, selectedSize, qty);
+                                window.closePopup();
+                            };
+                        }
+                    
+                        document.getElementById('product-modal').style.display = 'flex';
+                    };
                     
                     window.closePopup = function() {
                         document.getElementById('product-modal').style.display = 'none';
+                    };
+                    
+                    window.goToCheckout = function() {
+                        if (window.cart.length === 0) {
+                            alert("Your bag is empty!");
+                            return;
+                        }
+                        window.location.href = "index1.html"; 
                     };
                     
                     // 4. CART LOGIC
@@ -1427,7 +2144,8 @@ z-index: 999;
                         }
                         
                         saveAndRefresh();
-                        // Automatically open the cart so the user sees it worked
+                        
+                        // Auto-open sidebar
                         const sidebar = document.getElementById('cart-sidebar');
                         if (sidebar && !sidebar.classList.contains('open')) {
                             window.toggleCart();
@@ -1446,7 +2164,7 @@ z-index: 999;
                     
                         if (window.cart.length === 0) {
                             container.innerHTML = '<p style="text-align:center; padding: 20px;">Your bag is empty.</p>';
-                            if (subtotalEl) subtotalEl.innerText = "$0.00";
+                            if (subtotalEl) subtotalEl.innerText = "0dh";
                             return;
                         }
                     
