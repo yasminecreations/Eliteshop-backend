@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> Marie Shop</title>
+<title>EliteStore</title>
 
 <link href="https://fonts.googleapis.com/css?family=Playfair Display|Montserrat|Parisienne" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,6 +21,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    scroll-behavior: smooth;
 }
     body{
         margin: 0px;
@@ -131,7 +132,7 @@ transition: all 0.4s ease;
 }
 .product{
     border: #938267 solid 2px;
-    height: 350px;
+    height: 400px;
     width: 170px;
     font-family: "Montserrat";
     font-weight: 1000;
@@ -697,6 +698,19 @@ input[type="radio"]:checked + .size-btn-label {
     border-radius: 20px;
     height: 300px;
 }
+.yy{
+    font-family: "Parisienne";
+    font-size: 30px;
+    margin-left: 20%;
+    margin-top: 10px;
+}
+.nav2{
+    position: sticky;
+    width: 100%;
+    display: flex;
+    background-color: #938267;
+    color: #ccc;
+}
 </style>
 </head>
 <body>
@@ -724,14 +738,19 @@ input[type="radio"]:checked + .size-btn-label {
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" id="Home" href="index.html">Acceuil</a></li>
             <li class="nav-item"><a class="nav-link" id="jewelery" href="products.html"> Produits </a> </li>
-            <li class="nav-item"><a class="nav-link" id="KeyChains" href="beldi.html"> Beldi</a></li>
-
-            <li class="nav-item"><a class="nav-link" id="cosmetics" href="luxurious.html">Luxurious</a></li>
-            <li class="nav-item"><a class="nav-link" id="Clothes" href="silver.html">Silver</a></li>
+            <li class="nav-item"><a class="nav-link" id="KeyChains" href="Beldi.html"> Beldi</a></li>
+  
+            <li class="nav-item"><a class="nav-link" id="cosmetics" href="Luxurious.html">Luxurious</a></li>
+            <li class="nav-item"><a class="nav-link" id="Clothes" href="Silver.html">Silver</a></li>
             
        </ul>
     </div>
 </nav>
+<nav class="nav2"> 
+    <a href="#e1" style="width: 35%;" ><button style="background-color: #a8977a;  color: #161711; width: 100%;" > <p style="font-family: 'Montserrat';"> Bagues </p> </button></a> 
+    <a href="#e2" style="width: 35%;" > <button style="background-color: #a8977a;  color: #161711; width: 100%;"> <p style="font-family: 'Montserrat';"> Bracelets</p> </button></a> 
+    <a href="#e3" style="width: 35%;" > <button style="background-color: #a8977a;  color: #161711; width: 100%; height: 100%;"> <p  style="font-family: 'Montserrat'; font-size: 85.7%;"> Boucles D'oreilles </p> </button></a>
+  </nav>
 <div id="message" style="
 position: fixed;
 top: 80px;
@@ -747,21 +766,18 @@ z-index: 999;
 <div class="swiper hero-slider">
     <div class="swiper-wrapper"> 
        <div class="swiper-slide" style="width: 100%;"> 
-        <img  class="hero-img" style="width: 100%; height: 100%;"  src="images/cover.jpg" alt="">
+        <img  class="hero-img" style="width: 100%; height: 100%;"  src="images/bb.jpeg" alt="">
               <h1 style="font-family: 'Parisienne';  color: #a8977a; z-index: 9; position: absolute; padding-bottom: 150px; top: 30%; left: 90px;"> Nos Bijoux </h1>
         </div>
         <div class="swiper-slide" style="width: 100%;"> 
-            <img class="hero-img" style="width: 100%; height: 100%;"  src="images/cover2.jpg" alt="">
+            <img class="hero-img" style="width: 100%; height: 100%;"  src="images/b.jpeg" alt="">
                   <h1 style="font-family: 'Parisienne'; color: #a8977a; z-index: 9; position: absolute; padding-bottom: 150px; top: 30%; left: 90px;"> Nos Bijoux </h1>
             </div>
             <div class="swiper-slide" style="width: 100%;"> 
-                <img class="hero-img" style="width: 100%; height: 100%;"  src="images/cover3.jpg" alt="">
+                <img class="hero-img" style="width: 100%; height: 100%;"  src="images/bbb.jpg" alt="">
   
                 </div>
-                <div class="swiper-slide" style="width: 100%;"> 
-                    <img style="width: 100%; height: 100%;"   class="hero-img" src="images/cover4.jpg" alt="">
-                         
-                    </div>
+              
       </div>
 
       <div>  </div>
@@ -769,32 +785,14 @@ z-index: 999;
     <div class="product-displayer" style="background: #161711; margin-top: 20px;">
       
        <h1 class="ttl2"> Our Latest Collection</h1>
-        <div class="products">
+       <h2 id="e1" class="yy" > Les Bagues : </h2>
+       <div class="products">
             
-            <div class="product"  onclick="openPopup(1)">
-                <img    src="images/ni (72).jpeg" alt="">
-                
-                <h3>gold starfish Bracelet / سوار نجم البحر </h3>
-                <h2> Prix : 80dh</h2>
-  
-                    
-                
-            </div> 
-            <div class="product"  onclick="openPopup(2)">
-                <img src="images/ni (75).jpeg"  alt="">
-                <h3>Hammered Coin Bracelet / سوار الدوائر المقروطة</h3>
-                <h2> Prix : 120dh</h2>
-                
-            </div>
-            <div class="product"  onclick="openPopup(3)"> 
-                <img src="images/f.png" alt="">
-                <h3>Molten Metal Bracelet / سوار المنحوت العصري </h3>
-                <h2> Prix : 119dh</h2>
-                
-            </div>
-            
-       
-            <div class="product"  onclick="openPopup(4)"> 
+           
+           
+          
+          
+          <div class="product"  onclick="openPopup(4)"> 
                 <img src="images/ni (84).jpeg" alt="">
                 <h3>Silver White Gemstones Ring </h3>
                 <h2> Prix : 100dh </h2>
@@ -805,35 +803,58 @@ z-index: 999;
                 <h3> Royal Emerald ring / خاتم الزمرد الملكي </h3>
                 <h2> Prix : 99dh</h2> 
                 
-            </div>
+           
+                
+        </div>  <div class="product" onclick="openPopup(15)"> 
+            <img src="images/lili.jpeg" alt="">
+            <h3>Emerald Gemstones Ring / خاتم الزمرد المرصع بالأحجار البيضاء </h3>
+            <h2> Prix : 99dh </h2>
+            
+        </div> <div class="product"  onclick="openPopup(16)"> 
+            <img src="images/meg (1).jpg" alt="">
+            <h3>Silver White Gemstones Ring with emerald stones / خاتم الأحجار البيضاء  المرصع بالزمرد </h3>
+            <h2> Prix : 99dh </h2>
+           
+        </div> 
+           
+         <div class="product"  onclick="openPopup(17)"> 
+            <img src="images/zelya.jpg" alt="">
+            <h3>Emerald 2 flowers  Ring / خاتم وردتي الزمرد </h3>
+            <h2> Prix : 99dh </h2>
+           
+        </div> 
+        <div class="product"  onclick="openPopup(22)"> 
+            <img src="images/cynthia.jpg" alt="">
+            <h3>Four stacked Cartier Clou Rings  / خواتم كارتيه باربعة الوان </h3>
+            <h2> Prix : 69dh </h2>
+           
+        </div>
+      
+       
+        <div class="product" onclick="openPopup(25)" > 
+            <img src="images/amber.jpg" alt="">
+            <h3> 5  Resin Rings /  خواتم الكهرمان 5 </h3>
+            <h2> Prix : 100dh </h2>
+          
+        </div>
+        <div class="product"  onclick="openPopup(59)"> 
+            <img src="images/ni (6).jpeg" alt="">
+            <h3> Jouher L'Hour Stack Ring   / خاتم الجوهر الحر </h3>
+            <h2> Prix : 79dh </h2>
+        
+        </div></div>
+
+           <h3 id="e2" class="yy"> Les Bracelets : </h3>
+           <div class="products">
             <div class="product" onclick="openPopup(6)"> 
                 <img src="images/lola (2).jpg" alt="">
                 <h3>Silver Adjustable Bracelet / سوار التراث العريق </h3>
                 <h2> Prix : 69dh </h2>
                
             </div>
-          
-          <div class="product"  onclick="openPopup(8)"> 
-                <img src="images/iku.jpg" alt="">
-                <h3>laser-cut flower layered chain / عقد وردات الليزر </h3>
-                <h2> Prix : 119dh </h2>
+         
                 
-            </div> <div class="product"  onclick="openPopup(9)"> 
-                <img src="images/per (2).jpg" alt="">
-                <h3>Spinelli Kilcollin Leo Diamond Ring / خاتم الحلقات المتصلة </h3>
-                <h2> Prix : 100dh </h2>
-                
-            </div> <div class="product"  onclick="openPopup(10)"> 
-                <img src="images/lki (1).jpg" alt="">
-                <h3>Marquise Cut Ring / خاتم ماركيز سوليتير </h3>
-                <h2> Prix : 100dh </h2>
-                
-            </div> <div class="product"  onclick="openPopup(11)"> 
-                <img src="images/drg (2).jpg" alt="">
-                <h3> 3 metals beaded necklace + Bracelet / عقد و سوار خرز الثلاث معادن </h3>
-                <h2> Prix : 170dh </h2>
-                
-            </div> <div class="product" onclick="openPopup(12)"> 
+             <div class="product" onclick="openPopup(12)"> 
                 <img src="images/tyu.jpeg" alt="">
                 <h3>Black Gemstones Bracelet / اسوارة الحجر الأسود </h3>
                 <h2> Prix : 70dh </h2>
@@ -841,41 +862,38 @@ z-index: 999;
             </div> <div class="product" onclick="openPopup(13)"> 
                 <img src="images/ni (28).jpeg" alt="">
                 <h3>Rectangular purple gemstones bracelet / اسوارة الأحجار البنفسجية </h3>
-                <h2> Prix : 70dh </h2>
+                <h2> Prix : 70dh </h2> 
+            </div>
+            <div class="product"  onclick="openPopup(28)" > 
+                <img src="images/ivana.jpg" alt="">
+                <h3>Van Cleef Silver Flower Bracelet / اسوارة فان كليف الفضية </h3>
+                <h2> Prix : 79dh </h2>
                
-            </div>  <div class="product"  onclick="openPopup(14)"> 
-                <img src="images/rt.jpg" alt="">
-                <h3> Gold Vintage Pink round Stone Ring / خاتم الحجر الوردي  </h3>
-                <h2> Prix : 50dh </h2>
+            </div>
+            <div class="product" onclick="openPopup(32)" > 
+                <img src="images/raven.jpg" alt="">
+                <h3> silver bracelet cuff hexogone ring + Bracelet / سوار + خاتم الشهدة الفضي </h3>
+                <h2> Prix : 150dh </h2>
                
-            </div> <div class="product" onclick="openPopup(15)"> 
-                <img src="images/lili.jpeg" alt="">
-                <h3>Emerald Gemstones Ring / خاتم الزمرد المرصع بالأحجار البيضاء </h3>
-                <h2> Prix : 99dh </h2>
-                
-            </div> <div class="product"  onclick="openPopup(16)"> 
-                <img src="images/meg (1).jpg" alt="">
-                <h3>Silver White Gemstones Ring with emerald stones / خاتم الأحجار البيضاء  المرصع بالزمرد </h3>
-                <h2> Prix : 99dh </h2>
-               
-            </div> 
-               
-             <div class="product"  onclick="openPopup(17)"> 
-                <img src="images/zelya.jpg" alt="">
-                <h3>Emerald 2 flowers  Ring / خاتم وردتي الزمرد </h3>
-                <h2> Prix : 99dh </h2>
-               
-            </div> <div class="product" onclick="openPopup(18)"> 
-                <img src="images/paula.jpg" alt="">
-                <h3>gold twist bracelet / اسوارة الإلتواءات الذهبية </h3>
-                <h2> Prix : 99dh </h2>
-                
-            </div> <div class="product" onclick="openPopup(19)"> 
-                <img src="images/lizzy.jpg" alt="">
-                <h3>gold knot bracelet / اسوارة العقدة الذهبية </h3>
-                <h2> Prix : 99dh </h2>
-                
-            </div> <div class="product" onclick="openPopup(20)"> 
+            </div>
+           
+           
+            <div class="product" onclick="openPopup(37)"> 
+                <img src="images/emma.jpg" alt="">
+                <h3> Emerald flower silver bracelet / غورميط ورود الزمرد النقرية </h3>
+                <h2> Prix : 130dh </h2>
+             
+            </div>
+           
+            <div class="product"  onclick="openPopup(50)"> 
+                <img src="images/ni (13).jpeg" alt="">
+                <h3> Silver Diamond Sphere earings / اقراط كرة الالماس الفضية </h3>
+                <h2> Prix : 129dh </h2>
+              
+            </div></div>
+            <h3 id="e3" class="yy"> Les Boucles D'oreilles: </h3>
+            <div class="products"> 
+            <div class="product" onclick="openPopup(20)"> 
                 <img src="images/prdct (9).png" alt="">
                 <h3>Silver Diamond waterDrop earings / أقراط قطرة الأحجار الفضية </h3>
                 <h2> Prix : 119dh </h2>
@@ -887,30 +905,7 @@ z-index: 999;
                 <h2> Prix : 89dh </h2>
                 
             </div>
-            <div class="product"  onclick="openPopup(22)"> 
-                <img src="images/cynthia.jpg" alt="">
-                <h3>Four stacked Cartier Clou Rings  / خواتم كارتيه باربعة الوان </h3>
-                <h2> Prix : 69dh </h2>
-               
-            </div>
-            <div class="product"onclick="openPopup(23)"> 
-                <img src="images/leah.png" alt="">
-                <h3>Gold double round pink stones vintage ring / خاتم الحجرتين الورديتين المستديرتين </h3>
-                <h2> Prix : 50dh </h2>
-               
-            </div>
-            <div class="product" onclick="openPopup(24)"> 
-                <img src="images/barbara.png" alt="">
-                <h3>Gold double pink oval and round stone vintage ring / خاتم الحجرتين الورديتين المستديرة و البيضوية </h3>
-                <h2> Prix : 50dh </h2>
-                
-            </div>
-            <div class="product" onclick="openPopup(25)" > 
-                <img src="images/amber.jpg" alt="">
-                <h3> 5  Resin Rings /  خواتم الكهرمان 5 </h3>
-                <h2> Prix : 100dh </h2>
-              
-            </div>
+          
             <div class="product"  onclick="openPopup(26)" > 
                 <img src="images/chloe.jpg" alt="">
                 <h3>Silver Gold Cross sign round earings / اقراط علامة الزائد الذهبي الفضية </h3>
@@ -923,339 +918,30 @@ z-index: 999;
                 <h2> Prix : 120dh </h2>
                 
             </div>
-            <div class="product"  onclick="openPopup(28)" > 
-                <img src="images/ivana.jpg" alt="">
-                <h3>Van Cleef Silver Flower Bracelet / اسوارة فان كليف الفضية </h3>
-                <h2> Prix : 79dh </h2>
-               
-            </div>
-            <div class="product" onclick="openPopup(29)"> 
-                <img src="images/karen.jpg" alt="">
-                <h3> Gold spark gemstone necklace + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
-                <h2> Prix : 129dh </h2>
-                
-            </div>
-            <div class="product" onclick="openPopup(30)" > 
-                <img src="images/patricia.jpg" alt="">
-                <h3> Gold spark gemstone spirale Ring + Bracelet / سوار + خاتم اللفة المرصعة الدهبيين </h3>
-                <h2> Prix : 179dh </h2>
-              
-            </div>
+          
+           
+           
             <div class="product"  onclick="openPopup(31)" > 
                 <img src="images/jessica.jpg" alt="">
                 <h3> Emerald beaded droplet earings / اقراط احجار الزمرد الفضية </h3>
                 <h2> Prix : 119dh </h2>
               
             </div>
-            <div class="product" onclick="openPopup(32)" > 
-                <img src="images/raven.jpg" alt="">
-                <h3> silver bracelet cuff hexogone ring + Bracelet / سوار + خاتم الشهدة الفضي </h3>
-                <h2> Prix : 150dh </h2>
-               
-            </div>
-            <div class="product" onclick="openPopup(33)" > 
-                <img src="images/ni (71).jpeg " alt="">
-                <h3> Gold bracelet cuff hexogone ring + Bracelet / سوار + عقد الحجرة اللامعة الذهبيين </h3>
-                <h2> Prix : 150dh </h2>
-                
-            </div>
-            <div class="product" onclick="openPopup(34)"> 
-                <img src="images/stacey.jpg" alt="">
-                <h3> Gold spark gemstone stack bracelet / براصلي الثلاث حلقات </h3>
-                <h2> Prix : 129dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(35)"> 
-                <img src="images/kimberly.jpg" alt="">
-                <h3> Gold 3 color beads  bracelet + Ring / اونصومبل الثلاث معادن خاتم + براصلي </h3>
-                <h2> Prix : 220dh </h2>
-                
-            </div>
-            <div class="product" onclick="openPopup(36)"> 
-                <img src="images/oll (4).png" alt="">
-                <h3> Gold cuff bracelet with bow / سوار شريط الفراشة الذهبي </h3>
-                <h2> Prix : 149dh </h2>
-              
-            </div>
-            <div class="product" onclick="openPopup(37)"> 
-                <img src="images/emma.jpg" alt="">
-                <h3> Emerald flower silver bracelet / غورميط ورود الزمرد النقرية </h3>
-                <h2> Prix : 130dh </h2>
-             
-            </div>
-            <div class="product"  onclick="openPopup(38)"> 
-                <img src="images/ni (52).jpeg" alt="">
-                <h3> Cyan Stone Gold Necklace/ قلادة الحجرة الزرقاء الذهبية </h3>
-                <h2> Prix : 59dh </h2>
-                
-            </div>
-            <div class="product"  onclick="openPopup(39)"> 
-                <img src="images/ni (48).jpeg" alt="">
-                <h3> Golden leafs Necklace / قلادة اوراق الشجر الذهبية </h3>
-                <h2> Prix : 99dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(40)"> 
-                <img src="images/sydney.jpg" alt="">
-                <h3> Gold Snowflake Necklace / قلادة نطفة الثلج الذهبية </h3>
-                <h2> Prix : 89dh </h2>
-                
-            </div>
-            <div class="product"   onclick="openPopup(41)" > 
-                <img src="images/ni (45).jpeg" alt="">
-                <h3> Gold quatz sword Necklace / قلادة سيف النور الذهبية </h3>
-                <h2> Prix : 89dh </h2>
-               
-            </div>
-            <div class="product"   onclick="openPopup(42)"> 
-                <img src="images/ni (41).jpeg" alt="">
-                <h3> Gemstone Touch Gold Necklace / قلادة اللمسة الذهبية </h3>
-                <h2> Prix : 79dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(43)"> 
-                <img src="images/ni (40).jpeg" alt="">
-                <h3> Two layered Bracelet simple + white Gemstone / قلادة الطبقتين الذهبيتين </h3>
-                <h2> Prix : 79dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(44)"> 
-                <img src="images/ni (39).jpeg" alt="">
-                <h3> gold purse Necklace / قلادة الحقيبة الذهبية </h3>
-                <h2> Prix : 60dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(45)"> 
-                <img src="images/ni (38).jpeg" alt="">
-                <h3> Gold Stamp Necklace / سنسلة الطابع الذهبية </h3>
-                <h2> Prix : 99dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(46)"> 
-                <img src="images/ni (35).jpeg" alt="">
-                <h3> Golden Eye Gemstone Necklace / سنسلة العين المرصعة الذهبية </h3>
-                <h2> Prix : 99dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(47)"> 
-                <img src="images/jina.jpg" alt="">
-                <h3> Gold Thick RADKO / سنسلة الرادكو </h3>
-                <h2> Prix : 99dh </h2>
-            
-            </div>
-            <div class="product"  onclick="openPopup(48)"> 
-                <img src="images/oll (16).png" alt="">
-                <h3> Gold Snake Necklace / سنسلة الحنش الذهبية </h3>
-                <h2> Prix : 119dh </h2>
-                
-            </div>
-            <div class="product"  onclick="openPopup(49)"> 
-                <img src="images/oll (17).png" alt="">
-                <h3> Gold Double V chain / سنسلة بلدية ذهبية </h3>
-                <h2> Prix : 139dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(50)"> 
-                <img src="images/ni (13).jpeg" alt="">
-                <h3> Silver Diamond Sphere earings / اقراط كرة الالماس الفضية </h3>
-                <h2> Prix : 129dh </h2>
-              
-            </div>
+           
             <div class="product"  onclick="openPopup(51)"> 
                 <img src="images/ni (11).jpeg" alt="">
                 <h3> Three Diamond hoops earings / اقراط الثلاث حلقات الفضية </h3>
                 <h2> Prix : 119dh </h2>
                
             </div>
-            <div class="product"  onclick="openPopup(52)"> 
-                <img src="images/ni (19).jpeg" alt="">
-                <h3> Gold Diamond Gemstones droplet earings / اقراط قطرة الماء الذهبية المرصعة </h3>
-                <h2> Prix : 119dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(53)" > 
-                <img src="images/lisa.jpg" alt="">
-                <h3> Gold Leopard pattern earings / اقراط النمر الذهبية  </h3>
-                <h2> Prix : 119dh </h2>
-               
-            </div>  <div class="product"  onclick="openPopup(54)"> 
-                <img src="images/oll (22).png" alt="">
-                <h3> Gold Vintage Necklace / قلادة الزخرف الذهبية </h3>
-                <h2> Prix : 69dh </h2>
-             
-            </div>  <div class="product"  onclick="openPopup(55)"> 
-                <img src="images/oll (23).png" alt="">
-                <h3> Necklace Vintage Pendant necklace / قلادة تقليدية ذهبية مزخرفة </h3>
-                <h2> Prix : 79dh </h2>
-                
-            </div>  <div class="product"  onclick="openPopup(56)"> 
-                <img src="images/christine.jpg" alt="">
-                <h3> 3 colors beaded earings  / اقراط الثلاث معادن </h3>
-                <h2> Prix : 79dh </h2>
-                
-            </div>  <div class="product"  onclick="openPopup(57)"> 
-                <img src="images/ni (31).jpeg" alt="">
-                <h3> Elastic Beaded Ring  / خاتم الجوهر </h3>
-                <h2> Prix : 79dh </h2>
-             
-            </div>
-            <div class="product"  onclick="openPopup(58)"> 
-                <img src="images/ella.jpg" alt="">
-                <h3> Gold dazzled pin bracelet  / براصلي الفيليل الذهبي </h3>
-                <h2> Prix : 149dh </h2>
-               
-            </div>
-            <div class="product"  onclick="openPopup(59)"> 
-                <img src="images/ni (6).jpeg" alt="">
-                <h3> Jouher L'Hour Stack Ring   / خاتم الجوهر الحر </h3>
-                <h2> Prix : 79dh </h2>
             
-            </div>
-            <div class="product"  onclick="openPopup(60)"> 
-                <img src="images/jade.jpg" alt="">
-                <h3> Forest Green square Gemstones earings   / اقراط الاحجار الخضراء </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(61)"> 
-                <img src="images/eline.jpg" alt="">
-                <h3> Gold Pattern Bracelet  </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(62)"> 
-                <img src="images/penny (1).jpg" alt="">
-                <h3> Gold Colored Stones Ring /   خاتم الجواهر </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(63)"> 
-                <img src="images/penny (2).jpg" alt="">
-                <h3> Gemstone Vertical Earrings   / اقراط الاحجار </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(64)"> 
-                <img src="images/penny (3).jpg" alt="">
-                <h3> Gold Colored Stones Bracelet   /   سوار  الجواهر  </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(65)"> 
-                <img src="images/tyuiop.jpg" alt="">
-                <h3> Snowflake Gold Ring    / خاتم نطفة الثلج الذهبي </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(66)"> 
-                <img src="images/nckll.jpg" alt="">
-                <h3> Gold Hoops Necklace + Earrings    /  اقراط + قلادة الثلاث حلقات  </h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(67)"> 
-                <img src="images/croco.jpg" alt="">
-                <h3> Gold Lock Bracelet     / اسوارة القفل الذهبية</h3>
-                <h2> Prix : 89dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(81)"> 
-                <img src="images/gem.jpeg" alt="">
-                <h3> Bague Marriage ovale doree </h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(82)"> 
-                <img src="images/gemm.jpeg" alt="">
-                <h3>Bague Marriage double anneaux </h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(68)"> 
-                <img src="images/gemmm.jpeg" alt="">
-                <h3> BaGue Marriage Flacon De Neige</h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(69)"> 
-                <img src="images/weddd.jpeg" alt="">
-                <h3> Simple Collier Dore </h3>
-                <h2> Prix : 69dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(70)"> 
-                <img src="images/wfd.jpeg" alt="">
-                <h3> gold heavy trendy hoops</h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(71)"> 
-                <img src="images/wedd.jpeg" alt="">
-                <h3> Gold Lock Bracelet 2    / 2 اسوارة القفل الذهبية</h3>
-                <h2> Prix : 119dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(72)"> 
-                <img src="images/wed.jpeg" alt="">
-                <h3> Collier A motifs doré</h3>
-                <h2> Prix : 120dh </h2>
-              
-            </div>
-      
-            <div class="product"  onclick="openPopup(73)"> 
-                <img src="images/widd.jpeg" alt="">
-                <h3> Gourmette riviere Argentée </h3>
-                <h2> Prix : 79dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(74)"> 
-                <img src="images/widdd.jpeg" alt="">
-                <h3> large charms hoops </h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(75)"> 
-                <img src="images/wid.jpeg" alt="">
-                <h3> Gourmette chaine dorée </h3>
-                <h2> Prix : 69dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(76)"> 
-                <img src="images/z (1).jpeg" alt="">
-                <h3> Bague dorée enchainnée </h3>
-                <h2> Prix : 59dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(77)"> 
-                <img src="images/z (2).jpeg" alt="">
-                <h3> Bracelet + bague Argentés </h3>
-                <h2> Prix : 120dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(78)"> 
-                <img src="images/z (3).jpeg" alt="">
-                <h3> bracelet  doré brillant </h3>
-                <h2> Prix : 120dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(79)"> 
-                <img src="images/z.jpeg" alt="">
-                <h3> Bracelet Floral doré </h3>
-                <h2> Prix : 90dh </h2>
-              
-            </div>
-            <div class="product"  onclick="openPopup(80)"> 
-                <img src="images/zt.jpeg" alt="">
-                <h3> Bracelet "Honey Comb" doré </h3>
-                <h2> Prix : 90dh </h2>
-              
-            </div>
           
+           
+            
         </div>
 
        
  
-
 
 
 
@@ -2257,422 +1943,208 @@ z-index: 999;
                             sizes: ["Adjustable"],
                             images2: ["images/pfppfp.png" ],
                             description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 68, 
-                
-                        name:"BaGue Marriage Flacon De Neige ", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/gemmm.jpeg" ,
-                
-               
-                            images: ["images/gemmm.jpeg", "images/wd.jpeg" ],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/wd.jpeg" ],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 69, 
-                
-                        name:"Simple Collier Dore  ", 
-                            price: 69, 
-                             status: "⍟ Instock",
-                            image:"images/weddd.jpeg" ,
-                
-               
-                            images: ["images/weddd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/weddd.jpeg" ],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 70, 
-                
-                        name:" gold heavy trendy hoops", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/wfd.jpeg",
-                
-               
-                            images: ["images/wfd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/wfd.jpeg" ],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 71, 
-                
-                        name:"Gold Lock Bracelet 2  ", 
-                            price: 119, 
-                             status: "⍟ Instock",
-                            image:"images/wedd.jpeg",
-                
-               
-                            images: ["images/wedd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["5,7"],
-                            images2: ["images/wedd.jpeg" ],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 72, 
-                
-                        name:"Collier A motifs doré", 
-                            price: 120, 
-                             status: "⍟ Instock",
-                            image:"images/wed.jpeg",
-                
-               
-                            images: ["images/wed.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/wed.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 73, 
-                
-                        name:" Gourmette riviere Argentée ", 
-                            price: 79, 
-                             status: "⍟ Instock",
-                            image:"images/widd.jpeg",
-                
-               
-                            images: ["images/widd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/widd.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 74, 
-                
-                        name:"large charms hoops", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/widdd.jpeg",
-                
-               
-                            images: ["images/widdd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/widdd.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 75, 
-                
-                        name:"Gourmette chaine dorée", 
-                            price: 69, 
-                             status: "⍟ Instock",
-                            image:"images/wid.jpeg",
-                
-               
-                            images: ["images/wid.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/wid.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 76, 
-                
-                        name:"Bague dorée enchainnée", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/z (1).jpeg",
-                
-               
-                            images: ["images/z (1).jpeg","images/z (4).jpeg", "images/z (5).jpeg" ],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Adjustable"],
-                            images2: ["images/z (1).jpeg","images/z (4).jpeg", "images/z (5).jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 77, 
-                
-                        name:"Bracelet + bague Argentés", 
-                            price: 120, 
-                             status: "⍟ Instock",
-                            image:"images/z (2).jpeg",
-                
-               
-                            images: ["images/z (2).jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Adjustables"],
-                            images2: ["images/z (2).jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 78, 
-                
-                        name:"bracelet  doré brillant", 
-                            price: 120, 
-                             status: "⍟ Instock",
-                            image:"images/z (3).jpeg",
-                
-               
-                            images: ["images/z (3).jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/z (3).jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 79, 
-                
-                        name:" Bracelet Floral doré ", 
-                            price: 90, 
-                             status: "⍟ Instock",
-                            image:"images/z.jpeg",
-                
-               
-                            images: ["images/z.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/z.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 80, 
-                
-                        name:"Bracelet Honey Comb doré", 
-                            price: 90, 
-                             status: "⍟ Instock",
-                            image:"images/zt.jpeg",
-                
-               
-                            images: ["images/zt.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/zt.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 81, 
-                
-                        name:" Bague Marriage ovale doree ", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/gem.jpeg",
-                
-               
-                            images: ["images/gem.jpeg", "images/wdd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/gem.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
-                        { 
-                            id: 82, 
-                
-                        name:"Bague Marriage double anneaux", 
-                            price: 59, 
-                             status: "⍟ Instock",
-                            image:"images/gemm.jpeg",
-                
-               
-                            images: ["images/gemm.jpeg", "images/wddd.jpeg"],
-                            description: "This striking, gold-toned Molten Metal bracelet features a series of textured starfish linked together to form a bold, wrap-around design with a polished, high-shine finish, making it a perfect statement accessory for summer or coastal-inspired looks ", 
-                            sizes: ["Taille unique"],
-                            images2: ["images/gemm.jpeg"],
-                            description2: " Cet article est fabriqué en acier inoxydable de haute qualité,Il aborde une finition dorée éclatante et élégante, Ce bijou est conçu pour résister au temps et ne ternit pas , Il est hypoallergénique et résiste parfaitement à l’eau au quotidien"
-                        },
- 
+                        }
+                        
                     ];
                     
-                  
+                    // 2. INITIALIZATION
+                    document.addEventListener('DOMContentLoaded', () => {
+                        if (document.querySelector(".gallery-slider")) {
+                            modalSwiper = new Swiper(".gallery-slider", {
+                                observer: true,
+                                observeParents: true,
+                                pagination: { el: ".swiper-pagination", clickable: true },
+                                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" }
+                            });
+                        }
+                        updateCartCount();
+                    });
                     
-                   
-                   
-// --- 1. INITIALIZATION ---
-window.cart = JSON.parse(localStorage.getItem("cart")) || [];
+                    // 3. MODAL FUNCTIONS
+                    window.openPopup = function(productId) {
+                        const product = myProducts.find(p => p.id === productId);
+                        if (!product) return;
+                    
+                        // Set Text & Main Image
+                        document.getElementById('popup-title').innerText = product.name;
+                        document.getElementById('popup-description').innerText = product.description;
+                        document.getElementById('popup-price').innerText = `${product.price}Dh`;
+                        document.getElementById('main-popup-img').src = product.image;
+                        document.getElementById('popup-description2').innerText = product.description2;
+                        document.getElementById('statusText').innerText = product.status;
+                        // Thumbnails
+                        const thumbRow = document.getElementById('thumb-row');
+                        if (thumbRow) {
+                            thumbRow.innerHTML = product.images.map(src => `
+                                <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class="thumb-img">
+                            `).join('');
+                        }
+                        const Images2 = document.getElementById('images2');
+                        if (Images2) {
+                            Images2.innerHTML = product.images2.map(src => `
+                                <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class=" images2-img">
+                            `).join('');
+                        }
+                        // Sizes
+                        const sizeContainer = document.getElementById('size-options');
+                        if (sizeContainer) {
+                            sizeContainer.innerHTML = product.sizes.map((s, i) => `
+                                <label>
+                                    <input type="radio" name="product-size" value="${s}" ${i === 0 ? 'checked' : ''}>
+                                    <span class="size-label">${s}</span>
+                                </label>
+                            `).join('');
+                        }
+                       // ... inside your openPopup function ...
 
-// --- 2. POPUP LOGIC ---
-window.openPopup = function(productId) {
-    const product = myProducts.find(p => p.id === productId);
-    if (!product) return;
+// Get the elements
+const sizeContainer2 = document.getElementById('size-options2');
+const sizeTitle = document.getElementById('desc'); // Targeting your h2
+const sizeTitle2 = document.getElementById('desc1'); 
+// Verify that 'sizess' is the correct property name in your data object
+// (Double check your JSON to ensure it is actually 'sizess' and not 'sizes2')
+const hasValidSizes = product.sizess && 
+                      product.sizess.length > 0 && 
+                      product.sizess[0] !== ".";
 
-    // Set Text & Main Image
-    document.getElementById('popup-title').innerText = product.name;
-    document.getElementById('popup-description').innerText = product.description;
-    document.getElementById('popup-price').innerText = `${product.price}Dh`;
-    document.getElementById('main-popup-img').src = product.image;
-    document.getElementById('popup-description2').innerText = product.description2;
-    document.getElementById('statusText').innerText = product.status;
-
-    // FIX: Thumbnails (Main Row)
-    const thumbRow = document.getElementById('thumb-row');
-    if (thumbRow && product.images) {
-        thumbRow.innerHTML = product.images.map(src => `
-            <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class="thumb-img">
-        `).join('');
-    }
-
-    // FIX: Secondary Images (images2)
-    const images2Row = document.getElementById('images2');
-    if (images2Row && product.images2) {
-        images2Row.innerHTML = product.images2.map(src => `
-            <img src="${src}" onclick="document.getElementById('main-popup-img').src='${src}'" class="images2-img">
-        `).join('');
-    }
-
-    // FIX: Primary Sizes (sizes)
-    const sizeContainer = document.getElementById('size-options');
-    if (sizeContainer && product.sizes) {
-        sizeContainer.innerHTML = product.sizes.map((s, i) => `
+if (sizeContainer2 && sizeTitle && sizeTitle2) {
+    if (hasValidSizes) {
+        // Show both the title and the container
+        sizeTitle2.style.display = "block";
+        sizeTitle.style.display = "block";
+        sizeContainer2.style.display = "grid"; 
+        
+        sizeContainer2.innerHTML = product.sizess.map((s, i) => `
             <label>
-                <input type="radio" name="product-size" value="${s}" ${i === 0 ? 'checked' : ''}>
-                <span class="size-label">${s}</span>
+                <input type="radio" name="product2-size" value="${s}" ${i === 0 ? 'checked' : ''}>
+                <span class="size-label2">${s}</span>
             </label>
         `).join('');
-    }
-
-    // FIX: Secondary Sizes (sizess)
-    const sizeContainer2 = document.getElementById('size-options2');
-    const sizeTitle = document.getElementById('desc'); 
-    const sizeTitle2 = document.getElementById('desc1'); 
-
-    const hasValidSecondary = product.sizess && product.sizess.length > 0 && product.sizess[0] !== ".";
-
-    if (sizeContainer2 && sizeTitle && sizeTitle2) {
-        if (hasValidSecondary) {
-            sizeTitle.style.display = "block";
-            sizeTitle2.style.display = "block";
-            sizeContainer2.style.display = "grid"; 
-            sizeContainer2.innerHTML = product.sizess.map((s, i) => `
-                <label>
-                    <input type="radio" name="product2-size" value="${s}" ${i === 0 ? 'checked' : ''}>
-                    <span class="size-label2">${s}</span>
-                </label>
-            `).join('');
-        } else {
-            sizeTitle.style.display = "none";
-            sizeTitle2.style.display = "none";
-            sizeContainer2.style.display = "none";
-        }
-    }
-                     
-    // ADD TO CART BUTTON
-    const addToCartBtn = document.getElementById('add-to-cart-btn');
-    if (addToCartBtn) {
-        addToCartBtn.onclick = () => {
-            const s1 = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
-            let s2 = null;
-            if (hasValidSecondary) {
-                s2 = document.querySelector('input[name="product2-size"]:checked')?.value;
-            }
-            const qty = parseInt(document.getElementById('popup-quantity')?.value) || 1;
-            
-            window.addToCart(product.id, product.name, product.price, product.image, s1, s2, qty);
-            window.closePopup();
-        };
-    }
-    document.getElementById('product-modal').style.display = 'flex';
-};
-
-window.closePopup = function() {
-    document.getElementById('product-modal').style.display = 'none';
-};
-
-// --- 3. CART LOGIC ---
-window.addToCart = function(id, name, price, image, size1, size2, quantity) {
-    const itemKey = `${id}-${size1}-${size2 || 'none'}`;
-    const existing = window.cart.find(item => `${item.id}-${item.size1}-${item.size2 || 'none'}` === itemKey);
-    
-    if (existing) {
-        existing.quantity += quantity;
     } else {
-        window.cart.push({ id, name, price, image, size1, size2, quantity });
-    }
-    saveAndRefresh();
-    window.toggleCart();
-};
-
-window.toggleCart = function() {
-    const sidebar = document.getElementById('cart-sidebar');
-    const overlay = document.getElementById('cart-overlay');
-    if (sidebar && overlay) {
-        sidebar.classList.toggle('open');
-        overlay.classList.toggle('active');
-        displayCartItems();
-    }
-};
-
-window.removeItem = function(index) {
-    window.cart.splice(index, 1);
-    saveAndRefresh();
-};
-
-function displayCartItems() {
-    const container = document.querySelector('.cart-items');
-    const subtotalEl = document.getElementById('cart-subtotal');
-    if (!container) return;
-
-    if (window.cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center; padding: 20px;">Your bag is empty.</p>';
-        if (subtotalEl) subtotalEl.innerText = "0dh";
-        return;
-    }
-
-    let total = 0;
-    container.innerHTML = window.cart.map((item, index) => {
-        total += (item.price * item.quantity);
-        let sInfo = `Size: ${item.size1}`;
-        if (item.size2) sInfo += ` | ${item.size2}`;
-
-        return `
-            <div class="cart-item" style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px; color:#a8977a;">
-                <img src="${item.image}" width="60" height="60" style="object-fit:cover;">
-                <div style="flex:1">
-                    <div style="font-weight:bold; color:white;">${item.name}</div>
-                    <div style="font-size:12px;">${sInfo}</div>
-                    <div>${item.price}Dh x ${item.quantity}</div>
-                    <button onclick="window.removeItem(${index})" style="background:none; border:none; color:#e79396; cursor:pointer; font-size:12px; padding:0; text-decoration:underline;">Remove</button>
-                </div>
-            </div>`;
-    }).join('');
-    if (subtotalEl) subtotalEl.innerText = `${total.toFixed(2)}dh`;
-}
-
-function saveAndRefresh() {
-    localStorage.setItem("cart", JSON.stringify(window.cart));
-    updateCartCount();
-    displayCartItems();
-}
-window.goToCheckout = function() {
-    // 1. Check if the cart has items
-    if (!window.cart || window.cart.length === 0) {
-        alert("Your bag is empty! / حقيبتك فارغة");
-        return;
-    }
-    
-    // 2. Redirect to your checkout page
-    // Make sure "index1.html" is the correct name of your checkout file!
-    window.location.href = "index1.html"; 
-};
-window.toggleSearch = function() {
-    const box = document.getElementById("searchBox");
-    if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
-};
-
-window.searchItems = function() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let items = document.querySelectorAll(".product");
-    items.forEach(item => {
-        item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
-    });
-};
-function updateCartCount() {
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-        const totalQty = window.cart.reduce((sum, item) => sum + item.quantity, 0);
-        countEl.innerText = totalQty;
+        // Hide both if there is no data or if it's just a "."
+        sizeTitle.style.display = "none";
+        sizeContainer2.style.display = "none";
+        sizeContainer2.innerHTML = "";
     }
 }
-</script>
+                     
+                        
+                        const addToCartBtn = document.getElementById('add-to-cart-btn');
+                        if (addToCartBtn) {
+                            addToCartBtn.onclick = () => {
+                                const selectedSize = document.querySelector('input[name="product-size"]:checked')?.value || "Standard";
+                                const qtyInput = document.getElementById('popup-quantity');
+                                const qty = qtyInput ? parseInt(qtyInput.value) : 1;
+                                
+                                window.addToCart(product.name, product.price, product.image, selectedSize,selectedSize2, qty);
+                                window.closePopup();
+                            };
+                        }
+                    
+                        document.getElementById('product-modal').style.display = 'flex';
+                    };
+                    
+                    window.closePopup = function() {
+                        document.getElementById('product-modal').style.display = 'none';
+                    };
+                    
+                    window.goToCheckout = function() {
+                        if (window.cart.length === 0) {
+                            alert("Your bag is empty!");
+                            return;
+                        }
+                        window.location.href = "index1.html"; 
+                    };
+                    
+                    // 4. CART LOGIC
+                    window.toggleCart = function() {
+                        const sidebar = document.getElementById('cart-sidebar');
+                        const overlay = document.getElementById('cart-overlay');
+                        if (sidebar && overlay) {
+                            sidebar.classList.toggle('open');
+                            overlay.classList.toggle('active');
+                            displayCartItems();
+                        }
+                    };
+                    
+                    window.addToCart = function(name, price, image, size, quantity) {
+                        const itemKey = `${name}-${size}`;
+                        const existing = window.cart.find(item => `${item.name}-${item.size}` === itemKey);
+                        
+                        if (existing) {
+                            existing.quantity += quantity;
+                        } else {
+                            window.cart.push({ name, price, image, size, quantity });
+                        }
+                        
+                        saveAndRefresh();
+                        
+                        // Auto-open sidebar
+                        const sidebar = document.getElementById('cart-sidebar');
+                        if (sidebar && !sidebar.classList.contains('open')) {
+                            window.toggleCart();
+                        }
+                    };
+                    
+                    window.removeItem = function(index) {
+                        window.cart.splice(index, 1);
+                        saveAndRefresh();
+                    };
+                    
+                    function displayCartItems() {
+                        const container = document.querySelector('.cart-items');
+                        const subtotalEl = document.getElementById('cart-subtotal');
+                        if (!container) return;
+                    
+                        if (window.cart.length === 0) {
+                            container.innerHTML = '<p style="text-align:center; padding: 20px;">Your bag is empty.</p>';
+                            if (subtotalEl) subtotalEl.innerText = "0dh";
+                            return;
+                        }
+                    
+                        let total = 0;
+                        container.innerHTML = window.cart.map((item, index) => {
+                            total += (item.price * item.quantity);
+                            return `
+                                <div class="cart-item" style="display:flex; gap:10px; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px; color:#a8977a;">
+                                    <img src="${item.image}" width="60" height="60" style="object-fit:cover;">
+                                    <div style="flex:1">
+                                        <div style="font-weight:bold; color:white;">${item.name}</div>
+                                        <div style="font-size:12px;">Size: ${item.size}</div>
+                                        <div>${item.price}Dh x ${item.quantity}</div>
+                                        <button onclick="removeItem(${index})" style="background:none; border:none; color:#e79396; cursor:pointer; font-size:12px; padding:0; text-decoration:underline;">Remove</button>
+                                    </div>
+                                </div>`;
+                        }).join('');
+                    
+                        if (subtotalEl) subtotalEl.innerText = `${total.toFixed(2)}dh`;
+                    }
+                    
+                    function saveAndRefresh() {
+                        localStorage.setItem("cart", JSON.stringify(window.cart));
+                        updateCartCount();
+                        displayCartItems();
+                    }
+                    
+                    function updateCartCount() {
+                        const countEl = document.getElementById("cart-count");
+                        if (countEl) {
+                            const totalQty = window.cart.reduce((sum, item) => sum + item.quantity, 0);
+                            countEl.innerText = totalQty;
+                        }
+                    }
+                    
+                  
+                    window.toggleSearch = function() {
+                        const box = document.getElementById("searchBox");
+                        if (box) box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+                    };
+                    
+                    window.searchItems = function() {
+                        let input = document.getElementById("searchInput").value.toLowerCase();
+                        let items = document.querySelectorAll(".product");
+                        items.forEach(item => {
+                            item.style.display = item.textContent.toLowerCase().includes(input) ? "block" : "none";
+                        });
+                    };
+                    </script>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EliteShop - Checkout</title>
-    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD&commit=true&disable-funding=credit,paylater"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair Display|Montserrat|Parisienne" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=AUXtNR_0gOjHzsUrQYQmRTZR1isdQckuSVzPqJ4ygnrHw2DBAVwou2p3OyAjfHE0AShmDVrszDzhR0l0&currency=USD"></script>
     <style>
         body { font-family: 'Montserrat', sans-serif; background: #fafafa; display: flex; justify-content: center; padding: 50px 20px; margin: 0; }
         .checkout-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
@@ -13,37 +14,50 @@
         .total-row { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 2px solid #eee; font-weight: bold; font-size: 1.2em; color: #161711; }
         #paypal-button-container { margin-top: 30px; min-height: 150px; }
         .empty-msg { text-align: center; padding: 20px; color: #666; }
+        input#client-phone { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
     </style>
 </head>
 <body>
-
+<div style="display: grid;">
     <div class="checkout-card">
         <h2>Order Summary</h2>
-        <div id="order-items-container">
-            </div>
-            <div> 
-                <h3> Please enter your phone number - الرجاء ادخال رقم الهاتف  </h3>
-               <input id="client-phone" type="tel" placeholder="+212" required> 
-            </div>
+        <div id="order-items-container"></div>
+        
+        <div style="margin-top: 20px;"> 
+            <h3 style="font-size: 16px;">Please enter your phone number / رقم الهاتف</h3>
+            <input id="client-phone" type="tel" placeholder="+212 6..." required> 
+        </div>
+
         <div id="paypal-button-container"></div>
     </div>
+<div style="margin: 20%; color: #a8977a;background-color: black; width: 60%; border-radius: 20px; height: 50%; padding: 10%;" >
+    <h3 id="total" style="font-family: 'Parisienne'; font-size: 25px;"> Paiement A La Livraison </h3>
+  <form class="orderForm" id="orderForm" onsubmit="placeOrder(event)">
+    <h3 class="title"> Entrez Vos Informations: </h3>
+ <input style="border-radius: 20px; outline: solid 3px #a8977a;" type="text" id="fullName" placeholder="Full Name" required><br><br>
+ <input style="border-radius: 20px; outline: solid 3px #a8977a;" type="text" id="adress" placeholder="Adress" required><br><br>
+ <input style="border-radius: 20px; outline: solid 3px #a8977a;" type="tel" id="whatsapp-phone" placeholder="phone number" required><br><br>
 
+
+
+
+  </form>
+  <button type="button" class="checkout"  onclick="sendToWhatsApp()">Order Via WhatsApp</button>
+</div></div>
     <script>
-        const MAD_TO_USD_RATE = 0.10; 
-    
+        // 1. Run initialization
+        initCheckout();
+
         function initCheckout() {
             const container = document.getElementById('order-items-container');
             const myCart = JSON.parse(localStorage.getItem("cart")) || [];
             
             if (myCart.length === 0) {
-                container.innerHTML = "<p>Your cart is empty.</p>";
+                container.innerHTML = "<p class='empty-msg'>Your cart is empty.</p>";
                 return;
             }
     
-            // 1. Calculate the math first so the variables exist for the button
-            const baseShipping = 35.00;
-            const freeShippingThreshold = 500.00;
-            const paypalFeePercent = 0.05;
+            // --- DISPLAY LOGIC (DH) ---
             let subtotal = 0;
             container.innerHTML = ""; 
     
@@ -56,81 +70,133 @@
                 container.appendChild(row);
             });
     
-            let finalShipping = subtotal >= freeShippingThreshold ? 0.00 : baseShipping;
-            let feeMAD = (subtotal + finalShipping) * paypalFeePercent;
+            let finalShipping = subtotal >= 500.00 ? 0.00 : 35.00;
+            let feeMAD = (subtotal + finalShipping) * 0.05;
             let finalTotalMAD = subtotal + finalShipping + feeMAD;
     
-            const extrasHTML = `
-                <div class="price-row"><span>Shipping Fee ${finalShipping === 0 ? '<b>(Free)</b>' : ''}</span><span>${finalShipping.toFixed(2)} DH</span></div>
-                <div class="price-row" style="color: #888;"><span>Transaction Fee (5%)</span><span>${feeMAD.toFixed(2)} DH</span></div>
+            container.insertAdjacentHTML('beforeend', `
+                <div class="price-row"><span>Shipping ${finalShipping === 0 ? '<b>(Free)</b>' : ''}</span><span>${finalShipping.toFixed(2)} DH</span></div>
+                <div class="price-row" style="color: #888;"><span>Fee (5%)</span><span>${feeMAD.toFixed(2)} DH</span></div>
                 <div class="total-row"><span>Total</span><span>${finalTotalMAD.toFixed(2)} DH</span></div>
-            `;
-            container.insertAdjacentHTML('beforeend', extrasHTML);
+            `);
     
-            // 2. Now render the PayPal Buttons
+            // --- PAYPAL LOGIC ---
             if (typeof paypal !== 'undefined') {
                 paypal.Buttons({
-                    style: { layout: 'vertical', color: 'black', shape: 'rect', label: 'checkout' },
-                    
                     createOrder: function(data, actions) {
-                        const phoneValue = document.getElementById('client-phone').value;
-                        if (!phoneValue) {
-                            alert("S'il vous plaît, entrez votre numéro de téléphone.");
+                        const userPhone = document.getElementById('client-phone').value;
+                        
+                        if (!userPhone || userPhone.length < 8) {
+                            alert("Please enter a valid phone number first!");
                             return;
                         }
-    
-                        // Map items and add phone to the first item name
-                        const paypalItems = myCart.map((item, index) => {
-                            let displayName = `${item.name}${item.size ? ' (Size: ' + item.size + ')' : ''}`;
-                            if (index === 0) displayName += ` - [TEL: ${phoneValue}]`;
+
+                        // Conversion rate: 1 USD = 10 MAD (Adjust if needed)
+                        const exchangeRate = 0.10; 
+                        
+                        const paypalItems = myCart.map(item => {
+                            let sizeDetails = `[taille: ${item.size1}`;
+                            if (item.size2) sizeDetails += ` /tailleBracelet: ${item.size2}`;
+                            sizeDetails += `]`;
+
                             return {
-                                name: displayName,
-                                quantity: item.quantity.toString(),
+                                name: `${item.name} ${sizeDetails} - numTel: ${userPhone}`,
                                 unit_amount: {
                                     currency_code: 'USD',
-                                    value: (parseFloat(item.price) * MAD_TO_USD_RATE).toFixed(2)
-                                }
+                                    value: (parseFloat(item.price) * exchangeRate).toFixed(2)
+                                },
+                                quantity: item.quantity.toString()
                             };
                         });
-    
-                        // Recalculate totals for the payload
-                        const itemTotalUSD = paypalItems.reduce((sum, item) => sum + (parseFloat(item.unit_amount.value) * item.quantity), 0).toFixed(2);
-                        const shippingUSD = (finalShipping * MAD_TO_USD_RATE).toFixed(2);
-                        const feeUSD = (feeMAD * MAD_TO_USD_RATE).toFixed(2);
-                        const totalUSD = (parseFloat(itemTotalUSD) + parseFloat(shippingUSD) + parseFloat(feeUSD)).toFixed(2);
-    
+
+                        // Calculate totals in USD for PayPal
+                        const itemsTotalUSD = (subtotal * exchangeRate).toFixed(2);
+                        const shippingUSD = (finalShipping * exchangeRate).toFixed(2);
+                        const taxUSD = (feeMAD * exchangeRate).toFixed(2);
+                        const grandTotalUSD = (finalTotalMAD * exchangeRate).toFixed(2);
+
                         return actions.order.create({
                             purchase_units: [{
+                                description: "Elite Store Purchase",
                                 amount: {
                                     currency_code: 'USD',
-                                    value: totalUSD,
+                                    value: grandTotalUSD,
                                     breakdown: {
-                                        item_total: { currency_code: 'USD', value: itemTotalUSD },
+                                        item_total: { currency_code: 'USD', value: itemsTotalUSD },
                                         shipping: { currency_code: 'USD', value: shippingUSD },
-                                        handling: { currency_code: 'USD', value: feeUSD }
+                                        tax_total: { currency_code: 'USD', value: taxUSD }
                                     }
                                 },
                                 items: paypalItems
                             }]
                         });
                     },
-    
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(details) {
-                            alert('Success! Order placed by ' + details.payer.name.given_name);
-                            localStorage.removeItem("cart"); 
-                            window.location.href = "index.html"; 
+                            alert('Thank you ' + details.payer.name.given_name + '!');
+                            localStorage.removeItem("cart");
+                            window.location.href = "thankyou.html"; 
                         });
-                    },
-    
-                    onError: function(err) {
-                        console.error('PayPal Error:', err);
                     }
                 }).render('#paypal-button-container');
-            } else {
-                console.error("PayPal SDK not loaded. Check your script tag in the <head>.");
             }
         }
+
+        
+        function sendToWhatsApp() {
+    const myCart = JSON.parse(localStorage.getItem("cart")) || [];
     
-        window.onload = initCheckout;
-    </script>
+    if (myCart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    // 1. Get form data
+    let fullName = document.getElementById("fullName").value;
+    let adress = document.getElementById("adress").value;
+    let phone = document.querySelector('input[type="tel"][placeholder="phone number"]').value;
+
+    if (fullName === "" || adress === "" || phone === "") {
+        alert("Please fill in your name, address, and phone number!");
+        return;
+    }
+
+    // 2. Calculate the Math (Matching your Display/PayPal logic)
+    let subtotal = 0;
+    myCart.forEach(item => {
+        subtotal += parseFloat(item.price) * item.quantity;
+    });
+
+    let shipping = subtotal >= 500 ? 0 : 35;
+    let fee = (subtotal + shipping) * 0.05;
+    let finalTotal = subtotal + shipping + fee;
+
+    // 3. Compose the Message
+    let message = `*Elite Store - New Order*%0A%0A`;
+    message += `*Customer Details:*%0A`;
+    message += `Name: ${fullName}%0A`;
+    message += `Phone: ${phone}%0A`;
+    message += `Address: ${adress}%0A%0A`;
+
+    message += `*Items:*%0A`;
+    myCart.forEach(item => {
+        let sizes = `(Size: ${item.size1}`;
+        if (item.size2) sizes += ` / ${item.size2}`;
+        sizes += `)`;
+        
+        message += `• ${item.name} ${sizes} x${item.quantity} - ${(item.price * item.quantity).toFixed(2)} DH%0A`;
+    });
+
+    message += `%0A------------------------%0A`;
+    message += `*Subtotal:* ${subtotal.toFixed(2)} DH%0A`;
+    message += `*Shipping:* ${shipping === 0 ? "FREE" : shipping.toFixed(2) + " DH"}%0A`;
+    message += `*Transaction Fee (5%):* ${fee.toFixed(2)} DH%0A`;
+    message += `*Total Amount:* ${finalTotal.toFixed(2)} DH%0A`;
+
+    // 4. Open WhatsApp
+    let whatsappURL = `https://wa.me/212697636171?text=${message}`;
+    window.open(whatsappURL, "_blank");
+}
+        </script>
+</body>
+</html>
